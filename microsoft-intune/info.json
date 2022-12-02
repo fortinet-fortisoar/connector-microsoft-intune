@@ -24,7 +24,7 @@
         ],
         "name": "auth_type",
         "value": "Without a User - Application Permission",
-        "description": "Select the method using which you will get authentication tokens used to access the security graph APIs. You can choose between On behalf of User – Delegate Permission or Without a User - Application Permission. For more information, see the Getting Access Tokens section.",
+        "description": "Select the method using which you will get authentication tokens used to access the Intune APIs. You can choose between On behalf of User – Delegate Permission or Without a User - Application Permission. For more information, see the Getting Access Tokens section.",
         "onchange": {
           "Without a User - Application Permission": [
             {
