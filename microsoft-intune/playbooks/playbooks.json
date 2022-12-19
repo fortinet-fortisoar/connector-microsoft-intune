@@ -4,11 +4,11 @@
     {
       "@type": "WorkflowCollection",
       "name": "Sample - Microsoft Intune - 1.0.0",
-      "description": null,
+      "description": "Sample playbooks for \"Microsoft Intune\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": null,
       "uuid": "bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-      "id": 161,
+      "id": 93,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [],
@@ -16,10 +16,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get IOS Policy Details",
+          "name": "Get iOS Policy Details",
           "aliasName": null,
           "tag": "#microsoft-intune",
-          "description": "Retrieves a specific IOS policy from Microsoft Intune API based on the hostname, policy name and other input parameters you have specified.",
+          "description": "Retrieves a specific iOS policy from Microsoft Intune API based on the hostname, policy name and other input parameters you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -37,7 +37,7 @@
               "description": null,
               "arguments": {
                 "route": "89ebccc2-12c9-4f39-a17f-044bdbd5439c",
-                "title": "Microsoft Intune: Get IOS Policy Details",
+                "title": "Microsoft Intune: Get iOS Policy Details",
                 "resources": [
                   "alerts"
                 ],
@@ -61,7 +61,7 @@
             },
             {
               "@type": "WorkflowStep",
-              "name": "Get IOS Policy Details",
+              "name": "Get iOS Policy Details",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -74,7 +74,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
                 "operation": "get_ios_policy_by_name",
-                "operationTitle": "Get IOS Policy Details",
+                "operationTitle": "Get iOS Policy Details",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -89,7 +89,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get IOS Policy Details",
+              "name": "Start -> Get iOS Policy Details",
               "targetStep": "/api/3/workflow_steps/393bea45-b306-4718-85b4-485fe58f5bb4",
               "sourceStep": "/api/3/workflow_steps/0edeb01e-bb1e-4260-9758-b175ced83c72",
               "label": null,
@@ -100,7 +100,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "050d2ea1-f87d-44b2-955f-d7d799314c73",
-          "id": 2399,
+          "id": 1036,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -214,7 +214,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "079d9a07-7433-4587-880c-5aa641c61bc5",
-          "id": 2389,
+          "id": 1037,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -226,10 +226,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Delete IOS Policy",
+          "name": "Delete iOS Policy",
           "aliasName": null,
           "tag": "#microsoft-intune",
-          "description": "Deletes a specific IOS policy from Microsoft Intune based on the hostname and policy name you have specified.",
+          "description": "Deletes a specific iOS policy from Microsoft Intune based on the hostname and policy name you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -247,7 +247,7 @@
               "description": null,
               "arguments": {
                 "route": "e05e0960-dad6-4c00-a887-d994eb588ae2",
-                "title": "Microsoft Intune: Delete IOS Policy",
+                "title": "Microsoft Intune: Delete iOS Policy",
                 "resources": [
                   "alerts"
                 ],
@@ -271,7 +271,7 @@
             },
             {
               "@type": "WorkflowStep",
-              "name": "Delete IOS Policy",
+              "name": "Delete iOS Policy",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -283,7 +283,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
                 "operation": "delete_ios_policy",
-                "operationTitle": "Delete IOS Policy",
+                "operationTitle": "Delete iOS Policy",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -298,7 +298,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Delete IOS Policy",
+              "name": "Start -> Delete iOS Policy",
               "targetStep": "/api/3/workflow_steps/7be604b6-0ab8-474b-832c-969cd36809be",
               "sourceStep": "/api/3/workflow_steps/0be18b3c-13bb-449c-bbc9-651d17e7310d",
               "label": null,
@@ -309,7 +309,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "0a443344-50c1-4339-8778-dd9a9325b6b0",
-          "id": 2401,
+          "id": 1038,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -406,7 +406,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "0acd7d18-7b19-4bb8-88b4-57560355fcf5",
-          "id": 2327,
+          "id": 1039,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -418,10 +418,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Update IOS Policy",
+          "name": "Update iOS Policy",
           "aliasName": null,
           "tag": "#microsoft-intune",
-          "description": "Updates a IOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
+          "description": "Updates a iOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -435,7 +435,7 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Update IOS Policy",
+              "name": "Update iOS Policy",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -466,7 +466,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
                 "operation": "update_ios_policy",
-                "operationTitle": "Update IOS Policy",
+                "operationTitle": "Update iOS Policy",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -483,7 +483,7 @@
               "description": null,
               "arguments": {
                 "route": "c7ebf72c-3fdf-4cc9-9563-420fcf9816ae",
-                "title": "Microsoft Intune: Update IOS Policy",
+                "title": "Microsoft Intune: Update iOS Policy",
                 "resources": [
                   "alerts"
                 ],
@@ -509,7 +509,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Update IOS Policy",
+              "name": "Start -> Update iOS Policy",
               "targetStep": "/api/3/workflow_steps/5447c547-6a6a-4cd4-b731-4e6f9852bff7",
               "sourceStep": "/api/3/workflow_steps/93c3ee2c-2940-4ab0-ac6e-8a8aff0c9745",
               "label": null,
@@ -520,7 +520,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "10876fb7-d410-40ab-9c47-1cd2966dac51",
-          "id": 2400,
+          "id": 1040,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -616,7 +616,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "1ddbb535-3ccc-4322-8fa1-ad45683fc803",
-          "id": 2394,
+          "id": 1041,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -628,10 +628,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Delete Group for IOS Policy",
+          "name": "Delete Group for iOS Policy",
           "aliasName": null,
           "tag": "#microsoft-intune",
-          "description": "Deletes a specific group for IOS policy from Microsoft Intune based on the hostname, policy name and group ID you have specified.",
+          "description": "Deletes a specific group for iOS policy from Microsoft Intune based on the hostname, policy name and group ID you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -645,7 +645,7 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Delete Group for IOS Policy",
+              "name": "Delete Group for iOS Policy",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -658,7 +658,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
                 "operation": "delete_group_for_ios_policy",
-                "operationTitle": "Delete Group for IOS Policy",
+                "operationTitle": "Delete Group for iOS Policy",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -675,7 +675,7 @@
               "description": null,
               "arguments": {
                 "route": "bec9babb-ba45-4122-a586-2f8a17511623",
-                "title": "Microsoft Intune: Delete Group for IOS Policy",
+                "title": "Microsoft Intune: Delete Group for iOS Policy",
                 "resources": [
                   "alerts"
                 ],
@@ -701,7 +701,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Delete Group for IOS Policy",
+              "name": "Start -> Delete Group for iOS Policy",
               "targetStep": "/api/3/workflow_steps/2cbd4969-d64c-45db-bf3b-cd72d1c98e41",
               "sourceStep": "/api/3/workflow_steps/a8a40eef-2455-42ea-8b86-47201d7d4344",
               "label": null,
@@ -712,7 +712,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "208a588d-0541-444d-9113-d93f8855f594",
-          "id": 2407,
+          "id": 1042,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -810,7 +810,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "2886f316-88e7-424c-89d6-bd10c83ac85c",
-          "id": 2392,
+          "id": 1043,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -905,7 +905,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "35691e70-42e3-42df-88b5-af71ef5f8f77",
-          "id": 2390,
+          "id": 1044,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -917,10 +917,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Add App to IOS Policy",
+          "name": "Add App to iOS Policy",
           "aliasName": null,
           "tag": "#microsoft-intune",
-          "description": "Add a specific app to IOS policy in Microsoft Intune based on the hostname, policy name and app name you have specified.",
+          "description": "Add a specific app to iOS policy in Microsoft Intune based on the hostname, policy name and app name you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -938,7 +938,7 @@
               "description": null,
               "arguments": {
                 "route": "757d33fb-d610-40da-a99c-8775a0ce35ff",
-                "title": "Microsoft Intune: Add App to IOS Policy",
+                "title": "Microsoft Intune: Add App to iOS Policy",
                 "resources": [
                   "alerts"
                 ],
@@ -962,7 +962,7 @@
             },
             {
               "@type": "WorkflowStep",
-              "name": "Add App to IOS Policy",
+              "name": "Add App to iOS Policy",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -975,7 +975,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
                 "operation": "add_app_to_ios_policy",
-                "operationTitle": "Add App to IOS Policy",
+                "operationTitle": "Add App to iOS Policy",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -990,7 +990,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Add App to IOS Policy",
+              "name": "Start -> Add App to iOS Policy",
               "targetStep": "/api/3/workflow_steps/e4e8fff0-cb60-429e-8248-a02f296aaba4",
               "sourceStep": "/api/3/workflow_steps/add9146b-b717-4f6a-9604-8e0a5516bb4a",
               "label": null,
@@ -1001,7 +1001,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "39dd87b5-4210-485d-8e03-f9160653e411",
-          "id": 2402,
+          "id": 1045,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1013,10 +1013,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get App for IOS Policy",
+          "name": "Get App for iOS Policy",
           "aliasName": null,
           "tag": "#microsoft-intune",
-          "description": "Retrieves all apps for a IOS policy from Microsoft Intune based on the hostname, policy name and other input parameters you have specified.",
+          "description": "Retrieves all apps for a iOS policy from Microsoft Intune based on the hostname, policy name and other input parameters you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -1030,7 +1030,7 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Get App for IOS Policy",
+              "name": "Get App for iOS Policy",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -1045,7 +1045,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
                 "operation": "get_apps_for_ios_policy",
-                "operationTitle": "Get App for IOS Policy",
+                "operationTitle": "Get App for iOS Policy",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -1062,7 +1062,7 @@
               "description": null,
               "arguments": {
                 "route": "582d50b2-25c0-49c6-a29c-7245b30459d9",
-                "title": "Microsoft Intune: Get App for IOS Policy",
+                "title": "Microsoft Intune: Get App for iOS Policy",
                 "resources": [
                   "alerts"
                 ],
@@ -1088,7 +1088,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get App for IOS Policy",
+              "name": "Start -> Get App for iOS Policy",
               "targetStep": "/api/3/workflow_steps/179545b9-11f8-49e8-ba93-adec166cca0f",
               "sourceStep": "/api/3/workflow_steps/1c017c47-1bec-470c-a6c0-357825b2d566",
               "label": null,
@@ -1099,7 +1099,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "40697f40-ce3b-47e0-8769-62b7da5e41c9",
-          "id": 2403,
+          "id": 1046,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1195,7 +1195,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "41063437-0e0f-4e73-935d-72c62dbc70ce",
-          "id": 2380,
+          "id": 1047,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1292,7 +1292,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "4530c98a-49dc-4381-a316-1c336b75800d",
-          "id": 2383,
+          "id": 1048,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1387,7 +1387,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "49f302cd-ad15-4a7b-95cb-c42e72f1ef20",
-          "id": 2395,
+          "id": 1049,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1399,10 +1399,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Delete App for IOS Policy",
+          "name": "Delete App for iOS Policy",
           "aliasName": null,
           "tag": "#microsoft-intune",
-          "description": "Deletes a specific app for IOS policy from Microsoft Intune based on the hostname, policy name and app name you have specified.",
+          "description": "Deletes a specific app for iOS policy from Microsoft Intune based on the hostname, policy name and app name you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -1416,7 +1416,7 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Delete App for IOS Policy",
+              "name": "Delete App for iOS Policy",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -1429,7 +1429,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
                 "operation": "delete_app_for_ios_policy",
-                "operationTitle": "Delete App for IOS Policy",
+                "operationTitle": "Delete App for iOS Policy",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -1446,7 +1446,7 @@
               "description": null,
               "arguments": {
                 "route": "ae1e3f1d-61f7-47ad-b186-8988bb6d9cfb",
-                "title": "Microsoft Intune: Delete App for IOS Policy",
+                "title": "Microsoft Intune: Delete App for iOS Policy",
                 "resources": [
                   "alerts"
                 ],
@@ -1472,7 +1472,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Delete App for IOS Policy",
+              "name": "Start -> Delete App for iOS Policy",
               "targetStep": "/api/3/workflow_steps/af5a28d4-b9c0-4192-8f3d-48a1acd649c8",
               "sourceStep": "/api/3/workflow_steps/e60b8b42-39c5-46e7-9da3-494b5a9b6701",
               "label": null,
@@ -1483,7 +1483,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "62683f82-a68a-4239-a7f6-4243d0a4e322",
-          "id": 2404,
+          "id": 1050,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1577,7 +1577,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "6349237d-e604-47ef-8aed-8438ea44bacf",
-          "id": 2381,
+          "id": 1051,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1675,7 +1675,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "6a87f5b6-2e0e-41f6-904e-1b70264e3799",
-          "id": 2382,
+          "id": 1052,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1687,10 +1687,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get Groups for IOS Policy",
+          "name": "Get Groups for iOS Policy",
           "aliasName": null,
           "tag": "#microsoft-intune",
-          "description": "Retrieves all groups for IOS policy from Microsoft Intune based on the hostname and policy name you have specified.",
+          "description": "Retrieves all groups for iOS policy from Microsoft Intune based on the hostname and policy name you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -1708,7 +1708,7 @@
               "description": null,
               "arguments": {
                 "route": "09177216-355a-4528-adda-950881947860",
-                "title": "Microsoft Intune: Get Groups for IOS Policy",
+                "title": "Microsoft Intune: Get Groups for iOS Policy",
                 "resources": [
                   "alerts"
                 ],
@@ -1732,7 +1732,7 @@
             },
             {
               "@type": "WorkflowStep",
-              "name": "Get Groups for IOS Policy",
+              "name": "Get Groups for iOS Policy",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -1744,7 +1744,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
                 "operation": "get_groups_for_ios_policy",
-                "operationTitle": "Get Groups for IOS Policy",
+                "operationTitle": "Get Groups for iOS Policy",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -1759,7 +1759,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get Groups for IOS Policy",
+              "name": "Start -> Get Groups for iOS Policy",
               "targetStep": "/api/3/workflow_steps/b6643140-19d4-422e-8f19-06c610b5e760",
               "sourceStep": "/api/3/workflow_steps/05bcddb6-e1a4-4025-8be0-56b66fedf224",
               "label": null,
@@ -1770,7 +1770,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "6f5d4f91-c176-4087-b61e-61b5fa7ffc08",
-          "id": 2406,
+          "id": 1053,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1862,7 +1862,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "70dcc515-77f5-486a-af59-25fc60057082",
-          "id": 2326,
+          "id": 1054,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1959,7 +1959,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "8e0ddfd5-86bd-4204-95ef-cbc46c70a998",
-          "id": 2379,
+          "id": 1055,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2057,7 +2057,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "93a482ff-bb5b-495f-be4a-007ce0f79d2a",
-          "id": 2385,
+          "id": 1056,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2149,7 +2149,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "9b5319de-4605-4dff-9769-bdf800dbd69e",
-          "id": 2325,
+          "id": 1057,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2263,7 +2263,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "9e2ebd3b-e9e7-4df0-96d5-f60c9135235c",
-          "id": 2386,
+          "id": 1058,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2360,7 +2360,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "9f273c85-7d57-4562-b7c7-5e23b38a5556",
-          "id": 2387,
+          "id": 1059,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2456,7 +2456,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "ab67a054-9e0b-4b82-af29-8eb479308974",
-          "id": 2393,
+          "id": 1060,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2468,10 +2468,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Create IOS Policy",
+          "name": "Create iOS Policy",
           "aliasName": null,
           "tag": "#microsoft-intune",
-          "description": "Creates a IOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
+          "description": "Creates a iOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -2485,7 +2485,7 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Create IOS Policy",
+              "name": "Create iOS Policy",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -2516,7 +2516,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
                 "operation": "add_ios_policy",
-                "operationTitle": "Create IOS Policy",
+                "operationTitle": "Create iOS Policy",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -2533,7 +2533,7 @@
               "description": null,
               "arguments": {
                 "route": "2099aca4-c7c8-437c-9242-bbd19bd5b160",
-                "title": "Microsoft Intune: Create IOS Policy",
+                "title": "Microsoft Intune: Create iOS Policy",
                 "resources": [
                   "alerts"
                 ],
@@ -2559,7 +2559,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Create IOS Policy",
+              "name": "Start -> Create iOS Policy",
               "targetStep": "/api/3/workflow_steps/80e0486a-286a-4438-8083-c8f2d846d9a6",
               "sourceStep": "/api/3/workflow_steps/cd6d6139-18a1-40ba-99a8-fc8f1bd790bb",
               "label": null,
@@ -2570,7 +2570,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "b367d53c-59d7-4ae7-834c-c8d8daf0a13a",
-          "id": 2397,
+          "id": 1061,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2666,7 +2666,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "be282809-0d3f-4db9-a96c-846aa1ac18e7",
-          "id": 2388,
+          "id": 1062,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2762,7 +2762,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "db0d810b-0dab-4908-a7ea-fb16374d85c7",
-          "id": 2391,
+          "id": 1063,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2858,7 +2858,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "e2c7fd56-5fc2-4761-af74-506e6f3c0ec0",
-          "id": 2396,
+          "id": 1064,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2870,10 +2870,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Add Group to IOS Policy",
+          "name": "Add Group to iOS Policy",
           "aliasName": null,
           "tag": "#microsoft-intune",
-          "description": "Add a specific group to IOS policy in Microsoft Intune based on the hostname, policy name and group ID you have specified.",
+          "description": "Add a specific group to iOS policy in Microsoft Intune based on the hostname, policy name and group ID you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -2887,7 +2887,7 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Add Group to IOS Policy",
+              "name": "Add Group to iOS Policy",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -2900,7 +2900,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
                 "operation": "add_group_to_ios_policy",
-                "operationTitle": "Add Group to IOS Policy",
+                "operationTitle": "Add Group to iOS Policy",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -2917,7 +2917,7 @@
               "description": null,
               "arguments": {
                 "route": "91d76a1d-12b2-4024-aacd-1cac7624e259",
-                "title": "Microsoft Intune: Add Group to IOS Policy",
+                "title": "Microsoft Intune: Add Group to iOS Policy",
                 "resources": [
                   "alerts"
                 ],
@@ -2943,7 +2943,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Add Group to IOS Policy",
+              "name": "Start -> Add Group to iOS Policy",
               "targetStep": "/api/3/workflow_steps/6294ec5f-fc39-43f2-b01e-71d53c1ae539",
               "sourceStep": "/api/3/workflow_steps/a52c03c7-36ac-4bde-b8fb-d1e517ec2330",
               "label": null,
@@ -2954,7 +2954,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "e3091e93-696b-44ae-ab3e-bb63758e8c10",
-          "id": 2405,
+          "id": 1065,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2966,10 +2966,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get All IOS Policies List",
+          "name": "Get All iOS Policies List",
           "aliasName": null,
           "tag": "#microsoft-intune",
-          "description": "Retrieves all IOS policies from Microsoft Intune based on the hostname and other input parameters you have specified.",
+          "description": "Retrieves all iOS policies from Microsoft Intune based on the hostname and other input parameters you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -2983,7 +2983,7 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Get All IOS Policies List",
+              "name": "Get All iOS Policies List",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -2997,7 +2997,7 @@
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
                 "operation": "get_ios_policies",
-                "operationTitle": "Get All IOS Policies List",
+                "operationTitle": "Get All iOS Policies List",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -3014,7 +3014,7 @@
               "description": null,
               "arguments": {
                 "route": "596684fb-f522-47c5-9a86-ab33c1c5bc16",
-                "title": "Microsoft Intune: Get All IOS Policies List",
+                "title": "Microsoft Intune: Get All iOS Policies List",
                 "resources": [
                   "alerts"
                 ],
@@ -3040,7 +3040,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get All IOS Policies List",
+              "name": "Start -> Get All iOS Policies List",
               "targetStep": "/api/3/workflow_steps/e66c6aa0-4824-4cf5-b846-30690fd3141b",
               "sourceStep": "/api/3/workflow_steps/eaa4a5f6-856b-417d-b00e-fe9356d76e45",
               "label": null,
@@ -3051,7 +3051,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "ea303131-ee55-44a6-a05f-ea96a97f6133",
-          "id": 2398,
+          "id": 1066,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -3147,7 +3147,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "ec2cb7da-c424-41d8-b08e-d88713138543",
-          "id": 2384,
+          "id": 1067,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,

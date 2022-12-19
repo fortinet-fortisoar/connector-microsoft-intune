@@ -1412,8 +1412,8 @@
       "enabled": true
     },
     {
-      "title": "Create IOS Policy",
-      "description": "Creates a IOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
+      "title": "Create iOS Policy",
+      "description": "Creates a iOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
       "operation": "add_ios_policy",
       "category": "investigation",
       "annotation": "add_ios_policy",
@@ -1671,8 +1671,8 @@
       "enabled": true
     },
     {
-      "title": "Get All IOS Policies List",
-      "description": "Retrieves all IOS policies from Microsoft Intune based on the hostname and other input parameters you have specified.",
+      "title": "Get All iOS Policies List",
+      "description": "Retrieves all iOS policies from Microsoft Intune based on the hostname and other input parameters you have specified.",
       "operation": "get_ios_policies",
       "category": "investigation",
       "annotation": "get_ios_policies",
@@ -1722,8 +1722,8 @@
       "enabled": true
     },
     {
-      "title": "Get IOS Policy Details",
-      "description": "Retrieves a specific IOS policy from Microsoft Intune API based on the hostname, policy name and other input parameters you have specified.",
+      "title": "Get iOS Policy Details",
+      "description": "Retrieves a specific iOS policy from Microsoft Intune API based on the hostname, policy name and other input parameters you have specified.",
       "operation": "get_ios_policy_by_name",
       "category": "investigation",
       "annotation": "get_ios_policy_by_name",
@@ -1762,8 +1762,8 @@
       "enabled": true
     },
     {
-      "title": "Update IOS Policy",
-      "description": "Updates a IOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
+      "title": "Update iOS Policy",
+      "description": "Updates a iOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
       "operation": "update_ios_policy",
       "category": "investigation",
       "annotation": "update_ios_policy",
@@ -2021,8 +2021,8 @@
       "enabled": true
     },
     {
-      "title": "Delete IOS Policy",
-      "description": "Deletes a specific IOS policy in Microsoft Intune based on the hostname and policy name you have specified.",
+      "title": "Delete iOS Policy",
+      "description": "Deletes a specific iOS policy in Microsoft Intune based on the hostname and policy name you have specified.",
       "operation": "delete_ios_policy",
       "category": "investigation",
       "annotation": "delete_ios_policy",
@@ -2050,8 +2050,8 @@
       "enabled": true
     },
     {
-      "title": "Add App to IOS Policy",
-      "description": "Add a specific app to IOS policy in Microsoft Intune based on the hostname, policy name and app name you have specified.",
+      "title": "Add App to iOS Policy",
+      "description": "Add a specific app to iOS policy in Microsoft Intune based on the hostname, policy name and app name you have specified.",
       "operation": "add_app_to_ios_policy",
       "category": "investigation",
       "annotation": "add_app_to_ios_policy",
@@ -2088,8 +2088,8 @@
       "enabled": true
     },
     {
-      "title": "Get App for IOS Policy",
-      "description": "Retrieves the list of apps for a IOS policy from Microsoft Intune based on the hostname, policy name and other input parameters you have specified.",
+      "title": "Get App for iOS Policy",
+      "description": "Retrieves the list of apps for a iOS policy from Microsoft Intune based on the hostname, policy name and other input parameters you have specified.",
       "operation": "get_apps_for_ios_policy",
       "category": "investigation",
       "annotation": "get_apps_for_ios_policy",
@@ -2148,8 +2148,8 @@
       "enabled": true
     },
     {
-      "title": "Delete App for IOS Policy",
-      "description": "Deletes a specific app for IOS policy from Microsoft Intune based on the hostname, policy name and app name you have specified.",
+      "title": "Delete App for iOS Policy",
+      "description": "Deletes a specific app for iOS policy from Microsoft Intune based on the hostname, policy name and app name you have specified.",
       "operation": "delete_app_for_ios_policy",
       "category": "investigation",
       "annotation": "delete_app_for_ios_policy",
@@ -2186,8 +2186,8 @@
       "enabled": true
     },
     {
-      "title": "Add Group to IOS Policy",
-      "description": "Add a specific group to IOS policy in Microsoft Intune based on the hostname, policy name and group ID you have specified.",
+      "title": "Add Group to iOS Policy",
+      "description": "Add a specific group to iOS policy in Microsoft Intune based on the hostname, policy name and group ID you have specified.",
       "operation": "add_group_to_ios_policy",
       "category": "investigation",
       "annotation": "add_group_to_ios_policy",
@@ -2224,8 +2224,8 @@
       "enabled": true
     },
     {
-      "title": "Get Groups for IOS Policy",
-      "description": "Retrieves the list of groups for IOS policy from Microsoft Intune based on the hostname and policy name you have specified.",
+      "title": "Get Groups for iOS Policy",
+      "description": "Retrieves the list of groups for iOS policy from Microsoft Intune based on the hostname and policy name you have specified.",
       "operation": "get_groups_for_ios_policy",
       "category": "investigation",
       "annotation": "get_groups_for_ios_policy",
@@ -2253,8 +2253,8 @@
       "enabled": true
     },
     {
-      "title": "Delete Group for IOS Policy",
-      "description": "Deletes a specific group for IOS policy from Microsoft Intune based on the hostname, policy name and group ID you have specified.",
+      "title": "Delete Group for iOS Policy",
+      "description": "Deletes a specific group for iOS policy from Microsoft Intune based on the hostname, policy name and group ID you have specified.",
       "operation": "delete_group_for_ios_policy",
       "category": "investigation",
       "annotation": "delete_group_for_ios_policy",
