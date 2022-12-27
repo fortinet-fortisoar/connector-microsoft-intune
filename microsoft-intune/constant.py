@@ -23,3 +23,7 @@ File_Encryption_Level = {
     'Device Restart': 'afterDeviceRestart',
     'Device Settings': 'useDeviceSettings'
 }
+
+# authorization types
+AUTH_BEHALF_OF_USER = "On behalf of User - Delegate Permission"
+AUTH_USING_APP = "Without a User - Application Permission"

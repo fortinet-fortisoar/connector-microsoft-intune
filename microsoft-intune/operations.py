@@ -533,7 +533,8 @@ def wipe_device_for_user(config, params, connector_info):
 
 def _check_health(config, connector_info):
     try:
-        return check(config, connector_info)
+        if check(config, connector_info) and get_location_list(config, params={}, connector_info=connector_info):
+            return True
     except Exception as err:
         raise ConnectorError(str(err))
 

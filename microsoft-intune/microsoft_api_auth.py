@@ -8,11 +8,11 @@ from requests import request
 from time import time, ctime
 from datetime import datetime
 from connectors.core.connector import get_logger, ConnectorError
-
-CONFIG_SUPPORTS_TOKEN = True
 from connectors.core.utils import update_connnector_config
 
 logger = get_logger('microsoft-intune')
+
+CONFIG_SUPPORTS_TOKEN = True
 
 REFRESH_TOKEN_FLAG = False
 
@@ -187,7 +187,16 @@ def check(config, connector_info):
                                          config['config_id'])
                 return True
             else:
-                token_resp = ms.validate_token(config, connector_info)
-                return True
+                if config.get('auth_type') == AUTH_USING_APP:
+                    if config.get('access_token'):
+                        token_resp = ms.validate_token(config, connector_info)
+                        return True
+                    else:
+                        msg = 'Error occurred while connecting server: Unauthorized'
+                        logger.error(msg)
+                        raise ConnectorError(msg)
+                else:
+                    token_resp = ms.validate_token(config, connector_info)
+                    return True
     except Exception as err:
         raise ConnectorError(str(err))
