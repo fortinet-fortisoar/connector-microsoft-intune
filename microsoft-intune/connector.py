@@ -1,5 +1,5 @@
 """ Copyright start
-  Copyright (C) 2008 - 2022 Fortinet Inc.
+  Copyright (C) 2008 - 2023 Fortinet Inc.
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
@@ -10,8 +10,6 @@ from .constant import AUTH_BEHALF_OF_USER
 from connectors.core.utils import update_connnector_config
 
 logger = get_logger('microsoft-intune')
-
-CONFIG_SUPPORTS_TOKEN = True
 
 
 class MicrosoftIntune(Connector):
@@ -36,7 +34,7 @@ class MicrosoftIntune(Connector):
         connector_info = {"connector_name": self._info_json.get('name'),
                           "connector_version": self._info_json.get('version')}
 
-        if new_config.get('auth_type', '') == AUTH_BEHALF_OF_USER and CONFIG_SUPPORTS_TOKEN:
+        if new_config.get('auth_type', '') == AUTH_BEHALF_OF_USER:
             old_auth_code = old_config.get('code')
             new_auth_code = new_config.get('code')
             if old_auth_code != new_auth_code:
