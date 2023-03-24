@@ -1,12 +1,12 @@
 {
+  "description": "Microsoft Intune is a cloud-based endpoint management solution. This connector facilitates automated operation related to managed device.",
+  "category": "Communication",
   "name": "microsoft-intune",
   "label": "Microsoft Intune",
   "version": "1.0.0",
-  "description": "Microsoft Intune provides mobile device management, mobile application management, and PC management capabilities from the cloud.",
-  "publisher": "Community",
+  "publisher": "Fortinet",
   "cs_approved": false,
   "cs_compatible": true,
-  "category": "Endpoint Security",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "help_online": "",
@@ -19,120 +19,110 @@
         "visible": true,
         "type": "select",
         "options": [
-          "On behalf of User - Delegated Permission",
+          "On behalf of User - Delegate Permission",
           "Without a User - Application Permission"
         ],
         "name": "auth_type",
         "value": "Without a User - Application Permission",
-        "description": "Select the method using which you will get authentication tokens used to access the Intune APIs. You can choose between On behalf of User – Delegate Permission or Without a User - Application Permission. For more information, see the Getting Access Tokens section.",
+        "description": "Select the method using which you will get authentication tokens used to access the security graph APIs. You can choose between On behalf of User – Delegate Permission or Without a User - Application Permission.",
         "onchange": {
           "Without a User - Application Permission": [
             {
               "title": "Server URL",
-              "name": "resource",
-              "type": "text",
-              "description": "The service-based URL to which you will connect and perform the automated operations.",
-              "tooltip": "The service-based URL to which you will connect and perform the automated operations.",
-              "placeholder": "https://management.azure.com",
               "required": true,
               "editable": true,
               "visible": true,
-              "value": "https://management.azure.com"
+              "type": "text",
+              "name": "resource",
+              "value": "https://graph.microsoft.com",
+              "description": "The service-based URI to which you will connect and perform the automated operations."
             },
             {
-              "title": "Directory (tenant) ID",
+              "title": "Tenant ID",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
               "name": "tenant_id",
-              "type": "text",
-              "description": "ID of the tenant that you have been provided for your Azure Active Directory instance.",
-              "tooltip": "ID of the tenant that you have been provided for your Azure Active Directory instance.",
-              "required": true,
-              "editable": true,
-              "visible": true
+              "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
             },
             {
-              "title": "Application (client) ID",
+              "title": "Client ID",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
               "name": "client_id",
-              "type": "text",
-              "description": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
-              "tooltip": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
-              "required": true,
-              "editable": true,
-              "visible": true
+              "description": "Unique Application ID of the Azure Active Directory application that is used to create an authentication token required to access the API."
             },
             {
-              "title": "Application (Client) Secret",
-              "name": "client_secret",
-              "type": "password",
-              "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
-              "tooltip": "Unique Client Secret of the Azure Network Security Group application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
+              "title": "Client Secret",
               "required": true,
               "editable": true,
-              "visible": true
+              "visible": true,
+              "type": "password",
+              "name": "client_secret",
+              "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
             }
           ],
-          "On behalf of User - Delegated Permission": [
+          "On behalf of User - Delegate Permission": [
             {
               "title": "Server URL",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
               "name": "resource",
-              "type": "text",
-              "description": "The service-based URL to which you will connect and perform the automated operations.",
-              "tooltip": "The service-based URL to which you will connect and perform the automated operations.",
-              "placeholder": "https://management.azure.com",
-              "value": "https://management.azure.com",
-              "required": true,
-              "editable": true,
-              "visible": true
+              "value": "https://graph.microsoft.com",
+              "description": "The service-based URI to which you will connect and perform the automated operations."
             },
             {
-              "title": "Directory (tenant) ID",
+              "title": "Tenant ID",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
               "name": "tenant_id",
-              "type": "text",
-              "description": "ID of the tenant that you have been provided for your Azure Active Directory instance.",
-              "tooltip": "ID of the tenant that you have been provided for your Azure Active Directory instance.",
-              "required": true,
-              "editable": true,
-              "visible": true
+              "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
             },
             {
-              "title": "Application (client) ID",
+              "title": "Client ID",
+              "required": true,
+              "editable": true,
+              "visible": true,
+              "type": "text",
               "name": "client_id",
-              "type": "text",
-              "description": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
-              "tooltip": "Unique ID of the Azure Active Directory application that is used to create an authentication token required to access the API.",
-              "required": true,
-              "editable": true,
-              "visible": true
+              "description": "Unique API ID of the Azure Active Directory application that is used to create an authentication token required to access the API."
             },
             {
-              "title": "Application (Client) Secret",
-              "name": "client_secret",
-              "type": "password",
-              "description": "Unique Client Secret of the Azure Network Security Group application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
-              "tooltip": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
+              "title": "Client Secret",
               "required": true,
               "editable": true,
-              "visible": true
+              "visible": true,
+              "type": "password",
+              "name": "client_secret",
+              "description": "Unique API Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
             },
             {
               "title": "Authorization Code",
-              "name": "code",
-              "type": "password",
-              "tooltip": "(Only Applicable to On behalf of User – Delegate Permission) The authorization code that you acquired during the authorization step. For more information, see the Getting Access Tokens using the On behalf of the user – Delegate Permission method section.",
-              "description": "(Only Applicable to On behalf of User – Delegate Permission) The authorization code that you acquired during the authorization step. For more information, see the Getting Access Tokens using the On behalf of the user – Delegate Permission method section.",
               "required": true,
               "editable": true,
-              "visible": true
+              "visible": true,
+              "type": "password",
+              "name": "code",
+              "tooltip": "Authorization code that you acquired in the authorization step.",
+              "description": "(Only Applicable to On behalf of User – Delegate Permission) The authorization code that you acquired during the authorization step. For more information, see the Getting Access Tokens using the Delegate Permissions method section."
             },
             {
-              "title": "Redirect URI",
-              "name": "redirect_uri",
-              "type": "text",
-              "tooltip": "(Only Applicable to On behalf of User – Delegate Permission) The redirect_uri of your app, where authentication responses can be sent and received by your app. The redirect URL that you specify here must exactly match one of the redirect_uri's you have registered in your app registration portal.",
-              "description": "(Only Applicable to On behalf of User – Delegate Permission) The redirect_uri of your app, where authentication responses can be sent and received by your app. The redirect URL that you specify here must exactly match one of the redirect_uri's you have registered in your app registration portal.",
-              "placeholder": "E.g. https://localhost/myapp",
+              "title": "Redirect URL",
+              "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal.",
               "required": false,
               "editable": true,
-              "visible": true
+              "visible": true,
+              "type": "text",
+              "name": "redirect_url",
+              "placeholder": "E.g. https://localhost/myapp",
+              "tooltip": "(Only Applicable to On behalf of User – Delegate Permission) The redirect_uri of your app, where authentication responses can be sent and received by your app. The redirect URL that you specify here must exactly match one of the redirect_uri's you have registered in your app registration portal."
             }
           ]
         }
@@ -151,2145 +141,648 @@
   },
   "operations": [
     {
-      "title": "Get All Location List",
-      "description": "Retrieves the list of locations from Microsoft Intune.",
-      "operation": "get_location_list",
-      "category": "investigation",
-      "annotation": "get_location_list",
+      "title": "Get Managed Devices List",
+      "operation": "list_managed_devices",
+      "description": "Retrieves the list of managed devices from Microsoft Intune.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "list_managed_devices",
       "parameters": [],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "value": [
+          {
+            "@odata.type": "",
+            "id": "",
+            "userId": "",
+            "deviceName": "",
+            "managedDeviceOwnerType": "",
+            "deviceActionResults": [
+              {
+                "@odata.type": "",
+                "actionName": "",
+                "actionState": "",
+                "startDateTime": "",
+                "lastUpdatedDateTime": ""
+              }
+            ],
+            "enrolledDateTime": "",
+            "lastSyncDateTime": "",
+            "operatingSystem": "",
+            "complianceState": "",
+            "jailBroken": "",
+            "managementAgent": "",
+            "osVersion": "",
+            "easActivated": "",
+            "easDeviceId": "",
+            "easActivationDateTime": "",
+            "azureADRegistered": "",
+            "deviceEnrollmentType": "",
+            "activationLockBypassCode": "",
+            "emailAddress": "",
+            "azureADDeviceId": "",
+            "deviceRegistrationState": "",
+            "deviceCategoryDisplayName": "",
+            "isSupervised": "",
+            "exchangeLastSuccessfulSyncDateTime": "",
+            "exchangeAccessState": "",
+            "exchangeAccessStateReason": "",
+            "remoteAssistanceSessionUrl": "",
+            "remoteAssistanceSessionErrorDetails": "",
+            "isEncrypted": "",
+            "userPrincipalName": "",
+            "model": "",
+            "manufacturer": "",
+            "imei": "",
+            "complianceGracePeriodExpirationDateTime": "",
+            "serialNumber": "",
+            "phoneNumber": "",
+            "androidSecurityPatchLevel": "",
+            "userDisplayName": "",
+            "configurationManagerClientEnabledFeatures": {
+              "@odata.type": "",
+              "inventory": "",
+              "modernApps": "",
+              "resourceAccess": "",
+              "deviceConfiguration": "",
+              "compliancePolicy": "",
+              "windowsUpdateForBusiness": ""
+            },
+            "wiFiMacAddress": "",
+            "deviceHealthAttestationState": {
+              "@odata.type": "",
+              "lastUpdateDateTime": "",
+              "contentNamespaceUrl": "",
+              "deviceHealthAttestationStatus": "",
+              "contentVersion": "",
+              "issuedDateTime": "",
+              "attestationIdentityKey": "",
+              "resetCount": "",
+              "restartCount": "",
+              "dataExcutionPolicy": "",
+              "bitLockerStatus": "",
+              "bootManagerVersion": "",
+              "codeIntegrityCheckVersion": "",
+              "secureBoot": "",
+              "bootDebugging": "",
+              "operatingSystemKernelDebugging": "",
+              "codeIntegrity": "",
+              "testSigning": "",
+              "safeMode": "",
+              "windowsPE": "",
+              "earlyLaunchAntiMalwareDriverProtection": "",
+              "virtualSecureMode": "",
+              "pcrHashAlgorithm": "",
+              "bootAppSecurityVersion": "",
+              "bootManagerSecurityVersion": "",
+              "tpmVersion": "",
+              "pcr0": "",
+              "secureBootConfigurationPolicyFingerPrint": "",
+              "codeIntegrityPolicy": "",
+              "bootRevisionListInfo": "",
+              "operatingSystemRevListInfo": "",
+              "healthStatusMismatchInfo": "",
+              "healthAttestationSupportedStatus": ""
+            },
+            "subscriberCarrier": "",
+            "meid": "",
+            "totalStorageSpaceInBytes": "",
+            "freeStorageSpaceInBytes": "",
+            "managedDeviceName": "",
+            "partnerReportedThreatState": "",
+            "requireUserEnrollmentApproval": "",
+            "managementCertificateExpirationDate": "",
+            "iccid": "",
+            "udid": "",
+            "notes": "",
+            "ethernetMacAddress": "",
+            "physicalMemoryInBytes": ""
+          }
+        ]
+      }
     },
     {
-      "title": "Get Location Details",
-      "description": "Retrieves specific information for a specific location for an hostname from Microsoft Intune.",
-      "operation": "get_location_by_hostname",
-      "category": "investigation",
-      "annotation": "get_location_by_hostname",
-      "parameters": [],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Get Manageable Apps",
-      "description": "Retrieves the list of manageable apps from Microsoft Intune based on the hostname and other input parameters you have specified.",
-      "operation": "get_manageable_apps",
-      "category": "investigation",
-      "annotation": "get_manageable_apps",
+      "title": "Get Managed Device Details",
+      "operation": "get_managed_device_details",
+      "description": "Retrieves a specific managed device from Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "get_managed_device_details",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to retrieve its details from Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname for which you want to retrieve the manageable apps from Microsoft Intune."
-        },
-        {
-          "title": "Search Query",
-          "tooltip": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$filter",
-          "description": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter"
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
-        },
-        {
-          "title": "Limit",
-          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response.",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "$top",
-          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "value": {
+          "@odata.type": "",
+          "id": "",
+          "userId": "",
+          "deviceName": "",
+          "managedDeviceOwnerType": "",
+          "deviceActionResults": [
+            {
+              "@odata.type": "",
+              "actionName": "",
+              "actionState": "",
+              "startDateTime": "",
+              "lastUpdatedDateTime": ""
+            }
+          ],
+          "enrolledDateTime": "",
+          "lastSyncDateTime": "",
+          "operatingSystem": "",
+          "complianceState": "",
+          "jailBroken": "",
+          "managementAgent": "",
+          "osVersion": "",
+          "easActivated": "",
+          "easDeviceId": "",
+          "easActivationDateTime": "",
+          "azureADRegistered": "",
+          "deviceEnrollmentType": "",
+          "activationLockBypassCode": "",
+          "emailAddress": "",
+          "azureADDeviceId": "",
+          "deviceRegistrationState": "",
+          "deviceCategoryDisplayName": "",
+          "isSupervised": "",
+          "exchangeLastSuccessfulSyncDateTime": "",
+          "exchangeAccessState": "",
+          "exchangeAccessStateReason": "",
+          "remoteAssistanceSessionUrl": "",
+          "remoteAssistanceSessionErrorDetails": "",
+          "isEncrypted": "",
+          "userPrincipalName": "",
+          "model": "",
+          "manufacturer": "",
+          "imei": "",
+          "complianceGracePeriodExpirationDateTime": "",
+          "serialNumber": "",
+          "phoneNumber": "",
+          "androidSecurityPatchLevel": "",
+          "userDisplayName": "",
+          "configurationManagerClientEnabledFeatures": {
+            "@odata.type": "",
+            "inventory": "",
+            "modernApps": "",
+            "resourceAccess": "",
+            "deviceConfiguration": "",
+            "compliancePolicy": "",
+            "windowsUpdateForBusiness": ""
+          },
+          "wiFiMacAddress": "",
+          "deviceHealthAttestationState": {
+            "@odata.type": "",
+            "lastUpdateDateTime": "",
+            "contentNamespaceUrl": "",
+            "deviceHealthAttestationStatus": "",
+            "contentVersion": "",
+            "issuedDateTime": "",
+            "attestationIdentityKey": "",
+            "resetCount": "",
+            "restartCount": "",
+            "dataExcutionPolicy": "",
+            "bitLockerStatus": "",
+            "bootManagerVersion": "",
+            "codeIntegrityCheckVersion": "",
+            "secureBoot": "",
+            "bootDebugging": "",
+            "operatingSystemKernelDebugging": "",
+            "codeIntegrity": "",
+            "testSigning": "",
+            "safeMode": "",
+            "windowsPE": "",
+            "earlyLaunchAntiMalwareDriverProtection": "",
+            "virtualSecureMode": "",
+            "pcrHashAlgorithm": "",
+            "bootAppSecurityVersion": "",
+            "bootManagerSecurityVersion": "",
+            "tpmVersion": "",
+            "pcr0": "",
+            "secureBootConfigurationPolicyFingerPrint": "",
+            "codeIntegrityPolicy": "",
+            "bootRevisionListInfo": "",
+            "operatingSystemRevListInfo": "",
+            "healthStatusMismatchInfo": "",
+            "healthAttestationSupportedStatus": ""
+          },
+          "subscriberCarrier": "",
+          "meid": "",
+          "totalStorageSpaceInBytes": "",
+          "freeStorageSpaceInBytes": "",
+          "managedDeviceName": "",
+          "partnerReportedThreatState": "",
+          "requireUserEnrollmentApproval": "",
+          "managementCertificateExpirationDate": "",
+          "iccid": "",
+          "udid": "",
+          "notes": "",
+          "ethernetMacAddress": "",
+          "physicalMemoryInBytes": ""
+        }
+      }
     },
     {
-      "title": "Get All Flagged User List",
-      "description": "Retrieves all flagged user from Microsoft Intune based on the hostname and other input parameters you have specified.",
-      "operation": "get_flagged_user_list",
-      "category": "investigation",
-      "annotation": "get_flagged_user_list",
+      "title": "Retire Device",
+      "operation": "retire_device",
+      "description": "Retire a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "retire_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to retire in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname for which you want to retrieve the flagged users from Microsoft Intune."
-        },
-        {
-          "title": "Search Query",
-          "tooltip": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$filter",
-          "description": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter"
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
-        },
-        {
-          "title": "Limit",
-          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response.",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "$top",
-          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Get Flagged User Details",
-      "description": "Retrieves a specific flagged user from Microsoft Intune API based on the hostname, username and other input parameters you have specified.",
-      "operation": "get_flagged_user_details",
-      "category": "investigation",
-      "annotation": "get_flagged_user_details",
+      "title": "Wipe Device",
+      "operation": "wipe_device",
+      "description": "Wipe a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "wipe_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to wipe in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname for which you want to retrieve the flagged user from Microsoft Intune."
-        },
-        {
-          "title": "Username",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "userName",
-          "description": "Specify the username for which you want to retrieve the flagged user from Microsoft Intune."
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Get Tenant Level Statuses",
-      "description": "Retrieves a tenant level statuses from Microsoft Intune based on the hostname you have specified.",
-      "operation": "get_tenant_level_statuses",
-      "category": "investigation",
-      "annotation": "get_tenant_level_statuses",
+      "title": "Reset Passcode Device",
+      "operation": "reset_passcode_of_device",
+      "description": "Reset passcode for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "reset_passcode_of_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to reset passcode in Microsoft Intune",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname for which you want to retrieve the tenant level statuses from Microsoft Intune."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Get All Devices User List",
-      "description": "Retrieves all devices user from Microsoft Intune based on the hostname, username and other input parameters you have specified.",
-      "operation": "get_devices_user_list",
-      "category": "investigation",
-      "annotation": "get_devices_user_list",
+      "title": "Remote Lock Device",
+      "operation": "remote_lock_of_device",
+      "description": "Remote Lock for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "remote_lock_of_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to remote lock in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname for which you want to retrieve the devices user from Microsoft Intune."
-        },
-        {
-          "title": "Username",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "userName",
-          "description": "Specify the username for which you want to retrieve the device user from Microsoft Intune."
-        },
-        {
-          "title": "Search Query",
-          "tooltip": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$filter",
-          "description": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter"
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
-        },
-        {
-          "title": "Limit",
-          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response.",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "$top",
-          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Get Device User Details",
-      "description": "Retrieves a specific device user from Microsoft Intune based on the hostname, username, device name and other input parameters you have specified.",
-      "operation": "get_device_user_details",
-      "category": "investigation",
-      "annotation": "get_device_user_details",
+      "title": "Request Remote Assistance for Device",
+      "operation": "request_remote_assistance_of_device",
+      "description": "Request a remote assistance for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "request_remote_assistance_of_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to request a remote assistance in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname for which you want to retrieve the device user details from Microsoft Intune."
-        },
-        {
-          "title": "Username",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "userName",
-          "description": "Specify the username for which you want to retrieve the device user details from Microsoft Intune."
-        },
-        {
-          "title": "Device Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "deviceName",
-          "description": "Specify the name of the device for which you want to retrieve the details from Microsoft Intune."
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune.Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Wipe Device for User",
-      "description": "Wipe a device for a user in Microsoft Intune based on the hostname, username name and device name you have specified.",
-      "operation": "wipe_device_for_user",
-      "category": "investigation",
-      "annotation": "wipe_device_for_user",
+      "title": "Disable Lost Mode for Device",
+      "operation": "disable_lost_mode_of_device",
+      "description": "Disable a lost mode for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "disable_lost_mode_of_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to disable a lost mode in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname for which you want to wipe the device for user in Microsoft Intune."
-        },
-        {
-          "title": "Username",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "userName",
-          "description": "Specify the username for which you want to wipe the device for user in Microsoft Intune."
-        },
-        {
-          "title": "Device Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "deviceName",
-          "description": "Specify the name of the device for which you want to wipe the device for user in Microsoft Intune."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Get All Flagged Enrolled App List",
-      "description": "Retrieves all flagged enrolled app from Microsoft Intune based on the hostname, username and other input parameters you have specified.",
-      "operation": "get_flagged_enrolled_app_list",
-      "category": "investigation",
-      "annotation": "get_flagged_enrolled_app_list",
+      "title": "Locate a Device",
+      "operation": "locate_device",
+      "description": "Locate a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "locate_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to locate in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname for which you want to retrieve the flagged enrolled from Microsoft Intune."
-        },
-        {
-          "title": "Username",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "userName",
-          "description": "Specify the username for which you want to retrieve the flagged enrolled from Microsoft Intune."
-        },
-        {
-          "title": "Search Query",
-          "tooltip": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$filter",
-          "description": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter"
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
-        },
-        {
-          "title": "Limit",
-          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response.",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "$top",
-          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Create Android Policy",
-      "description": "Creates a android policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
-      "operation": "add_android_policy",
-      "category": "investigation",
-      "annotation": "add_android_policy",
+      "title": "Bypass Activation Lock for Device",
+      "operation": "bypass_activation_lock_of_device",
+      "description": "Bypass activation lock for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "bypass_activation_lock_of_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to bypass activation lock in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to create a android policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to create a android policy in Microsoft Intune."
-        },
-        {
-          "title": "Friendly Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "friendlyName",
-          "description": "Specify the name of the friendly based on which you want to create a android policy in Microsoft Intune."
-        },
-        {
-          "title": "Location",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "location",
-          "description": "(Optional) Specify the location based on which you want to create a android policy in Microsoft Intune."
-        },
-        {
-          "title": "Tag",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "tags",
-          "description": "(Optional) Specify the tag based on which you want to create a android policy in Microsoft Intune."
-        },
-        {
-          "title": "Description",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "description",
-          "description": "(Optional) Specify the description based on which you want to create a android policy in Microsoft Intune."
-        },
-        {
-          "title": "Access Recheck Offline Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "accessRecheckOfflineTimeout",
-          "description": "(Optional) Specify the access recheck offline timeout based on which you want to create a android policy in Microsoft Intune."
-        },
-        {
-          "title": "Access Recheck Online Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "accessRecheckOnlineTimeout",
-          "description": "(Optional) Specify the access recheck offline timeout based on which you want to create a android policy in Microsoft Intune."
-        },
-        {
-          "title": "App Sharing From Level",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "appSharingFromLevel",
-          "description": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose from the following options: None, Policy Managed Apps, or All Apps.",
-          "options": [
-            "None",
-            "Policy Managed Apps",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "App Sharing To Level",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "appSharingToLevel",
-          "description": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose from the following options: None, Policy Managed Apps, or All Apps.",
-          "options": [
-            "None",
-            "Policy Managed Apps",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "Authentication",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "authentication",
-          "description": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either 'Required' or 'Not Required'.",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "ClipBoard Sharing Level",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "clipboardSharingLevel",
-          "description": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose from the following options: Blocked, Policy Managed Apps, Policy Managed Apps With PasteIn, or All Apps.",
-          "options": [
-            "Blocked",
-            "Policy Managed Apps",
-            "Policy Managed Apps With PasteIn",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "Data Backup",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "dataBackup",
-          "description": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either 'Allow' or 'Block'.",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "Device Compliance",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "deviceCompliance",
-          "description": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either 'Allow' or 'Block'.",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "File Encryption",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "fileEncryption",
-          "description": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either 'Required' or 'Not Required'.",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "File Sharing SaveAs",
-          "tooltip": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "fileSharingSaveAs",
-          "description": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "Managed Browser",
-          "tooltip": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "managedBrowser",
-          "description": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "Offline Wipe Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "offlineWipeTimeout",
-          "description": "(Optional) Specify the offline wipe timeout based on which you want to create a android policy in Microsoft Intune"
-        },
-        {
-          "title": "Pin",
-          "tooltip": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "pin",
-          "description": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "Pin Number Retry",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "pinNumRetry",
-          "description": "(Optional) Specify the number of the pin based on which you want to create a android policy in Microsoft Intune."
-        },
-        {
-          "title": "Screen Capture",
-          "tooltip": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "screenCapture",
-          "description": "(Optional) Select the option based on which you want to create a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Get All Android Policies List",
-      "description": "Retrieves all android policies from Microsoft Intune based on the hostname and other input parameters you have specified.",
-      "operation": "get_android_policies",
-      "category": "investigation",
-      "annotation": "get_android_policies",
+      "title": "Reboot Device",
+      "operation": "reboot_device",
+      "description": "Reboot a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "reboot_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to reboot in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname for which you want to retrieve the android policies from Microsoft Intune."
-        },
-        {
-          "title": "Search Query",
-          "tooltip": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$filter",
-          "description": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter"
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
-        },
-        {
-          "title": "Limit",
-          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response.",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "$top",
-          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Get Android Policy Details",
-      "description": "Retrieves a specific android policy from Microsoft Intune based on the hostname, policy name and other input parameters you have specified.",
-      "operation": "get_android_policy_by_name",
-      "category": "investigation",
-      "annotation": "get_android_policy_by_name",
+      "title": "Shutdown Device",
+      "operation": "shutdown_device",
+      "description": "Shutdown a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "shutdown_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to shutdown in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname for which you want to retrieve the android policy details from Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy for which you want to retrieve the android policy from Microsoft Intune."
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune.Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Update Android Policy",
-      "description": "Updates a android policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
-      "operation": "update_android_policy",
-      "category": "investigation",
-      "annotation": "update_android_policy",
+      "title": "Recover Passcode for Device",
+      "operation": "recover_passcode_of_device",
+      "description": "Recover passcode for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "recover_passcode_of_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to recover passcode in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to update the android policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to update the android policy in Microsoft Intune."
-        },
-        {
-          "title": "Friendly Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "friendlyName",
-          "description": "Specify the name of the friendly based on which you want to update the android policy in Microsoft Intune."
-        },
-        {
-          "title": "Location",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "location",
-          "description": "(Optional) Specify the location based on which you want to update the android policy in Microsoft Intune."
-        },
-        {
-          "title": "Tag",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "tags",
-          "description": "(Optional) Specify the tag based on which you want to update the android policy in Microsoft Intune."
-        },
-        {
-          "title": "Description",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "description",
-          "description": "(Optional) Specify the description based on which you want to update the android policy in Microsoft Intune."
-        },
-        {
-          "title": "Access Recheck Offline Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "accessRecheckOfflineTimeout",
-          "description": "(Optional) Specify the access recheck offline timeout based on which you want to update the android policy in Microsoft Intune"
-        },
-        {
-          "title": "Access Recheck Online Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "accessRecheckOnlineTimeout",
-          "description": "(Optional) Specify the access recheck online timeout based on which you want to update the android policy in Microsoft Intune"
-        },
-        {
-          "title": "App Sharing From Level",
-          "tooltip": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "appSharingFromLevel",
-          "description": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "options": [
-            "None",
-            "Policy Managed Apps",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "App Sharing To Level",
-          "tooltip": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "appSharingToLevel",
-          "description": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "options": [
-            "None",
-            "Policy Managed Apps",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "Authentication",
-          "tooltip": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "authentication",
-          "description": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "ClipBoard Sharing Level",
-          "tooltip": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose from the following options: \"Blocked\", \"Policy Managed Apps\", \"Policy Managed Apps With PasteIn\", or \"All Apps\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "clipboardSharingLevel",
-          "description": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose from the following options: \"Blocked\", \"Policy Managed Apps\", \"Policy Managed Apps With PasteIn\", or \"All Apps\".",
-          "options": [
-            "Blocked",
-            "Policy Managed Apps",
-            "Policy Managed Apps With PasteIn",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "Data Backup",
-          "tooltip": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "dataBackup",
-          "description": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "Device Compliance",
-          "tooltip": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "deviceCompliance",
-          "description": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "File Encryption",
-          "tooltip": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "fileEncryption",
-          "description": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "File Sharing SaveAs",
-          "tooltip": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "fileSharingSaveAs",
-          "description": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "Managed Browser",
-          "tooltip": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "managedBrowser",
-          "description": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "Offline Wipe Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "offlineWipeTimeout",
-          "description": "(Optional) Specify the offline wipe timeout based on which you want to update the android policy in Microsoft Intune"
-        },
-        {
-          "title": "Pin",
-          "tooltip": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "pin",
-          "description": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "Pin Number Retry",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "pinNumRetry",
-          "description": "(Optional) Specify the number of the pin based on which you want to update the android policy in Microsoft Intune."
-        },
-        {
-          "title": "Screen Capture",
-          "tooltip": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "screenCapture",
-          "description": "(Optional) Select the option based on which you want to update a android policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Delete Android Policy",
-      "description": "Deletes a specific android policy in Microsoft Intune based on the hostname and policy name you have specified.",
-      "operation": "delete_android_policy",
-      "category": "investigation",
-      "annotation": "delete_android_policy",
+      "title": "Clean Windows Device",
+      "operation": "clean_windows_device",
+      "description": "Clean windows of a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "clean_windows_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to clean windows in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to delete the android policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to delete the android policy in Microsoft Intune."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Add App to Android Policy",
-      "description": "Add a specific app to android policy in Microsoft Intune based on the hostname, policy name and app name you have specified.",
-      "operation": "add_app_to_android_policy",
-      "category": "investigation",
-      "annotation": "add_app_to_android_policy",
+      "title": "Logout Apple Device for Active User",
+      "operation": "logout_shared_apple_device_active_user",
+      "description": "Logout shared apple device for a active user in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "logout_shared_apple_device_active_user",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device to logout apple device for a active user in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to add app to android policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the username based on which you want to add app to android policy in Microsoft Intune."
-        },
-        {
-          "title": "Application Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "appName",
-          "description": "Specify the name of the application based on which you want to add app to android policy in Microsoft Intune."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Get Apps for Android Policy",
-      "description": "Retrieves the list of apps for a android policy from Microsoft Intune based on the hostname, policy name and other input parameters you have specified.",
-      "operation": "get_apps_for_android_policy",
-      "category": "investigation",
-      "annotation": "get_apps_for_android_policy",
+      "title": "Delete User from Apple Device",
+      "operation": "delete_user_from_shared_apple_device",
+      "description": "Deletes an user from shared apple device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "delete_user_from_shared_apple_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device which you delete user from apple device in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to retrieve apps for android policy from Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to retrieve apps for android policy from Microsoft Intune."
-        },
-        {
-          "title": "Search Query",
-          "tooltip": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$filter",
-          "description": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter"
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune.Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
-        },
-        {
-          "title": "Limit",
-          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response.",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "$top",
-          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Delete App for Android Policy",
-      "description": "Deletes a specific app for android policy in Microsoft Intune based on the hostname, policy name and app name you have specified.",
-      "operation": "delete_app_for_android_policy",
-      "category": "investigation",
-      "annotation": "delete_app_for_android_policy",
+      "title": "Sync Device",
+      "operation": "sync_device",
+      "description": "Sync for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "sync_device",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device which you want to sync in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to delete a specific app for android policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to delete a specific app for android policy in Microsoft Intune."
-        },
-        {
-          "title": "Application Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "appName",
-          "description": "Specify the name of the application based on which you want to delete a specific app for android policy in Microsoft Intune."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Add Group to Android Policy",
-      "description": "Add a specific group to android policy in Microsoft Intune based on the hostname, policy name and group ID you have specified.",
-      "operation": "add_group_to_android_policy",
-      "category": "investigation",
-      "annotation": "add_group_to_android_policy",
+      "title": "Windows Defender Scan",
+      "operation": "windows_defender_scan",
+      "description": "Scan a windows defender device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "windows_defender_scan",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device which you want to scan in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to add group for android policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to add group for android policy in Microsoft Intune."
-        },
-        {
-          "title": "Group ID",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "groupId",
-          "description": "Specify the ID of the group based on which you want to add group for android policy in Microsoft Intune."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Get Groups for Android Policy",
-      "description": "Retrieves the list of groups for a android policy from Microsoft Intune based on the hostname and policy name you have specified.",
-      "operation": "get_groups_for_android_policy",
-      "category": "investigation",
-      "annotation": "get_groups_for_android_policy",
+      "title": "Update Signature for Windows Defender",
+      "operation": "windows_defender_update_signature",
+      "description": "Updates a signature for windows defender in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "windows_defender_update_signature",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device which you want to update a signature for windows defender in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to retrieve groups for android policy from Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to retrieve groups for android policy from Microsoft Intune."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     },
     {
-      "title": "Delete Group for Android Policy",
-      "description": "Deletes a specific group for android policy in Microsoft Intune based on the hostname, policy name and group ID you have specified.",
-      "operation": "delete_group_for_android_policy",
-      "category": "investigation",
-      "annotation": "delete_group_for_android_policy",
+      "title": "Update Account for Windows Device",
+      "operation": "update_windows_device_account",
+      "description": "Updates a account for windows device in Microsoft Intune based on the managed device ID that you have specified.",
+      "category": "investigation ",
+      "enabled": true,
+      "annotation": "update_windows_device_account",
       "parameters": [
         {
-          "title": "Hostname",
+          "title": "Managed Device ID",
+          "description": "Specify the ID of the managed device which you want to update a account for windows device in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to delete a specific group for android policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to delete a specific group for android policy in Microsoft Intune."
-        },
-        {
-          "title": "Group ID",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "groupId",
-          "description": "Specify the ID of the group based on which you want to delete a specific group for android policy in Microsoft Intune."
+          "name": "managedDeviceId"
         }
       ],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Create iOS Policy",
-      "description": "Creates a iOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
-      "operation": "add_ios_policy",
-      "category": "investigation",
-      "annotation": "add_ios_policy",
-      "parameters": [
-        {
-          "title": "Hostname",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to create the ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to create the ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Friendly Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "friendlyName",
-          "description": "Specify the name of the friendly based on which you want to create the ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Location",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "location",
-          "description": "(Optional) Specify the location based on which you want to create a ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Tag",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "tags",
-          "description": "(Optional) Specify the tag based on which you want to create a ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Description",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "description",
-          "description": "(Optional) Specify the description based on which you want to create a ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Access Recheck Offline Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "accessRecheckOfflineTimeout",
-          "description": "(Optional) Specify the access recheck offline timeout based on which you want to create a ios policy in Microsoft Intune"
-        },
-        {
-          "title": "Access Recheck Online Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "accessRecheckOnlineTimeout",
-          "description": "(Optional) Specify the access recheck online timeout based on which you want to create a ios policy in Microsoft Intune"
-        },
-        {
-          "title": "App Sharing From Level",
-          "tooltip": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "appSharingFromLevel",
-          "description": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "options": [
-            "None",
-            "Policy Managed Apps",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "App Sharing To Level",
-          "tooltip": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "appSharingToLevel",
-          "description": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "options": [
-            "None",
-            "Policy Managed Apps",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "Authentication",
-          "tooltip": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "authentication",
-          "description": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "ClipBoard Sharing Level",
-          "tooltip": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose from the following options: \"Blocked\", \"Policy Managed Apps\", \"Policy Managed Apps With PasteIn\", or \"All Apps\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "clipboardSharingLevel",
-          "description": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose from the following options: \"Blocked\", \"Policy Managed Apps\", \"Policy Managed Apps With PasteIn\", or \"All Apps\".",
-          "options": [
-            "Blocked",
-            "Policy Managed Apps",
-            "Policy Managed Apps With PasteIn",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "Data Backup",
-          "tooltip": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "dataBackup",
-          "description": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "Device Compliance",
-          "tooltip": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "deviceCompliance",
-          "description": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "File Encryption",
-          "tooltip": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "fileEncryption",
-          "description": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "File Sharing SaveAs",
-          "tooltip": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "fileSharingSaveAs",
-          "description": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "Managed Browser",
-          "tooltip": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "managedBrowser",
-          "description": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "Offline Wipe Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "offlineWipeTimeout",
-          "description": "(Optional) Specify the offline wipe timeout based on which you want to create a ios policy in Microsoft Intune"
-        },
-        {
-          "title": "Pin",
-          "tooltip": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "pin",
-          "description": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "Pin Number Retry",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "pinNumRetry",
-          "description": "(Optional) Specify the number of the pin based on which you want to create a ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Screen Capture",
-          "tooltip": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "screenCapture",
-          "description": "(Optional) Select the option based on which you want to create a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        }
-      ],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Get All iOS Policies List",
-      "description": "Retrieves all iOS policies from Microsoft Intune based on the hostname and other input parameters you have specified.",
-      "operation": "get_ios_policies",
-      "category": "investigation",
-      "annotation": "get_ios_policies",
-      "parameters": [
-        {
-          "title": "Hostname",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to retrieve the ios policies from Microsoft Intune."
-        },
-        {
-          "title": "Search Query",
-          "tooltip": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$filter",
-          "description": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter"
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
-        },
-        {
-          "title": "Limit",
-          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response.",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "$top",
-          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response."
-        }
-      ],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Get iOS Policy Details",
-      "description": "Retrieves a specific iOS policy from Microsoft Intune API based on the hostname, policy name and other input parameters you have specified.",
-      "operation": "get_ios_policy_by_name",
-      "category": "investigation",
-      "annotation": "get_ios_policy_by_name",
-      "parameters": [
-        {
-          "title": "Hostname",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to retrieve the ios policy details from Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to retrieve the ios policy details from Microsoft Intune."
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
-        }
-      ],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Update iOS Policy",
-      "description": "Updates a iOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
-      "operation": "update_ios_policy",
-      "category": "investigation",
-      "annotation": "update_ios_policy",
-      "parameters": [
-        {
-          "title": "Hostname",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to update the ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to update the ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Friendly Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "friendlyName",
-          "description": "Specify the name of the friendly based on which you want to update the ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Location",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "location",
-          "description": "(Optional) Specify the location based on which you want to update the ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Tag",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "tags",
-          "description": "(Optional) Specify the tag based on which you want to update the ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Description",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "description",
-          "description": "(Optional) Specify the description based on which you want to update the ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Access Recheck Offline Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "accessRecheckOfflineTimeout",
-          "description": "(Optional) Specify the access recheck offline timeout based on which you want to update the ios policy in Microsoft Intune"
-        },
-        {
-          "title": "Access Recheck Online Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "accessRecheckOnlineTimeout",
-          "description": "(Optional) Specify the access recheck online timeout based on which you want to update the ios policy in Microsoft Intune"
-        },
-        {
-          "title": "App Sharing From Level",
-          "tooltip": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "appSharingFromLevel",
-          "description": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "options": [
-            "None",
-            "Policy Managed Apps",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "App Sharing To Level",
-          "tooltip": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "appSharingToLevel",
-          "description": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose from the following options: \"None\", \"Policy Managed Apps\", or \"All Apps\".",
-          "options": [
-            "None",
-            "Policy Managed Apps",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "Authentication",
-          "tooltip": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "authentication",
-          "description": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "ClipBoard Sharing Level",
-          "tooltip": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose from the following options: \"Blocked\", \"Policy\" \"Managed Apps\", \"Policy Managed Apps With PasteIn\", or \"All Apps\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "clipboardSharingLevel",
-          "description": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose from the following options: \"Blocked\", \"Policy\" \"Managed Apps\", \"Policy Managed Apps With PasteIn\", or \"All Apps\".",
-          "options": [
-            "Blocked",
-            "Policy Managed Apps",
-            "Policy Managed Apps With PasteIn",
-            "All Apps"
-          ]
-        },
-        {
-          "title": "Data Backup",
-          "tooltip": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "dataBackup",
-          "description": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "Device Compliance",
-          "tooltip": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "deviceCompliance",
-          "description": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "File Encryption",
-          "tooltip": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "fileEncryption",
-          "description": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "File Sharing SaveAs",
-          "tooltip": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "fileSharingSaveAs",
-          "description": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        },
-        {
-          "title": "Managed Browser",
-          "tooltip": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "managedBrowser",
-          "description": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "Offline Wipe Timeout",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "offlineWipeTimeout",
-          "description": "(Optional) Specify the offline wipe timeout based on which you want to update the ios policy in Microsoft Intune"
-        },
-        {
-          "title": "Pin",
-          "tooltip": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "pin",
-          "description": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Required\" or \"Not Required\".",
-          "options": [
-            "Required",
-            "Not Required"
-          ]
-        },
-        {
-          "title": "Pin Number Retry",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "pinNumRetry",
-          "description": "(Optional) Specify the number of the pin based on which you want to update the ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Screen Capture",
-          "tooltip": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "select",
-          "name": "screenCapture",
-          "description": "(Optional) Select the option based on which you want to update a ios policy in Microsoft Intune. You can choose either \"Allow\" or \"Block\".",
-          "options": [
-            "Allow",
-            "Block"
-          ]
-        }
-      ],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Delete iOS Policy",
-      "description": "Deletes a specific iOS policy in Microsoft Intune based on the hostname and policy name you have specified.",
-      "operation": "delete_ios_policy",
-      "category": "investigation",
-      "annotation": "delete_ios_policy",
-      "parameters": [
-        {
-          "title": "Hostname",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to delete a specific ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to delete a specific ios policy in Microsoft Intune."
-        }
-      ],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Add App to iOS Policy",
-      "description": "Add a specific app to iOS policy in Microsoft Intune based on the hostname, policy name and app name you have specified.",
-      "operation": "add_app_to_ios_policy",
-      "category": "investigation",
-      "annotation": "add_app_to_ios_policy",
-      "parameters": [
-        {
-          "title": "Hostname",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to add app to ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to add app to ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Application Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "appName",
-          "description": "Specify the name of the app based on which you want to add app to ios policy in Microsoft Intune."
-        }
-      ],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Get App for iOS Policy",
-      "description": "Retrieves the list of apps for a iOS policy from Microsoft Intune based on the hostname, policy name and other input parameters you have specified.",
-      "operation": "get_apps_for_ios_policy",
-      "category": "investigation",
-      "annotation": "get_apps_for_ios_policy",
-      "parameters": [
-        {
-          "title": "Hostname",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to retrieve app for ios policy from Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to retrieve app for ios policy from Microsoft Intune."
-        },
-        {
-          "title": "Search Query",
-          "tooltip": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$filter",
-          "description": "(Optional) The OData's Filter Query using which you want to filter manageable apps to be retrieved from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter"
-        },
-        {
-          "title": "Select By",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "$select",
-          "description": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "tooltip": "(Optional) Specify the select query to retrieve specific fields from Microsoft Intune. Refer link for more info: https://learn.microsoft.com/en-us/odata/concepts/queryoptions-overview#select",
-          "placeholder": "e.g. id, location, name, etc."
-        },
-        {
-          "title": "Limit",
-          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response.",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "$top",
-          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response."
-        }
-      ],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Delete App for iOS Policy",
-      "description": "Deletes a specific app for iOS policy from Microsoft Intune based on the hostname, policy name and app name you have specified.",
-      "operation": "delete_app_for_ios_policy",
-      "category": "investigation",
-      "annotation": "delete_app_for_ios_policy",
-      "parameters": [
-        {
-          "title": "Hostname",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to delete a specific app for ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to delete a specific app for ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Application Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "appName",
-          "description": "Specify the name of the application based on which you want to delete a specific app for ios policy in Microsoft Intune."
-        }
-      ],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Add Group to iOS Policy",
-      "description": "Add a specific group to iOS policy in Microsoft Intune based on the hostname, policy name and group ID you have specified.",
-      "operation": "add_group_to_ios_policy",
-      "category": "investigation",
-      "annotation": "add_group_to_ios_policy",
-      "parameters": [
-        {
-          "title": "Hostname",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to add group to ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to add group to ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Group ID",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "groupId",
-          "description": "Specify the ID of the group based on which you want to add group to ios policy in Microsoft Intune."
-        }
-      ],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Get Groups for iOS Policy",
-      "description": "Retrieves the list of groups for iOS policy from Microsoft Intune based on the hostname and policy name you have specified.",
-      "operation": "get_groups_for_ios_policy",
-      "category": "investigation",
-      "annotation": "get_groups_for_ios_policy",
-      "parameters": [
-        {
-          "title": "Hostname",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to retrieve a groups for ios policy from Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to retrieve a groups for ios policy from Microsoft Intune."
-        }
-      ],
-      "output_schema": {},
-      "enabled": true
-    },
-    {
-      "title": "Delete Group for iOS Policy",
-      "description": "Deletes a specific group for iOS policy from Microsoft Intune based on the hostname, policy name and group ID you have specified.",
-      "operation": "delete_group_for_ios_policy",
-      "category": "investigation",
-      "annotation": "delete_group_for_ios_policy",
-      "parameters": [
-        {
-          "title": "Hostname",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "hostName",
-          "description": "Specify the hostname based on which you want to delete a specific group for ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Policy Name",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "policyName",
-          "description": "Specify the name of the policy based on which you want to delete a specific group for ios policy in Microsoft Intune."
-        },
-        {
-          "title": "Group ID",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "groupId",
-          "description": "Specify the ID of the group based on which you want to delete a specific group for ios policy in Microsoft Intune."
-        }
-      ],
-      "output_schema": {},
-      "enabled": true
+      "output_schema": {
+        "message": ""
+      }
     }
   ]
 }
-

@@ -1,36 +1,37 @@
 """ Copyright start
-  Copyright (C) 2008 - 2022 Fortinet Inc.
+  Copyright (C) 2008 - 2023 Fortinet Inc.
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
 
 from connectors.core.connector import get_logger, ConnectorError
-from requests import exceptions as req_exceptions
+import json, random, string
+from requests import request, exceptions as req_exceptions
 from .microsoft_api_auth import *
 from .constant import *
-import json
 
 logger = get_logger('microsoft-intune')
 
 
-def api_request(method, endpoint, connector_info, config, params=None, data=None, json=None, headers={}):
+def api_request(method, endpoint, connector_info, config, params=None, data=None, headers={}, flag=None):
     try:
         ms = MicrosoftAuth(config)
-        endpoint = ms.host + endpoint
+        endpoint = ms.host + "/" + API_VERSION + endpoint
         token = ms.validate_token(config, connector_info)
         headers['Authorization'] = token
         headers['Content-Type'] = 'application/json'
         headers['consistencylevel'] = 'eventual'
         try:
-            response = request(method, endpoint, headers=headers, params=params, data=data, json=json,
-                               verify=ms.verify_ssl)
-            if response.status_code in [200, 201, 204]:
+            response = request(method, endpoint, headers=headers, params=params, data=data, verify=ms.verify_ssl)
+            if response.status_code in [200, 201, 202, 204]:
                 if response.text != "":
                     return response.json()
                 else:
-                    return True
+                    return dict()
+            elif response.status_code == 404 and flag:
+                raise ConnectorError('{0}'.format(response.content))
             elif response.status_code == 404:
-                return response
+                return {'message': 'Not Found'}
             else:
                 if response.text != "":
                     err_resp = response.json()
@@ -66,510 +67,236 @@ def check_payload(payload):
             nested = check_payload(value)
             if len(nested.keys()) > 0:
                 updated_payload[key] = nested
-        elif value:
+        elif value != '' and value is not None:
             updated_payload[key] = value
     return updated_payload
 
 
-def get_location_list(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations?api-version=2015-01-14-preview"
-    response = api_request("GET", url, connector_info, config)
+def list_managed_devices(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices"
+    response = api_request("GET", endpoint, connector_info, config)
     return response
 
 
-def get_location_by_hostname(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/hostName?api-version=2015-01-14-preview"
-    response = api_request("GET", url, connector_info, config)
+def get_managed_device_details(config, params, connector_info):
+    managedDeviceId = params.pop('managedDeviceId')
+    endpoint = "/deviceManagement/managedDevices/{0}".format(managedDeviceId)
+    payload = check_payload(params)
+    response = api_request("GET", endpoint, connector_info, config)
     return response
 
 
-def get_manageable_apps(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/apps?api-version=2015-01-14-preview".format(
-        params.get('hostName'))
-    filter = params.get('$filter')
-    if filter:
-        filter = 'properties/' + filter
-    select = params.get('$select')
-    if select:
-        select = 'properties/' + select
-    payload = {
-        '$filter': filter,
-        '$select': select,
-        '$top': params.get('$top')
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
-
-
-def get_flagged_user_list(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/flaggedUsers?api-version=2015-01-14-preview".format(
-        params.get('hostName'))
-    filter = params.get('$filter')
-    if filter:
-        filter = 'properties/' + filter
-    select = params.get('$select')
-    if select:
-        select = 'properties/' + select
-    payload = {
-        '$filter': filter,
-        '$select': select,
-        '$top': params.get('$top')
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
-
-
-def get_flagged_user_details(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/flaggedUsers/{1}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('userName'))
-    payload = {
-        '$select': params.get('$select')
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
-
-
-def get_tenant_level_statuses(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/statuses/default?api-version=2015-01-14-preview".format(
-        params.get('hostName'))
-    response = api_request("GET", url, connector_info, config)
-    return response
-
-
-def get_devices_user_list(config, params, connector_info):
-    url = "providers/Microsoft.Intune/locations/{0}/users/{1}/devices?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('userName'))
-    filter = params.get('$filter')
-    if filter:
-        filter = 'properties/' + filter
-    select = params.get('$select')
-    if select:
-        select = 'properties/' + select
-    payload = {
-        '$filter': filter,
-        '$select': select,
-        '$top': params.get('$top')
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
-
-
-def get_device_user_details(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/users/{1}/devices/{2}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('userName'), params.get('deviceName'))
-    payload = {
-        '$select': params.get('$select')
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
-
-
-def get_flagged_enrolled_app_list(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/flaggedUsers/{1}/flaggedEnrolledApps?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('userName'))
-    filter = params.get('$filter')
-    if filter:
-        filter = 'properties/' + filter
-    select = params.get('$select')
-    if select:
-        select = 'properties/' + select
-    payload = {
-        '$filter': filter,
-        '$select': select,
-        '$top': params.get('$top')
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
-
-
-def convert_string_to_lowercase(value):
-    if value:
-        if value == 'Not Required':
-            return "notRequired"
-        else:
-            return value.lower()
+def retire_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/retire".format(params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
     else:
-        return ''
+        return {"message": "Successfully retire device {0}".format(params.get('managedDeviceId'))}
 
 
-def add_android_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/androidPolicies/{1}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    payload = {
-        'location': params.get('location'),
-        'tags': params.get('tags'),
-        'properties': {
-            'friendlyName': params.get('friendlyName'),
-            'accessRecheckOfflineTimeout': params.get('accessRecheckOfflineTimeout'),
-            'accessRecheckOnlineTimeout	': params.get('accessRecheckOnlineTimeout'),
-            'appSharingFromLevel': APP_Sharing_Level.get(params.get('appSharingFromLevel')) if params.get(
-                'appSharingFromLevel') else '',
-            'appSharingToLevel': APP_Sharing_Level.get(params.get('appSharingToLevel')) if params.get(
-                'appSharingToLevel') else '',
-            'authentication': convert_string_to_lowercase(params.get('authentication')),
-            'clipboardSharingLevel': Clipboard_Sharing_Level(params.get('clipboardSharingLevel')) if params.get(
-                'clipboardSharingLevel') else '',
-            'dataBackup': convert_string_to_lowercase(params.get('dataBackup')),
-            'description': params.get('description'),
-            'deviceCompliance': convert_string_to_lowercase(params.get('deviceCompliance')),
-            'fileEncryption': convert_string_to_lowercase(params.get('fileEncryption')),
-            'fileSharingSaveAs': convert_string_to_lowercase(params.get('fileSharingSaveAs')),
-            'managedBrowser': convert_string_to_lowercase(params.get('managedBrowser')),
-            'offlineWipeTimeout': params.get('offlineWipeTimeout'),
-            'pin': convert_string_to_lowercase(params.get('pin')),
-            'pinNumRetry': params.get('pinNumRetry'),
-            'screenCapture': convert_string_to_lowercase(params.get('screenCapture'))
-        }
-    }
-    payload = check_payload(payload)
-    response = api_request("POST", url, connector_info, config, data=json.dumps(payload))
-    return response
+def wipe_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/wipe".format(params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully wipe a device {0}".format(params.get('managedDeviceId'))}
 
 
-def get_android_policies(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/androidPolicies?api-version=2015-01-14-preview".format(
-        params.get('hostName'))
-    filter = params.get('$filter')
-    if filter:
-        filter = 'properties/' + filter
-    select = params.get('$select')
-    if select:
-        select = 'properties/' + select
-    payload = {
-        '$filter': filter,
-        '$select': select,
-        '$top': params.get('$top')
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
+def reset_passcode_of_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/resetPasscode".format(params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully reset passcode for a device {0}".format(params.get('managedDeviceId'))}
 
 
-def get_android_policy_by_name(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/androidPolicies/{1}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    select = params.get('$select')
-    if select:
-        select = 'properties/' + select
-    payload = {
-        '$select': select
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
+def remote_lock_of_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/remoteLock".format(params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully remote lock for a device {0}".format(params.get('managedDeviceId'))}
 
 
-def update_android_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/androidPolicies/{1}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    payload = {
-        'location': params.get('location'),
-        'tags': params.get('tags'),
-        'properties': {
-            'friendlyName': params.get('friendlyName'),
-            'accessRecheckOfflineTimeout': params.get('accessRecheckOfflineTimeout'),
-            'accessRecheckOnlineTimeout	': params.get('accessRecheckOnlineTimeout'),
-            'appSharingFromLevel': APP_Sharing_Level.get(params.get('appSharingFromLevel')) if params.get(
-                'appSharingFromLevel') else '',
-            'appSharingToLevel': APP_Sharing_Level.get(params.get('appSharingToLevel')) if params.get(
-                'appSharingToLevel') else '',
-            'authentication': convert_string_to_lowercase(params.get('authentication')),
-            'clipboardSharingLevel': Clipboard_Sharing_Level(params.get('clipboardSharingLevel')) if params.get(
-                'clipboardSharingLevel') else '',
-            'dataBackup': convert_string_to_lowercase(params.get('dataBackup')),
-            'description': params.get('description'),
-            'deviceCompliance': convert_string_to_lowercase(params.get('deviceCompliance')),
-            'fileEncryption': convert_string_to_lowercase(params.get('fileEncryption')),
-            'fileSharingSaveAs': convert_string_to_lowercase(params.get('fileSharingSaveAs')),
-            'managedBrowser': convert_string_to_lowercase(params.get('managedBrowser')),
-            'offlineWipeTimeout': params.get('offlineWipeTimeout'),
-            'pin': convert_string_to_lowercase(params.get('pin')),
-            'pinNumRetry': params.get('pinNumRetry'),
-            'screenCapture': convert_string_to_lowercase(params.get('screenCapture'))
-        }
-    }
-    payload = check_payload(payload)
-    response = api_request("PATCH", url, connector_info, config, data=json.dumps(payload))
-    return response
+def request_remote_assistance_of_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/requestRemoteAssistance".format(params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {
+            "message": "Successfully request remote assistance for a device {0}".format(params.get('managedDeviceId'))}
 
 
-def delete_android_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/androidPolicies/{1}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    response = api_request("DELETE", url, connector_info, config)
-    return response
+def disable_lost_mode_of_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/disableLostMode".format(params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully disabled a lost mode for a device {0}".format(params.get('managedDeviceId'))}
 
 
-def add_app_to_android_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/androidPolicies/{1}/apps/{2}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'), params.get('appName'))
-    response = api_request("POST", url, connector_info, config)
-    return response
+def locate_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/locateDevice".format(params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully locate a device {0}".format(params.get('managedDeviceId'))}
 
 
-def get_apps_for_android_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/AndroidPolicies/{1}/apps?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    filter = params.get('$filter')
-    if filter:
-        filter = 'properties/' + filter
-    select = params.get('$select')
-    if select:
-        select = 'properties/' + select
-    payload = {
-        '$filter': filter,
-        '$select': select,
-        '$top': params.get('$top')
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
+def bypass_activation_lock_of_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/bypassActivationLock".format(params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully bypass activation lock of a device {0}".format(params.get('managedDeviceId'))}
 
 
-def delete_app_for_android_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/androidPolicies/{1}/apps/{2}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'), params.get('appName'))
-    response = api_request("DELETE", url, connector_info, config)
-    return response
+def reboot_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/rebootNow".format(params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully reboot of a device {0}".format(params.get('managedDeviceId'))}
 
 
-def add_group_to_android_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/androidPolicies/{1}/groups/{2}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'), params.get('groupId'))
-    response = api_request("POST", url, connector_info, config)
-    return response
+def shutdown_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/shutDown".format(params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully shutdown a device {0}".format(params.get('managedDeviceId'))}
 
 
-def get_groups_for_android_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/androidPolicies/{1}/groups?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    response = api_request("GET", url, connector_info, config)
-    return response
+def recover_passcode_of_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/recoverPasscode".format(params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully recover passcode of a device {0}".format(params.get('managedDeviceId'))}
 
 
-def delete_group_for_android_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/androidPolicies/{1}/groups/{2}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'), params.get('groupId'))
-    response = api_request("DELETE", url, connector_info, config)
-    return response
+def clean_windows_device(config, params, connector_info):
+    managedDeviceId = params.pop('managedDeviceId')
+    endpoint = "/deviceManagement/managedDevices/{0}/cleanWindowsDevice".format(managedDeviceId)
+    payload = check_payload(params)
+    response = api_request("POST", endpoint, connector_info, config, data=json.dumps(payload))
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully clean a windows device {0}".format(managedDeviceId)}
 
 
-def add_ios_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/iosPolicies/{1}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    payload = {
-        'location': params.get('location'),
-        'tags': params.get('tags'),
-        'properties': {
-            'friendlyName': params.get('friendlyName'),
-            'accessRecheckOfflineTimeout': params.get('accessRecheckOfflineTimeout'),
-            'accessRecheckOnlineTimeout	': params.get('accessRecheckOnlineTimeout'),
-            'appSharingFromLevel': APP_Sharing_Level.get(params.get('appSharingFromLevel')) if params.get(
-                'appSharingFromLevel') else '',
-            'appSharingToLevel': APP_Sharing_Level.get(params.get('appSharingToLevel')) if params.get(
-                'appSharingToLevel') else '',
-            'authentication': convert_string_to_lowercase(params.get('authentication')),
-            'clipboardSharingLevel': Clipboard_Sharing_Level(params.get('clipboardSharingLevel')) if params.get(
-                'clipboardSharingLevel') else '',
-            'dataBackup': convert_string_to_lowercase(params.get('dataBackup')),
-            'description': params.get('description'),
-            'deviceCompliance': convert_string_to_lowercase(params.get('deviceCompliance')),
-            'fileEncryptionLevel': File_Encryption_Level.get(params.get('fileEncryptionLevel')) if params.get(
-                'fileEncryptionLevel') else '',
-            'fileSharingSaveAs': convert_string_to_lowercase(params.get('fileSharingSaveAs')),
-            'managedBrowser': convert_string_to_lowercase(params.get('managedBrowser')),
-            'offlineWipeTimeout': params.get('offlineWipeTimeout'),
-            'pin': convert_string_to_lowercase(params.get('pin')),
-            'pinNumRetry': params.get('pinNumRetry'),
-            'touchId': convert_string_to_lowercase(params.get('touchId'))
-        }
-    }
-    payload = check_payload(payload)
-    response = api_request("POST", url, connector_info, config, data=json.dumps(payload))
-    return response
+def logout_shared_apple_device_active_user(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/logoutSharedAppleDeviceActiveUser".format(
+        params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {
+            "message": "Successfully logout shared apple device active user {0}".format(params.get('managedDeviceId'))}
 
 
-def get_ios_policies(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/iosPolicies?api-version=2015-01-14-preview".format(
-        params.get('hostName'))
-    filter = params.get('$filter')
-    if filter:
-        filter = 'properties/' + filter
-    select = params.get('$select')
-    if select:
-        select = 'properties/' + select
-    payload = {
-        '$filter': filter,
-        '$select': select,
-        '$top': params.get('$top')
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
+def delete_user_from_shared_apple_device(config, params, connector_info):
+    managedDeviceId = params.pop('managedDeviceId')
+    endpoint = "/deviceManagement/managedDevices/{0}/deleteUserFromSharedAppleDevice".format(managedDeviceId)
+    payload = check_payload(params)
+    response = api_request("POST", endpoint, connector_info, config, data=json.dumps(payload))
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully deleted a user from shared apple device {0}".format(managedDeviceId)}
 
 
-def get_ios_policy_by_name(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/iosPolicies/{1}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    select = params.get('$select')
-    if select:
-        select = 'properties/' + select
-    payload = {
-        '$select': select
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
+def sync_device(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/syncDevice".format(
+        params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {
+            "message": "Successfully sync a device {0}".format(params.get('managedDeviceId'))}
 
 
-def update_ios_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/iosPolicies/{1}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    payload = {
-        'location': params.get('location'),
-        'tags': params.get('tags'),
-        'properties': {
-            'friendlyName': params.get('friendlyName'),
-            'accessRecheckOfflineTimeout': params.get('accessRecheckOfflineTimeout'),
-            'accessRecheckOnlineTimeout	': params.get('accessRecheckOnlineTimeout'),
-            'appSharingFromLevel': APP_Sharing_Level.get(params.get('appSharingFromLevel')) if params.get(
-                'appSharingFromLevel') else '',
-            'appSharingToLevel': APP_Sharing_Level.get(params.get('appSharingToLevel')) if params.get(
-                'appSharingToLevel') else '',
-            'authentication': convert_string_to_lowercase(params.get('authentication')),
-            'clipboardSharingLevel': Clipboard_Sharing_Level(params.get('clipboardSharingLevel')) if params.get(
-                'clipboardSharingLevel') else '',
-            'dataBackup': convert_string_to_lowercase(params.get('dataBackup')),
-            'description': params.get('description'),
-            'deviceCompliance': convert_string_to_lowercase(params.get('deviceCompliance')),
-            'fileEncryptionLevel': File_Encryption_Level.get(params.get('fileEncryptionLevel')) if params.get(
-                'fileEncryptionLevel') else '',
-            'fileSharingSaveAs': convert_string_to_lowercase(params.get('fileSharingSaveAs')),
-            'managedBrowser': convert_string_to_lowercase(params.get('managedBrowser')),
-            'offlineWipeTimeout': params.get('offlineWipeTimeout'),
-            'pin': convert_string_to_lowercase(params.get('pin')),
-            'pinNumRetry': params.get('pinNumRetry'),
-            'touchId': convert_string_to_lowercase(params.get('touchId'))
-        }
-    }
-    payload = check_payload(payload)
-    response = api_request("POST", url, connector_info, config, data=json.dumps(payload))
-    return response
+def windows_defender_scan(config, params, connector_info):
+    managedDeviceId = params.pop('managedDeviceId')
+    endpoint = "/deviceManagement/managedDevices/{0}/windowsDefenderScan".format(managedDeviceId)
+    payload = check_payload(params)
+    response = api_request("POST", endpoint, connector_info, config, data=json.dumps(payload))
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully scan a device with windows defender {0}".format(managedDeviceId)}
 
 
-def delete_ios_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/iosPolicies/{1}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    response = api_request("DELETE", url, connector_info, config)
-    return response
+def windows_defender_update_signature(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices/{0}/windowsDefenderUpdateSignatures".format(
+        params.get('managedDeviceId'))
+    response = api_request("POST", endpoint, connector_info, config)
+    if response.get('message'):
+        return response
+    else:
+        return {
+            "message": "Successfully updated a signature of windows defender device {0}".format(
+                params.get('managedDeviceId'))}
 
 
-def add_app_to_ios_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/iosPolicies/{1}/apps/{2}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'), params.get('appName'))
-    response = api_request("POST", url, connector_info, config)
-    return response
+def update_windows_device_account(config, params, connector_info):
+    managedDeviceId = params.pop('managedDeviceId')
+    endpoint = "/deviceManagement/managedDevices/{0}/updateWindowsDeviceAccount".format(managedDeviceId)
+    payload = check_payload(params)
+    response = api_request("POST", endpoint, connector_info, config, data=json.dumps(payload))
+    if response.get('message'):
+        return response
+    else:
+        return {"message": "Successfully updated a windows device account {0}".format(managedDeviceId)}
 
 
-def get_apps_for_ios_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/iosPolicies/{1}/apps?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    filter = params.get('$filter')
-    if filter:
-        filter = 'properties/' + filter
-    select = params.get('$select')
-    if select:
-        select = 'properties/' + select
-    payload = {
-        '$filter': filter,
-        '$select': select,
-        '$top': params.get('$top')
-    }
-    payload = check_payload(payload)
-    response = api_request("GET", url, connector_info, config, params=payload)
-    return response
-
-
-def delete_app_for_ios_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/iosPolicies/{1}/apps/{2}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'), params.get('appName'))
-    response = api_request("DELETE", url, connector_info, config)
-    return response
-
-
-def add_group_to_ios_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/iosPolicies/{1}/groups/{2}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'), params.get('groupId'))
-    response = api_request("POST", url, connector_info, config)
-    return response
-
-
-def get_groups_for_ios_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/iosPolicies/{1}/groups?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'))
-    response = api_request("GET", url, connector_info, config)
-    return response
-
-
-def delete_group_for_ios_policy(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/iosPolicies/{1}/groups/{2}?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('policyName'), params.get('groupId'))
-    response = api_request("DELETE", url, connector_info, config)
-    return response
-
-
-def wipe_device_for_user(config, params, connector_info):
-    url = "/providers/Microsoft.Intune/locations/{0}/users/{1}/devices/{2}/wipe?api-version=2015-01-14-preview".format(
-        params.get('hostName'), params.get('userName'), params.get('deviceName'))
-    response = api_request("POST", url, connector_info, config)
+def login(config, params, connector_info):
+    endpoint = "/deviceManagement/managedDevices"
+    response = api_request("GET", endpoint, connector_info, config, flag=1)
     return response
 
 
 def _check_health(config, connector_info):
     try:
-        if check(config, connector_info) and get_location_list(config, params={}, connector_info=connector_info):
+        if check(config, connector_info) and login(config, params={}, connector_info=connector_info):
             return True
     except Exception as err:
         raise ConnectorError(str(err))
 
 
 operations = {
-    'get_location_list': get_location_list,
-    'get_location_by_hostname': get_location_by_hostname,
-    'get_manageable_apps': get_manageable_apps,
-    'get_flagged_user_list': get_flagged_user_list,
-    'get_flagged_user_details': get_flagged_user_details,
-    'get_tenant_level_statuses': get_tenant_level_statuses,
-    'get_devices_user_list': get_devices_user_list,
-    'get_device_user_details': get_device_user_details,
-    'get_flagged_enrolled_app_list': get_flagged_enrolled_app_list,
-    'add_android_policy': add_android_policy,
-    'get_android_policies': get_android_policies,
-    'get_android_policy_by_name': get_android_policy_by_name,
-    'update_android_policy': update_android_policy,
-    'delete_android_policy': delete_android_policy,
-    'add_app_to_android_policy': add_app_to_android_policy,
-    'get_apps_for_android_policy': get_apps_for_android_policy,
-    'delete_app_for_android_policy': delete_app_for_android_policy,
-    'add_group_to_android_policy': add_group_to_android_policy,
-    'get_groups_for_android_policy': get_groups_for_android_policy,
-    'delete_group_for_android_policy': delete_group_for_android_policy,
-    'add_ios_policy': add_ios_policy,
-    'get_ios_policies': get_ios_policies,
-    'get_ios_policy_by_name': get_ios_policy_by_name,
-    'update_ios_policy': update_ios_policy,
-    'delete_ios_policy': delete_ios_policy,
-    'add_app_to_ios_policy': add_app_to_ios_policy,
-    'get_apps_for_ios_policy': get_apps_for_ios_policy,
-    'delete_app_for_ios_policy': delete_app_for_ios_policy,
-    'add_group_to_ios_policy': add_group_to_ios_policy,
-    'get_groups_for_ios_policy': get_groups_for_ios_policy,
-    'delete_group_for_ios_policy': delete_group_for_ios_policy,
-    'wipe_device_for_user': wipe_device_for_user
+    'list_managed_devices': list_managed_devices,
+    'get_managed_device_details': get_managed_device_details,
+    'retire_device': retire_device,
+    'wipe_device': wipe_device,
+    'reset_passcode_of_device': reset_passcode_of_device,
+    'remote_lock_of_device': remote_lock_of_device,
+    'request_remote_assistance_of_device': request_remote_assistance_of_device,
+    'disable_lost_mode_of_device': disable_lost_mode_of_device,
+    'locate_device': locate_device,
+    'bypass_activation_lock_of_device': bypass_activation_lock_of_device,
+    'reboot_device': reboot_device,
+    'shutdown_device': shutdown_device,
+    'recover_passcode_of_device': recover_passcode_of_device,
+    'clean_windows_device': clean_windows_device,
+    'logout_shared_apple_device_active_user': logout_shared_apple_device_active_user,
+    'delete_user_from_shared_apple_device': delete_user_from_shared_apple_device,
+    'sync_device': sync_device,
+    'windows_defender_scan': windows_defender_scan,
+    'windows_defender_update_signature': windows_defender_update_signature,
+    'update_windows_device_account': update_windows_device_account
 }

@@ -7,45 +7,47 @@
       "description": "Sample playbooks for \"Microsoft Intune\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": null,
-      "uuid": "bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-      "id": 93,
+      "uuid": "677006c0-b0ef-43a2-ab3b-9cdac7456808",
+      "id": 426,
       "deletedAt": null,
       "importedBy": [],
-      "recordTags": [],
+      "recordTags": [
+        "Microsoft",
+        "microsoft-intune"
+      ],
       "workflows": [
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get iOS Policy Details",
+          "name": "Recover Passcode for Device",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves a specific iOS policy from Microsoft Intune API based on the hostname, policy name and other input parameters you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Recover passcode for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669917192,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/0edeb01e-bb1e-4260-9758-b175ced83c72",
+          "triggerStep": "/api/3/workflow_steps/a7e6d208-8b29-4c4d-b86a-b7e26112f79d",
           "steps": [
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "89ebccc2-12c9-4f39-a17f-044bdbd5439c",
-                "title": "Microsoft Intune: Get iOS Policy Details",
+                "route": "ab8fe9f9-2b1b-4460-a327-9cf2ffd2eadb",
+                "title": "Microsoft Intune: Recover Passcode for Device",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -53,1781 +55,15 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "0edeb01e-bb1e-4260-9758-b175ced83c72"
+              "uuid": "a7e6d208-8b29-4c4d-b86a-b7e26112f79d"
             },
             {
               "@type": "WorkflowStep",
-              "name": "Get iOS Policy Details",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "$select": "",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_ios_policy_by_name",
-                "operationTitle": "Get iOS Policy Details",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "393bea45-b306-4718-85b4-485fe58f5bb4"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get iOS Policy Details",
-              "targetStep": "/api/3/workflow_steps/393bea45-b306-4718-85b4-485fe58f5bb4",
-              "sourceStep": "/api/3/workflow_steps/0edeb01e-bb1e-4260-9758-b175ced83c72",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "808b1e3c-3a6f-4f0f-b77a-da68b6a4aa3c"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "050d2ea1-f87d-44b2-955f-d7d799314c73",
-          "id": 1036,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Update Android Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Updates a android policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669916425,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/552e1195-c6e3-465b-aa5d-a97bfe27e1df",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "05138626-f968-4385-930b-ef6a65aaaebe",
-                "title": "Microsoft Intune: Update Android Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "552e1195-c6e3-465b-aa5d-a97bfe27e1df"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Update Android Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "pin": "",
-                  "tags": "",
-                  "hostName": "sample",
-                  "location": "",
-                  "dataBackup": "",
-                  "policyName": "policy_name",
-                  "description": "",
-                  "pinNumRetry": "",
-                  "friendlyName": "friendly_name",
-                  "screenCapture": "",
-                  "authentication": "",
-                  "fileEncryption": "",
-                  "managedBrowser": "",
-                  "deviceCompliance": "",
-                  "appSharingToLevel": "",
-                  "fileSharingSaveAs": "",
-                  "offlineWipeTimeout": "",
-                  "appSharingFromLevel": "",
-                  "clipboardSharingLevel": "",
-                  "accessRecheckOnlineTimeout": "",
-                  "accessRecheckOfflineTimeout": ""
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "update_android_policy",
-                "operationTitle": "Update Android Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "692d450f-612f-4d01-bfa2-57711d09d8ff"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Update Android Policy",
-              "targetStep": "/api/3/workflow_steps/692d450f-612f-4d01-bfa2-57711d09d8ff",
-              "sourceStep": "/api/3/workflow_steps/552e1195-c6e3-465b-aa5d-a97bfe27e1df",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "e5c3edd8-f60e-4311-b094-054340970919"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "079d9a07-7433-4587-880c-5aa641c61bc5",
-          "id": 1037,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Delete iOS Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Deletes a specific iOS policy from Microsoft Intune based on the hostname and policy name you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669917350,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/0be18b3c-13bb-449c-bbc9-651d17e7310d",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "e05e0960-dad6-4c00-a887-d994eb588ae2",
-                "title": "Microsoft Intune: Delete iOS Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "0be18b3c-13bb-449c-bbc9-651d17e7310d"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Delete iOS Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "delete_ios_policy",
-                "operationTitle": "Delete iOS Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "7be604b6-0ab8-474b-832c-969cd36809be"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Delete iOS Policy",
-              "targetStep": "/api/3/workflow_steps/7be604b6-0ab8-474b-832c-969cd36809be",
-              "sourceStep": "/api/3/workflow_steps/0be18b3c-13bb-449c-bbc9-651d17e7310d",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "45b61baa-639d-47f3-81c8-92784e52f2ac"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "0a443344-50c1-4339-8778-dd9a9325b6b0",
-          "id": 1038,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Manageable Apps",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves all manageable apps from Microsoft Intune based on the hostname and other input parameters you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669791592,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/5e8a0150-f20b-4e3d-b991-83b10a59cf09",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "e8b9ca4c-8ba1-4883-ab4a-bfd9a44c0408",
-                "title": "Microsoft Intune: Get Manageable Apps",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "5e8a0150-f20b-4e3d-b991-83b10a59cf09"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Manageable Apps",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "$top": "",
-                  "$filter": "",
-                  "$select": "",
-                  "hostName": "sample"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_manageable_apps",
-                "operationTitle": "Get Manageable Apps",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "73badc83-7250-488f-ad0a-f2e5a7b83464"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get Manageable Apps",
-              "targetStep": "/api/3/workflow_steps/73badc83-7250-488f-ad0a-f2e5a7b83464",
-              "sourceStep": "/api/3/workflow_steps/5e8a0150-f20b-4e3d-b991-83b10a59cf09",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "988e3538-83b4-42ad-8f41-237250017d77"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "0acd7d18-7b19-4bb8-88b4-57560355fcf5",
-          "id": 1039,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Update iOS Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Updates a iOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669917288,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/93c3ee2c-2940-4ab0-ac6e-8a8aff0c9745",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Update iOS Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "pin": "",
-                  "tags": "",
-                  "hostName": "sample",
-                  "location": "",
-                  "dataBackup": "",
-                  "policyName": "policy_name",
-                  "description": "",
-                  "pinNumRetry": "",
-                  "friendlyName": "friendly_name",
-                  "screenCapture": "",
-                  "authentication": "",
-                  "fileEncryption": "",
-                  "managedBrowser": "",
-                  "deviceCompliance": "",
-                  "appSharingToLevel": "",
-                  "fileSharingSaveAs": "",
-                  "offlineWipeTimeout": "",
-                  "appSharingFromLevel": "",
-                  "clipboardSharingLevel": "",
-                  "accessRecheckOnlineTimeout": "",
-                  "accessRecheckOfflineTimeout": ""
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "update_ios_policy",
-                "operationTitle": "Update iOS Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "5447c547-6a6a-4cd4-b731-4e6f9852bff7"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "c7ebf72c-3fdf-4cc9-9563-420fcf9816ae",
-                "title": "Microsoft Intune: Update iOS Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "93c3ee2c-2940-4ab0-ac6e-8a8aff0c9745"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Update iOS Policy",
-              "targetStep": "/api/3/workflow_steps/5447c547-6a6a-4cd4-b731-4e6f9852bff7",
-              "sourceStep": "/api/3/workflow_steps/93c3ee2c-2940-4ab0-ac6e-8a8aff0c9745",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "727d2285-b96b-443b-ab7a-68cbb045ac28"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "10876fb7-d410-40ab-9c47-1cd2966dac51",
-          "id": 1040,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Add Group to Android Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Add a specific group to android policy in Microsoft Intune based on the hostname, policy name and group ID you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669916759,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/9d54ea86-e741-4d4e-9baa-538608a9c64c",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "623de97b-1fed-4ca7-bed2-f383b1e7b1fd",
-                "title": "Microsoft Intune: Add Group to Android Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "9d54ea86-e741-4d4e-9baa-538608a9c64c"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Add Group to Android Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "groupId": "group_id",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "add_group_to_android_policy",
-                "operationTitle": "Add Group to Android Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "ac65e4ec-0085-4b3b-8e0e-c190b1ef6e72"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Add Group to Android Policy",
-              "targetStep": "/api/3/workflow_steps/ac65e4ec-0085-4b3b-8e0e-c190b1ef6e72",
-              "sourceStep": "/api/3/workflow_steps/9d54ea86-e741-4d4e-9baa-538608a9c64c",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "7b048fed-ca25-49f9-a45b-2f86a822952b"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "1ddbb535-3ccc-4322-8fa1-ad45683fc803",
-          "id": 1041,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Delete Group for iOS Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Deletes a specific group for iOS policy from Microsoft Intune based on the hostname, policy name and group ID you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669917774,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/a8a40eef-2455-42ea-8b86-47201d7d4344",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Delete Group for iOS Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "groupId": "group_id",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "delete_group_for_ios_policy",
-                "operationTitle": "Delete Group for iOS Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "2cbd4969-d64c-45db-bf3b-cd72d1c98e41"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "bec9babb-ba45-4122-a586-2f8a17511623",
-                "title": "Microsoft Intune: Delete Group for iOS Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "a8a40eef-2455-42ea-8b86-47201d7d4344"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Delete Group for iOS Policy",
-              "targetStep": "/api/3/workflow_steps/2cbd4969-d64c-45db-bf3b-cd72d1c98e41",
-              "sourceStep": "/api/3/workflow_steps/a8a40eef-2455-42ea-8b86-47201d7d4344",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "a7916bed-54a6-4c40-a94a-d098fe7f1327"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "208a588d-0541-444d-9113-d93f8855f594",
-          "id": 1042,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Apps for Android Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves all apps for a android policy from Microsoft Intune based on the hostname, policy name and other input parameters you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669916625,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/c904936e-da06-4d10-8567-01fdd866a281",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "7173ecc5-daeb-40a9-b09c-b974e9cceca8",
-                "title": "Microsoft Intune: Get Apps for Android Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "c904936e-da06-4d10-8567-01fdd866a281"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Apps for Android Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "$top": "",
-                  "$filter": "",
-                  "$select": "",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_apps_for_android_policy",
-                "operationTitle": "Get Apps for Android Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "e435314c-7961-4d96-81ad-771b67a5d83e"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get Apps for Android Policy",
-              "targetStep": "/api/3/workflow_steps/e435314c-7961-4d96-81ad-771b67a5d83e",
-              "sourceStep": "/api/3/workflow_steps/c904936e-da06-4d10-8567-01fdd866a281",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "3bbf849c-c89b-4b93-9b72-07228e7be676"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "2886f316-88e7-424c-89d6-bd10c83ac85c",
-          "id": 1043,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Delete Android Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Deletes a specific android policy from Microsoft Intune based on the hostname and policy name you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669916490,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/e4ec8af8-e173-4be2-a8c9-c38ef8635390",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Delete Android Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "delete_android_policy",
-                "operationTitle": "Delete Android Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "a9d03139-627c-4128-be63-eeae3cf5d218"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "9dd26050-2649-4953-b312-925a5c56bd27",
-                "title": "Microsoft Intune: Delete Android Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "e4ec8af8-e173-4be2-a8c9-c38ef8635390"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Delete Android Policy",
-              "targetStep": "/api/3/workflow_steps/a9d03139-627c-4128-be63-eeae3cf5d218",
-              "sourceStep": "/api/3/workflow_steps/e4ec8af8-e173-4be2-a8c9-c38ef8635390",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "40780728-a10f-4652-92f8-be333c1ed17f"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "35691e70-42e3-42df-88b5-af71ef5f8f77",
-          "id": 1044,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Add App to iOS Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Add a specific app to iOS policy in Microsoft Intune based on the hostname, policy name and app name you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669917420,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/add9146b-b717-4f6a-9604-8e0a5516bb4a",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "757d33fb-d610-40da-a99c-8775a0ce35ff",
-                "title": "Microsoft Intune: Add App to iOS Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "add9146b-b717-4f6a-9604-8e0a5516bb4a"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Add App to iOS Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "appName": "app_name",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "add_app_to_ios_policy",
-                "operationTitle": "Add App to iOS Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "e4e8fff0-cb60-429e-8248-a02f296aaba4"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Add App to iOS Policy",
-              "targetStep": "/api/3/workflow_steps/e4e8fff0-cb60-429e-8248-a02f296aaba4",
-              "sourceStep": "/api/3/workflow_steps/add9146b-b717-4f6a-9604-8e0a5516bb4a",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "89355e46-910c-476b-a6e2-d25ebd1300ea"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "39dd87b5-4210-485d-8e03-f9160653e411",
-          "id": 1045,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get App for iOS Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves all apps for a iOS policy from Microsoft Intune based on the hostname, policy name and other input parameters you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669917496,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/1c017c47-1bec-470c-a6c0-357825b2d566",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Get App for iOS Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "$top": "",
-                  "$filter": "",
-                  "$select": "",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_apps_for_ios_policy",
-                "operationTitle": "Get App for iOS Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "179545b9-11f8-49e8-ba93-adec166cca0f"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "582d50b2-25c0-49c6-a29c-7245b30459d9",
-                "title": "Microsoft Intune: Get App for iOS Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "1c017c47-1bec-470c-a6c0-357825b2d566"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get App for iOS Policy",
-              "targetStep": "/api/3/workflow_steps/179545b9-11f8-49e8-ba93-adec166cca0f",
-              "sourceStep": "/api/3/workflow_steps/1c017c47-1bec-470c-a6c0-357825b2d566",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "7bbad796-a6fa-4e81-b33b-7fedab19adba"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "40697f40-ce3b-47e0-8769-62b7da5e41c9",
-          "id": 1046,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Flagged User Details",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves a specific flagged user from Microsoft Intune API based on the hostname, username and other input parameters you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669915614,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/b6440fd2-2bd0-4938-bc1a-bf94fb86e0d2",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Flagged User Details",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "$select": "",
-                  "hostName": "sample",
-                  "userName": "admin"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_flagged_user_details",
-                "operationTitle": "Get Flagged User Details",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "8a81ca9e-1c1f-439a-8aee-8e41c388b9b9"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "5388e66f-e361-4c4c-ba33-9dbe920cb4bb",
-                "title": "Microsoft Intune: Get Flagged User Details",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "b6440fd2-2bd0-4938-bc1a-bf94fb86e0d2"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get Flagged User Details",
-              "targetStep": "/api/3/workflow_steps/8a81ca9e-1c1f-439a-8aee-8e41c388b9b9",
-              "sourceStep": "/api/3/workflow_steps/b6440fd2-2bd0-4938-bc1a-bf94fb86e0d2",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "531b4296-2a14-49d1-8ac1-fcc214515d99"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "41063437-0e0f-4e73-935d-72c62dbc70ce",
-          "id": 1047,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Device User Details",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves a specific device user from Microsoft Intune based on the hostname, username, device name and other input parameters you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669915804,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/9c34c7ea-5ad0-4bad-9dfd-c5896254b415",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Device User Details",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "$select": "",
-                  "hostName": "sample",
-                  "userName": "admin",
-                  "deviceName": "macos"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_device_user_details",
-                "operationTitle": "Get Device User Details",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "746a4e94-3ad5-46ca-8da2-8d18166c4bd9"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "e6ccdcef-581e-4cd6-8a15-81dcd2648063",
-                "title": "Microsoft Intune: Get Device User Details",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "9c34c7ea-5ad0-4bad-9dfd-c5896254b415"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get Device User Details",
-              "targetStep": "/api/3/workflow_steps/746a4e94-3ad5-46ca-8da2-8d18166c4bd9",
-              "sourceStep": "/api/3/workflow_steps/9c34c7ea-5ad0-4bad-9dfd-c5896254b415",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "70258445-c709-4367-a596-8f119c26a238"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "4530c98a-49dc-4381-a316-1c336b75800d",
-          "id": 1048,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Groups for Android Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves all groups for a android policy from Microsoft Intune based on the hostname and policy name you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669916820,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/cc2dfb4d-901b-4235-8629-babb92a813c7",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Groups for Android Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_groups_for_android_policy",
-                "operationTitle": "Get Groups for Android Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "6b8e1108-d22e-4a58-a05d-adc03cb36206"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "0ce82d7a-62ee-4e8c-adc6-ad814ed4752a",
-                "title": "Microsoft Intune: Get Groups for Android Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "cc2dfb4d-901b-4235-8629-babb92a813c7"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get Groups for Android Policy",
-              "targetStep": "/api/3/workflow_steps/6b8e1108-d22e-4a58-a05d-adc03cb36206",
-              "sourceStep": "/api/3/workflow_steps/cc2dfb4d-901b-4235-8629-babb92a813c7",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "c5e5512d-35ec-4327-a988-6d5eeb80250c"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "49f302cd-ad15-4a7b-95cb-c42e72f1ef20",
-          "id": 1049,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Delete App for iOS Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Deletes a specific app for iOS policy from Microsoft Intune based on the hostname, policy name and app name you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669917565,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/e60b8b42-39c5-46e7-9da3-494b5a9b6701",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Delete App for iOS Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "appName": "app_name",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "delete_app_for_ios_policy",
-                "operationTitle": "Delete App for iOS Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "af5a28d4-b9c0-4192-8f3d-48a1acd649c8"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "ae1e3f1d-61f7-47ad-b186-8988bb6d9cfb",
-                "title": "Microsoft Intune: Delete App for iOS Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "e60b8b42-39c5-46e7-9da3-494b5a9b6701"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Delete App for iOS Policy",
-              "targetStep": "/api/3/workflow_steps/af5a28d4-b9c0-4192-8f3d-48a1acd649c8",
-              "sourceStep": "/api/3/workflow_steps/e60b8b42-39c5-46e7-9da3-494b5a9b6701",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "abceba87-527a-49d7-a436-6f62eb7dda40"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "62683f82-a68a-4239-a7f6-4243d0a4e322",
-          "id": 1050,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Tenant Level Statuses",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves a tenant level statuses from Microsoft Intune based on the hostname you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669915672,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/25e14c35-5f62-47ed-925c-549181a3d0bd",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "b5b29977-f479-4b30-b468-2d7d628c537c",
-                "title": "Microsoft Intune: Get Tenant Level Statuses",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "25e14c35-5f62-47ed-925c-549181a3d0bd"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Tenant Level Statuses",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "hostName": "sample"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_tenant_level_statuses",
-                "operationTitle": "Get Tenant Level Statuses",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "af622a03-b2ae-456c-948a-09059ed94eb1"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get Tenant Level Statuses",
-              "targetStep": "/api/3/workflow_steps/af622a03-b2ae-456c-948a-09059ed94eb1",
-              "sourceStep": "/api/3/workflow_steps/25e14c35-5f62-47ed-925c-549181a3d0bd",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "e20877ac-d95f-41c2-b0b3-d4b6be9d86ab"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "6349237d-e604-47ef-8aed-8438ea44bacf",
-          "id": 1051,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get All Devices User List",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves all devices user from Microsoft Intune based on the hostname, username and other input parameters you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669915736,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/d9932cc9-19d3-42ca-9b52-d82e661665d7",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Get All Devices User List",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "$top": "",
-                  "$filter": "",
-                  "$select": "",
-                  "hostName": "sample",
-                  "userName": "admin"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_devices_user_list",
-                "operationTitle": "Get All Devices User List",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "9fc7c502-751b-4a64-ac14-cf50b1662f6c"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "9019dd31-6ef2-48d1-a906-b3f586221bab",
-                "title": "Microsoft Intune: Get All Devices User List",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "d9932cc9-19d3-42ca-9b52-d82e661665d7"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get All Devices User List",
-              "targetStep": "/api/3/workflow_steps/9fc7c502-751b-4a64-ac14-cf50b1662f6c",
-              "sourceStep": "/api/3/workflow_steps/d9932cc9-19d3-42ca-9b52-d82e661665d7",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "48b7d37c-f0e3-4777-8f36-652ce1ca662a"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "6a87f5b6-2e0e-41f6-904e-1b70264e3799",
-          "id": 1052,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Groups for iOS Policy",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves all groups for iOS policy from Microsoft Intune based on the hostname and policy name you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669917692,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/05bcddb6-e1a4-4025-8be0-56b66fedf224",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "09177216-355a-4528-adda-950881947860",
-                "title": "Microsoft Intune: Get Groups for iOS Policy",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "05bcddb6-e1a4-4025-8be0-56b66fedf224"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Groups for iOS Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_groups_for_ios_policy",
-                "operationTitle": "Get Groups for iOS Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "b6643140-19d4-422e-8f19-06c610b5e760"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get Groups for iOS Policy",
-              "targetStep": "/api/3/workflow_steps/b6643140-19d4-422e-8f19-06c610b5e760",
-              "sourceStep": "/api/3/workflow_steps/05bcddb6-e1a4-4025-8be0-56b66fedf224",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "5da2dd4c-199e-4432-a213-dccf6341dbc2"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "6f5d4f91-c176-4087-b61e-61b5fa7ffc08",
-          "id": 1053,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get Location Details",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves a specific location for an hostname from Microsoft Intune.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669791534,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/00b42920-b28b-4226-8f63-8cee7055f470",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "50551536-056b-40c5-b6c9-ab688268c3ec",
-                "title": "Microsoft Intune: Get Location Details",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "00b42920-b28b-4226-8f63-8cee7055f470"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Location Details",
+              "name": "Recover Passcode for Device",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -1835,75 +71,76 @@
                 "params": [],
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
-                "operation": "get_location_by_hostname",
-                "operationTitle": "Get Location Details",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operation": "recover_passcode_of_device",
+                "operationTitle": "Recover Passcode for Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
               },
               "status": null,
-              "top": "165",
-              "left": "125",
+              "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "28ec4a6a-83c9-4f5e-b840-a728c48c9114"
+              "uuid": "ff27b072-8521-45db-887f-58112951b0da"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get Location Details",
-              "targetStep": "/api/3/workflow_steps/28ec4a6a-83c9-4f5e-b840-a728c48c9114",
-              "sourceStep": "/api/3/workflow_steps/00b42920-b28b-4226-8f63-8cee7055f470",
+              "name": "Start-> Recover Passcode for Device",
+              "targetStep": "/api/3/workflow_steps/ff27b072-8521-45db-887f-58112951b0da",
+              "sourceStep": "/api/3/workflow_steps/a7e6d208-8b29-4c4d-b86a-b7e26112f79d",
               "label": null,
               "isExecuted": false,
-              "uuid": "494f0739-6ba6-4afc-a80f-237141a79b2d"
+              "uuid": "29600426-c3b9-4d7c-8227-3727988ddad5"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "70dcc515-77f5-486a-af59-25fc60057082",
-          "id": 1054,
+          "priority": null,
+          "uuid": "0fd00ae9-4a77-4068-9112-09ff06fceb37",
+          "id": 6594,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get All Flagged User List",
+          "name": "Windows Defender Scan",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves all flagged user from Microsoft Intune based on the hostname and other input parameters you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Scan a windows defender device in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669915539,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/07dcaa83-764e-4d69-be3e-26d5592cea90",
+          "triggerStep": "/api/3/workflow_steps/ae162f52-3394-4ff0-8eee-4acfa93f0513",
           "steps": [
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "7fd732fa-53ac-4a40-89e5-217e05244b3c",
-                "title": "Microsoft Intune: Get All Flagged User List",
+                "route": "7a48ffab-0c12-4fbf-ad11-e39a3d79ced8",
+                "title": "Microsoft Intune: Windows Defender Scan",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -1911,210 +148,15 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "07dcaa83-764e-4d69-be3e-26d5592cea90"
+              "uuid": "ae162f52-3394-4ff0-8eee-4acfa93f0513"
             },
             {
               "@type": "WorkflowStep",
-              "name": "Get All Flagged User List",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "$top": "",
-                  "$filter": "",
-                  "$select": "",
-                  "hostName": "sample"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_flagged_user_list",
-                "operationTitle": "Get All Flagged User List",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "33b6b897-ed31-49c8-9d95-7790d1ddf7b1"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get All Flagged User List",
-              "targetStep": "/api/3/workflow_steps/33b6b897-ed31-49c8-9d95-7790d1ddf7b1",
-              "sourceStep": "/api/3/workflow_steps/07dcaa83-764e-4d69-be3e-26d5592cea90",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "096ca661-762c-47be-9e5c-b4f0ba004113"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "8e0ddfd5-86bd-4204-95ef-cbc46c70a998",
-          "id": 1055,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get All Flagged Enrolled App List",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves all flagged enrolled app from Microsoft Intune based on the hostname, username and other input parameters you have specified.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669915981,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/c3ccdfbe-8c61-427e-a2a8-30f1809f634f",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Get All Flagged Enrolled App List",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "$top": "",
-                  "$filter": "",
-                  "$select": "",
-                  "hostName": "sample",
-                  "userName": "admin"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_flagged_enrolled_app_list",
-                "operationTitle": "Get All Flagged Enrolled App List",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "c029b82b-1864-4735-86ec-c23df52fdbf3"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "fcd90040-648d-4dbd-a8ac-b2c91c9acc7a",
-                "title": "Microsoft Intune: Get All Flagged Enrolled App List",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "c3ccdfbe-8c61-427e-a2a8-30f1809f634f"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Get All Flagged Enrolled App List",
-              "targetStep": "/api/3/workflow_steps/c029b82b-1864-4735-86ec-c23df52fdbf3",
-              "sourceStep": "/api/3/workflow_steps/c3ccdfbe-8c61-427e-a2a8-30f1809f634f",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "5746cf1c-8632-4c7b-96c9-68cc996e70fa"
-            }
-          ],
-          "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "93a482ff-bb5b-495f-be4a-007ce0f79d2a",
-          "id": 1056,
-          "owners": [],
-          "isPrivate": false,
-          "deletedAt": null,
-          "importedBy": [],
-          "recordTags": [
-            "microsoft-intune"
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "triggerLimit": null,
-          "name": "Get All Location List",
-          "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves all locations from Microsoft Intune.",
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "remoteExecutableFlag": false,
-          "parameters": [],
-          "synchronous": false,
-          "lastModifyDate": 1669791420,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
-          "versions": [],
-          "triggerStep": "/api/3/workflow_steps/9cb8e787-2731-4f6e-8acd-186c2b19bb97",
-          "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "arguments": {
-                "route": "98eb3337-2a47-4a35-b628-3119fb7f79d2",
-                "title": "Microsoft Intune: Get All Location List",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
-                  }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": true,
-                "singleRecordExecution": false
-              },
-              "status": null,
-              "top": "30",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-              "group": null,
-              "uuid": "9cb8e787-2731-4f6e-8acd-186c2b19bb97"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get All Location List",
+              "name": "Windows Defender Scan",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
@@ -2122,75 +164,99 @@
                 "params": [],
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
-                "operation": "get_location_list",
-                "operationTitle": "Get All Location List",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operation": "windows_defender_scan",
+                "operationTitle": "Windows Defender Scan",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
               },
               "status": null,
-              "top": "165",
-              "left": "125",
+              "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "f97c422c-cfa4-4c45-aec3-02be84ac2f44"
+              "uuid": "cc0d1c2d-b126-4a71-a04c-1ffbfc6716a0"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get All Location List",
-              "targetStep": "/api/3/workflow_steps/f97c422c-cfa4-4c45-aec3-02be84ac2f44",
-              "sourceStep": "/api/3/workflow_steps/9cb8e787-2731-4f6e-8acd-186c2b19bb97",
+              "name": "Start-> Windows Defender Scan",
+              "targetStep": "/api/3/workflow_steps/cc0d1c2d-b126-4a71-a04c-1ffbfc6716a0",
+              "sourceStep": "/api/3/workflow_steps/ae162f52-3394-4ff0-8eee-4acfa93f0513",
               "label": null,
               "isExecuted": false,
-              "uuid": "cb4bf0ac-0095-483a-967c-d79d0c2008a1"
+              "uuid": "5e5d7a24-710f-4878-93c9-acfda239a632"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "9b5319de-4605-4dff-9769-bdf800dbd69e",
-          "id": 1057,
+          "priority": null,
+          "uuid": "157ced5d-1487-4ba0-a880-5a3c01c26599",
+          "id": 6599,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Create Android Policy",
+          "name": "Disable Lost Mode for Device",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Creates a android policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Disable a lost mode for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669916166,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/42d7c690-425a-408c-b05a-d5045fdc38a7",
+          "triggerStep": "/api/3/workflow_steps/9c4bcc38-4fd5-4c00-8d47-d9e50e5cb42d",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Disable Lost Mode for Device",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "disable_lost_mode_of_device",
+                "operationTitle": "Disable Lost Mode for Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8d2cf54b-f6b5-4044-8c69-7b169169fb96"
+            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "39a1f63e-3328-4f83-8cb1-143ba17ae0e9",
-                "title": "Microsoft Intune: Create Android Policy",
+                "route": "d6b3d40c-f602-40da-9634-7450aa039936",
+                "title": "Microsoft Intune: Disable Lost Mode for Device",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -2198,113 +264,69 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "42d7c690-425a-408c-b05a-d5045fdc38a7"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Create Android Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "pin": "",
-                  "tags": "",
-                  "hostName": "sample",
-                  "location": "",
-                  "dataBackup": "",
-                  "policyName": "policy_name",
-                  "description": "",
-                  "pinNumRetry": "",
-                  "friendlyName": "friendly_name",
-                  "screenCapture": "",
-                  "authentication": "",
-                  "fileEncryption": "",
-                  "managedBrowser": "",
-                  "deviceCompliance": "",
-                  "appSharingToLevel": "",
-                  "fileSharingSaveAs": "",
-                  "offlineWipeTimeout": "",
-                  "appSharingFromLevel": "",
-                  "clipboardSharingLevel": "",
-                  "accessRecheckOnlineTimeout": "",
-                  "accessRecheckOfflineTimeout": ""
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "add_android_policy",
-                "operationTitle": "Create Android Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "75394469-8cc4-4f17-a57b-82edd5f7fb10"
+              "uuid": "9c4bcc38-4fd5-4c00-8d47-d9e50e5cb42d"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Create Android Policy",
-              "targetStep": "/api/3/workflow_steps/75394469-8cc4-4f17-a57b-82edd5f7fb10",
-              "sourceStep": "/api/3/workflow_steps/42d7c690-425a-408c-b05a-d5045fdc38a7",
+              "name": "Start-> Disable Lost Mode for Device",
+              "targetStep": "/api/3/workflow_steps/8d2cf54b-f6b5-4044-8c69-7b169169fb96",
+              "sourceStep": "/api/3/workflow_steps/9c4bcc38-4fd5-4c00-8d47-d9e50e5cb42d",
               "label": null,
               "isExecuted": false,
-              "uuid": "311ed74b-695a-43b8-9994-a7beb528ee5d"
+              "uuid": "c35abf7f-c331-462c-af24-2936a85e7084"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "9e2ebd3b-e9e7-4df0-96d5-f60c9135235c",
-          "id": 1058,
+          "priority": null,
+          "uuid": "1c341509-e6ff-4fef-a806-b0f0cfb74c9f",
+          "id": 6589,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get All Android Policies List",
+          "name": "Retire Device",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves all android policies from Microsoft Intune based on the hostname and other input parameters you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Retire a specific device in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669916224,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/2feb677e-6479-414c-9769-f99ee4ee1aa0",
+          "triggerStep": "/api/3/workflow_steps/a13b2a2f-c488-4973-bfde-97196e2c58e3",
           "steps": [
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "dac98fd3-1911-46fe-9442-5b076d2290ce",
-                "title": "Microsoft Intune: Get All Android Policies List",
+                "route": "d1790aa8-a657-4295-8638-6f1b790a5c08",
+                "title": "Microsoft Intune: Retire Device",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -2312,122 +334,92 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "2feb677e-6479-414c-9769-f99ee4ee1aa0"
+              "uuid": "a13b2a2f-c488-4973-bfde-97196e2c58e3"
             },
             {
               "@type": "WorkflowStep",
-              "name": "Get All Android Policies List",
+              "name": "Retire Device",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
                 "config": "",
-                "params": {
-                  "$top": "",
-                  "$filter": "",
-                  "$select": "",
-                  "hostName": "sample"
-                },
+                "params": [],
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
-                "operation": "get_android_policies",
-                "operationTitle": "Get All Android Policies List",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operation": "retire_device",
+                "operationTitle": "Retire Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
               },
               "status": null,
-              "top": "165",
-              "left": "125",
+              "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "57ed07a6-b2b9-4f50-8c72-8290c8b9fc24"
+              "uuid": "f47d4e3a-1910-48b5-a96a-8b88b5a8902d"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get All Android Policies List",
-              "targetStep": "/api/3/workflow_steps/57ed07a6-b2b9-4f50-8c72-8290c8b9fc24",
-              "sourceStep": "/api/3/workflow_steps/2feb677e-6479-414c-9769-f99ee4ee1aa0",
+              "name": "Start-> Retire Device",
+              "targetStep": "/api/3/workflow_steps/f47d4e3a-1910-48b5-a96a-8b88b5a8902d",
+              "sourceStep": "/api/3/workflow_steps/a13b2a2f-c488-4973-bfde-97196e2c58e3",
               "label": null,
               "isExecuted": false,
-              "uuid": "ed3a4d6c-abc4-4864-8985-a1ad4b944cef"
+              "uuid": "25005203-76a4-43b1-9359-8ee8d049f98a"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "9f273c85-7d57-4562-b7c7-5e23b38a5556",
-          "id": 1059,
+          "priority": null,
+          "uuid": "209cfe50-e302-410f-8268-c23d6d66cc67",
+          "id": 6584,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Delete App for Android Policy",
+          "name": "Logout Apple Device for Active User",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Deletes a specific app for android policy from Microsoft Intune based on the hostname, policy name and app name you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Logout shared apple device for a active user in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669916689,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/5ebb0811-cdff-4642-8670-6610f7d7e1a9",
+          "triggerStep": "/api/3/workflow_steps/abd52b33-b096-4f72-82fc-08fcbe35ca7e",
           "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Delete App for Android Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "appName": "app_name",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "delete_app_for_android_policy",
-                "operationTitle": "Delete App for Android Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "43543878-9e4d-4b23-868d-29b8f60e32e0"
-            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "798b0205-4a25-4009-bb73-7fd23b7239c5",
-                "title": "Microsoft Intune: Delete App for Android Policy",
+                "route": "04d53590-65de-4fa4-91ac-4b343ab8797c",
+                "title": "Microsoft Intune: Logout Apple Device for Active User",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -2435,113 +427,92 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "5ebb0811-cdff-4642-8670-6610f7d7e1a9"
+              "uuid": "abd52b33-b096-4f72-82fc-08fcbe35ca7e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Logout Apple Device for Active User",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "logout_shared_apple_device_active_user",
+                "operationTitle": "Logout Apple Device for Active User",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "e9387f8e-6752-4f11-a8c6-d2727081eb27"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Delete App for Android Policy",
-              "targetStep": "/api/3/workflow_steps/43543878-9e4d-4b23-868d-29b8f60e32e0",
-              "sourceStep": "/api/3/workflow_steps/5ebb0811-cdff-4642-8670-6610f7d7e1a9",
+              "name": "Start-> Logout Apple Device for Active User",
+              "targetStep": "/api/3/workflow_steps/e9387f8e-6752-4f11-a8c6-d2727081eb27",
+              "sourceStep": "/api/3/workflow_steps/abd52b33-b096-4f72-82fc-08fcbe35ca7e",
               "label": null,
               "isExecuted": false,
-              "uuid": "a5e6293e-3598-4ae5-b595-d6f08be721d5"
+              "uuid": "1a3d4c53-0190-4607-bd43-f43503069fd4"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "ab67a054-9e0b-4b82-af29-8eb479308974",
-          "id": 1060,
+          "priority": null,
+          "uuid": "22f74c7c-edfb-4d32-9087-6d0c3e3d0127",
+          "id": 6596,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Create iOS Policy",
+          "name": "Wipe Device",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Creates a iOS policy in Microsoft Intune based on the hostname, policy name, friendly name and other input parameters you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Wipe a specific device in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669917068,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/cd6d6139-18a1-40ba-99a8-fc8f1bd790bb",
+          "triggerStep": "/api/3/workflow_steps/57e34fc5-13f7-4a4d-8794-1f7e6a345d90",
           "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Create iOS Policy",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "pin": "",
-                  "tags": "",
-                  "hostName": "sample",
-                  "location": "",
-                  "dataBackup": "",
-                  "policyName": "policy_name",
-                  "description": "",
-                  "pinNumRetry": "",
-                  "friendlyName": "friendly_name",
-                  "screenCapture": "",
-                  "authentication": "",
-                  "fileEncryption": "",
-                  "managedBrowser": "",
-                  "deviceCompliance": "",
-                  "appSharingToLevel": "",
-                  "fileSharingSaveAs": "",
-                  "offlineWipeTimeout": "",
-                  "appSharingFromLevel": "",
-                  "clipboardSharingLevel": "",
-                  "accessRecheckOnlineTimeout": "",
-                  "accessRecheckOfflineTimeout": ""
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "add_ios_policy",
-                "operationTitle": "Create iOS Policy",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "80e0486a-286a-4438-8083-c8f2d846d9a6"
-            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "2099aca4-c7c8-437c-9242-bbd19bd5b160",
-                "title": "Microsoft Intune: Create iOS Policy",
+                "route": "34bef62a-dfed-43bd-b34e-17fe5d93db3b",
+                "title": "Microsoft Intune: Wipe Device",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -2549,69 +520,115 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "cd6d6139-18a1-40ba-99a8-fc8f1bd790bb"
+              "uuid": "57e34fc5-13f7-4a4d-8794-1f7e6a345d90"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Wipe Device",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "wipe_device",
+                "operationTitle": "Wipe Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a18f5055-e7f7-4ca6-9319-8514ef96e3eb"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Create iOS Policy",
-              "targetStep": "/api/3/workflow_steps/80e0486a-286a-4438-8083-c8f2d846d9a6",
-              "sourceStep": "/api/3/workflow_steps/cd6d6139-18a1-40ba-99a8-fc8f1bd790bb",
+              "name": "Start-> Wipe Device",
+              "targetStep": "/api/3/workflow_steps/a18f5055-e7f7-4ca6-9319-8514ef96e3eb",
+              "sourceStep": "/api/3/workflow_steps/57e34fc5-13f7-4a4d-8794-1f7e6a345d90",
               "label": null,
               "isExecuted": false,
-              "uuid": "81647297-451f-4986-bf77-0b8eb5a7ecd3"
+              "uuid": "9d141680-0b18-4d4f-88bd-9761c0e95f2b"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "b367d53c-59d7-4ae7-834c-c8d8daf0a13a",
-          "id": 1061,
+          "priority": null,
+          "uuid": "247611dc-e407-4fad-ba61-212ddece4677",
+          "id": 6585,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get Android Policy Details",
+          "name": "Bypass Activation Lock for Device",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves a specific android policy from Microsoft Intune based on the hostname, policy name and other input parameters you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Bypass activation lock for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669916333,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/64de7b6f-6f19-4aba-b179-b02c61a9dd26",
+          "triggerStep": "/api/3/workflow_steps/895d3b8d-7dc9-4b9d-931a-536b8bf6c131",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Bypass Activation Lock for Device",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "bypass_activation_lock_of_device",
+                "operationTitle": "Bypass Activation Lock for Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "7b85807e-d5ba-4794-b087-7f1299a301e0"
+            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "3fdd45aa-3252-4a95-900e-2c1722bfa413",
-                "title": "Microsoft Intune: Get Android Policy Details",
+                "route": "c7766b1e-bdb1-4916-887f-6d496f3b6642",
+                "title": "Microsoft Intune: Bypass Activation Lock for Device",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -2619,121 +636,92 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "64de7b6f-6f19-4aba-b179-b02c61a9dd26"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Android Policy Details",
-              "description": null,
-              "arguments": {
-                "name": "Microsoft Intune",
-                "config": "",
-                "params": {
-                  "$select": "",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
-                "version": "1.0.0",
-                "connector": "microsoft-intune",
-                "operation": "get_android_policy_by_name",
-                "operationTitle": "Get Android Policy Details",
-                "pickFromTenant": false,
-                "step_variables": []
-              },
-              "status": null,
-              "top": "165",
-              "left": "125",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-              "group": null,
-              "uuid": "86b64234-3747-4895-9e7e-a2ae305f3456"
+              "uuid": "895d3b8d-7dc9-4b9d-931a-536b8bf6c131"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get Android Policy Details",
-              "targetStep": "/api/3/workflow_steps/86b64234-3747-4895-9e7e-a2ae305f3456",
-              "sourceStep": "/api/3/workflow_steps/64de7b6f-6f19-4aba-b179-b02c61a9dd26",
+              "name": "Start-> Bypass Activation Lock for Device",
+              "targetStep": "/api/3/workflow_steps/7b85807e-d5ba-4794-b087-7f1299a301e0",
+              "sourceStep": "/api/3/workflow_steps/895d3b8d-7dc9-4b9d-931a-536b8bf6c131",
               "label": null,
               "isExecuted": false,
-              "uuid": "9c6425cd-8dc2-4b5c-aa30-998446e9017b"
+              "uuid": "f1bc7fc2-2b5a-433f-bcdc-962be3a28550"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "be282809-0d3f-4db9-a96c-846aa1ac18e7",
-          "id": 1062,
+          "priority": null,
+          "uuid": "54a70538-0be2-4661-8acd-8b111fbc65a4",
+          "id": 6591,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Add App to Android Policy",
+          "name": "Delete User from Apple Device",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Add a specific app to android policy in Microsoft Intune based on the hostname, policy name and app name you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Deletes an user from shared apple device in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669916561,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/c2b2f61e-1597-4b14-aa65-d49fd9e78766",
+          "triggerStep": "/api/3/workflow_steps/d6f03710-6102-4463-8d00-d67436a84c21",
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Add App to Android Policy",
+              "name": "Delete User from Apple Device",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
                 "config": "",
-                "params": {
-                  "appName": "app_name",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
+                "params": [],
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
-                "operation": "add_app_to_android_policy",
-                "operationTitle": "Add App to Android Policy",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operation": "delete_user_from_shared_apple_device",
+                "operationTitle": "Delete User from Apple Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
               },
               "status": null,
-              "top": "165",
-              "left": "125",
+              "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "8b18c147-5662-4cce-a77b-d95abfe253f4"
+              "uuid": "774c70f0-505b-42a6-a20d-5afeb2c8e7fe"
             },
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "3f87be66-4761-47a4-a25d-8d736095b067",
-                "title": "Microsoft Intune: Add App to Android Policy",
+                "route": "83639d39-4e84-4515-ae7a-0f3589d0518a",
+                "title": "Microsoft Intune: Delete User from Apple Device",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -2741,95 +729,92 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "c2b2f61e-1597-4b14-aa65-d49fd9e78766"
+              "uuid": "d6f03710-6102-4463-8d00-d67436a84c21"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Add App to Android Policy",
-              "targetStep": "/api/3/workflow_steps/8b18c147-5662-4cce-a77b-d95abfe253f4",
-              "sourceStep": "/api/3/workflow_steps/c2b2f61e-1597-4b14-aa65-d49fd9e78766",
+              "name": "Start-> Delete User from Apple Device",
+              "targetStep": "/api/3/workflow_steps/774c70f0-505b-42a6-a20d-5afeb2c8e7fe",
+              "sourceStep": "/api/3/workflow_steps/d6f03710-6102-4463-8d00-d67436a84c21",
               "label": null,
               "isExecuted": false,
-              "uuid": "3685f244-8cd5-4f6f-b8ad-19b7499408fd"
+              "uuid": "4d37964d-732c-43ab-97ad-71e64a4484c1"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "db0d810b-0dab-4908-a7ea-fb16374d85c7",
-          "id": 1063,
+          "priority": null,
+          "uuid": "610761f4-798a-4163-9552-0ce3b5eed0a6",
+          "id": 6597,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Delete Group for Android Policy",
+          "name": "Locate a Device",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Deletes a specific group for android policy from Microsoft Intune based on the hostname, policy name and group ID you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Locate a specific device in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669916890,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/eb5d8044-669f-49ff-a728-4bafaec2b407",
+          "triggerStep": "/api/3/workflow_steps/bdd728c3-9c6d-40d7-9ed1-83a2eb479bb9",
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Delete Group for Android Policy",
+              "name": "Locate a Device",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
                 "config": "",
-                "params": {
-                  "groupId": "group_id",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
+                "params": [],
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
-                "operation": "delete_group_for_android_policy",
-                "operationTitle": "Delete Group for Android Policy",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operation": "locate_device",
+                "operationTitle": "Locate a Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
               },
               "status": null,
-              "top": "165",
-              "left": "125",
+              "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "b07e8f11-c429-4ef6-ab46-3391fa65129a"
+              "uuid": "6fa7b67b-0e7f-480b-8433-b2385692efb1"
             },
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "0e3272af-a9c9-477d-8ab6-21f7702a56b2",
-                "title": "Microsoft Intune: Delete Group for Android Policy",
+                "route": "88e1c229-b9f0-4f4e-ba4a-ca0b2f1de643",
+                "title": "Microsoft Intune: Locate a Device",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -2837,95 +822,92 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "eb5d8044-669f-49ff-a728-4bafaec2b407"
+              "uuid": "bdd728c3-9c6d-40d7-9ed1-83a2eb479bb9"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Delete Group for Android Policy",
-              "targetStep": "/api/3/workflow_steps/b07e8f11-c429-4ef6-ab46-3391fa65129a",
-              "sourceStep": "/api/3/workflow_steps/eb5d8044-669f-49ff-a728-4bafaec2b407",
+              "name": "Start-> Locate a Device",
+              "targetStep": "/api/3/workflow_steps/6fa7b67b-0e7f-480b-8433-b2385692efb1",
+              "sourceStep": "/api/3/workflow_steps/bdd728c3-9c6d-40d7-9ed1-83a2eb479bb9",
               "label": null,
               "isExecuted": false,
-              "uuid": "ce27bc90-3dcd-40c0-91a5-a7d9033c2918"
+              "uuid": "fe8918d7-e3d1-4f30-890d-450414faad2b"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "e2c7fd56-5fc2-4761-af74-506e6f3c0ec0",
-          "id": 1064,
+          "priority": null,
+          "uuid": "6d8272a0-3391-48c5-907e-4500fd6fb85b",
+          "id": 6590,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Add Group to iOS Policy",
+          "name": "Clean Windows Device",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Add a specific group to iOS policy in Microsoft Intune based on the hostname, policy name and group ID you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Clean windows of a specific device in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669917631,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/a52c03c7-36ac-4bde-b8fb-d1e517ec2330",
+          "triggerStep": "/api/3/workflow_steps/58b73afe-c8a8-4be8-a261-b36acf212a1d",
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Add Group to iOS Policy",
+              "name": "Clean Windows Device",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
                 "config": "",
-                "params": {
-                  "groupId": "group_id",
-                  "hostName": "sample",
-                  "policyName": "policy_name"
-                },
+                "params": [],
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
-                "operation": "add_group_to_ios_policy",
-                "operationTitle": "Add Group to iOS Policy",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operation": "clean_windows_device",
+                "operationTitle": "Clean Windows Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
               },
               "status": null,
-              "top": "165",
-              "left": "125",
+              "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "6294ec5f-fc39-43f2-b01e-71d53c1ae539"
+              "uuid": "412f6229-8d29-4cc6-ad7d-a20382a0ad70"
             },
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "91d76a1d-12b2-4024-aacd-1cac7624e259",
-                "title": "Microsoft Intune: Add Group to iOS Policy",
+                "route": "83526293-c047-49a1-bd54-86aa213481ba",
+                "title": "Microsoft Intune: Clean Windows Device",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -2933,96 +915,92 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "a52c03c7-36ac-4bde-b8fb-d1e517ec2330"
+              "uuid": "58b73afe-c8a8-4be8-a261-b36acf212a1d"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Add Group to iOS Policy",
-              "targetStep": "/api/3/workflow_steps/6294ec5f-fc39-43f2-b01e-71d53c1ae539",
-              "sourceStep": "/api/3/workflow_steps/a52c03c7-36ac-4bde-b8fb-d1e517ec2330",
+              "name": "Start-> Clean Windows Device",
+              "targetStep": "/api/3/workflow_steps/412f6229-8d29-4cc6-ad7d-a20382a0ad70",
+              "sourceStep": "/api/3/workflow_steps/58b73afe-c8a8-4be8-a261-b36acf212a1d",
               "label": null,
               "isExecuted": false,
-              "uuid": "142b0d27-47bb-4c52-b4d2-b24f6e3749aa"
+              "uuid": "d75b184f-77be-4d1f-9a4b-3ea1cd20419e"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "e3091e93-696b-44ae-ab3e-bb63758e8c10",
-          "id": 1065,
+          "priority": null,
+          "uuid": "7e6b0d43-e3d8-4799-9b57-455e2faed6f1",
+          "id": 6595,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get All iOS Policies List",
+          "name": "Update Account for Windows Device",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Retrieves all iOS policies from Microsoft Intune based on the hostname and other input parameters you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Updates a account for windows device in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669917126,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/eaa4a5f6-856b-417d-b00e-fe9356d76e45",
+          "triggerStep": "/api/3/workflow_steps/92ce5b76-36d9-4c07-8a13-e459a60f918b",
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Get All iOS Policies List",
+              "name": "Update Account for Windows Device",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
                 "config": "",
-                "params": {
-                  "$top": "",
-                  "$filter": "",
-                  "$select": "",
-                  "hostName": "sample"
-                },
+                "params": [],
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
-                "operation": "get_ios_policies",
-                "operationTitle": "Get All iOS Policies List",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operation": "update_windows_device_account",
+                "operationTitle": "Update Account for Windows Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
               },
               "status": null,
-              "top": "165",
-              "left": "125",
+              "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "e66c6aa0-4824-4cf5-b846-30690fd3141b"
+              "uuid": "0f6ac012-723c-4852-85f6-f0ee4bfa6a1a"
             },
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "596684fb-f522-47c5-9a86-ab33c1c5bc16",
-                "title": "Microsoft Intune: Get All iOS Policies List",
+                "route": "f2ffc621-e8f6-43b5-98dc-be5d9b6f5f9b",
+                "title": "Microsoft Intune: Update Account for Windows Device",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -3030,69 +1008,69 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "eaa4a5f6-856b-417d-b00e-fe9356d76e45"
+              "uuid": "92ce5b76-36d9-4c07-8a13-e459a60f918b"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get All iOS Policies List",
-              "targetStep": "/api/3/workflow_steps/e66c6aa0-4824-4cf5-b846-30690fd3141b",
-              "sourceStep": "/api/3/workflow_steps/eaa4a5f6-856b-417d-b00e-fe9356d76e45",
+              "name": "Start-> Update Account for Windows Device",
+              "targetStep": "/api/3/workflow_steps/0f6ac012-723c-4852-85f6-f0ee4bfa6a1a",
+              "sourceStep": "/api/3/workflow_steps/92ce5b76-36d9-4c07-8a13-e459a60f918b",
               "label": null,
               "isExecuted": false,
-              "uuid": "fecdef79-7861-4695-bb88-02b2a33c0776"
+              "uuid": "326ab1fb-b363-4695-9a49-558268e1cab6"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "ea303131-ee55-44a6-a05f-ea96a97f6133",
-          "id": 1066,
+          "priority": null,
+          "uuid": "8212ceba-6cf8-4d76-90ed-7510b9052925",
+          "id": 6601,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Wipe Device for User",
+          "name": "Sync Device",
           "aliasName": null,
-          "tag": "#microsoft-intune",
-          "description": "Wipe a device for a user in Microsoft Intune based on the hostname, username name and device name you have specified.",
+          "tag": "#Microsoft Intune",
+          "description": "Sync for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1669915917,
-          "collection": "/api/3/workflow_collections/bcbe03bb-cbc8-4ee4-bc59-8da2fb7eb535",
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
           "versions": [],
-          "triggerStep": "/api/3/workflow_steps/66ae3e92-89ca-467f-89c8-f9a8a7f01b83",
+          "triggerStep": "/api/3/workflow_steps/d63ef547-98b6-40b4-893f-4553f53dd1b2",
           "steps": [
             {
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "arguments": {
-                "route": "982c6967-8157-4024-b51d-a498a125866c",
-                "title": "Microsoft Intune: Wipe Device for User",
+                "route": "b9432706-cfec-4c62-8c33-b00720dc4477",
+                "title": "Microsoft Intune: Sync Device",
                 "resources": [
                   "alerts"
                 ],
                 "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "params": [],
-                    "records": "{{vars.input.records}}"
+                    "records": "{{vars.input.records[0]}}"
                   }
                 },
                 "executeButtonText": "Execute",
@@ -3100,59 +1078,801 @@
                 "singleRecordExecution": false
               },
               "status": null,
-              "top": "30",
-              "left": "125",
+              "top": "20",
+              "left": "20",
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
               "group": null,
-              "uuid": "66ae3e92-89ca-467f-89c8-f9a8a7f01b83"
+              "uuid": "d63ef547-98b6-40b4-893f-4553f53dd1b2"
             },
             {
               "@type": "WorkflowStep",
-              "name": "Wipe Device for User",
+              "name": "Sync Device",
               "description": null,
               "arguments": {
                 "name": "Microsoft Intune",
                 "config": "",
-                "params": {
-                  "hostName": "sample",
-                  "userName": "admin",
-                  "deviceName": "macos"
-                },
+                "params": [],
                 "version": "1.0.0",
                 "connector": "microsoft-intune",
-                "operation": "wipe_device_for_user",
-                "operationTitle": "Wipe Device for User",
-                "pickFromTenant": false,
-                "step_variables": []
+                "operation": "sync_device",
+                "operationTitle": "Sync Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
               },
               "status": null,
-              "top": "165",
-              "left": "125",
+              "top": "120",
+              "left": "188",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "a41b4216-73bc-4aba-904f-1d640c1f1e58"
+              "uuid": "e4d67104-8494-4e97-81d6-b6a94a191d83"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Wipe Device for User",
-              "targetStep": "/api/3/workflow_steps/a41b4216-73bc-4aba-904f-1d640c1f1e58",
-              "sourceStep": "/api/3/workflow_steps/66ae3e92-89ca-467f-89c8-f9a8a7f01b83",
+              "name": "Start-> Sync Device",
+              "targetStep": "/api/3/workflow_steps/e4d67104-8494-4e97-81d6-b6a94a191d83",
+              "sourceStep": "/api/3/workflow_steps/d63ef547-98b6-40b4-893f-4553f53dd1b2",
               "label": null,
               "isExecuted": false,
-              "uuid": "b8a683ac-d8a1-4df9-8fd8-3a326d2fe57d"
+              "uuid": "0f498109-60e8-4fa3-8421-535918cc07bb"
             }
           ],
           "groups": [],
-          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-          "uuid": "ec2cb7da-c424-41d8-b08e-d88713138543",
-          "id": 1067,
+          "priority": null,
+          "uuid": "82cdae10-b88e-4afb-8cdd-e924762dd2ab",
+          "id": 6598,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
+            "Microsoft",
+            "microsoft-intune"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Signature for Windows Defender",
+          "aliasName": null,
+          "tag": "#Microsoft Intune",
+          "description": "Updates a signature for windows defender in Microsoft Intune based on the managed device ID that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/b2dcac39-e5d1-4622-8c10-baf9234caab9",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Signature for Windows Defender",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "windows_defender_update_signature",
+                "operationTitle": "Update Signature for Windows Defender",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "262a27c1-e7f1-4719-8949-313b9beeaf28"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "db21a15a-fec1-4097-a949-6230ab8e2c34",
+                "title": "Microsoft Intune: Update Signature for Windows Defender",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "b2dcac39-e5d1-4622-8c10-baf9234caab9"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Update Signature for Windows Defender",
+              "targetStep": "/api/3/workflow_steps/262a27c1-e7f1-4719-8949-313b9beeaf28",
+              "sourceStep": "/api/3/workflow_steps/b2dcac39-e5d1-4622-8c10-baf9234caab9",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "a999bd0a-7425-463d-b40f-01cc26f140b5"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "84df1f43-1b8a-4472-a89c-bfaf6a04a1f3",
+          "id": 6600,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-intune"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Managed Device Details",
+          "aliasName": null,
+          "tag": "#Microsoft Intune",
+          "description": "Retrieves a specific managed device from Microsoft Intune based on the managed device ID that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/604ef51b-678b-4598-8fe7-5e269593290f",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Managed Device Details",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "get_managed_device_details",
+                "operationTitle": "Get Managed Device Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "0372dfba-f67c-425b-80f0-2008602443da"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "cd71e969-d15a-4a6c-9525-c1783e313d6b",
+                "title": "Microsoft Intune: Get Managed Device Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "604ef51b-678b-4598-8fe7-5e269593290f"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Managed Device Details",
+              "targetStep": "/api/3/workflow_steps/0372dfba-f67c-425b-80f0-2008602443da",
+              "sourceStep": "/api/3/workflow_steps/604ef51b-678b-4598-8fe7-5e269593290f",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "45a1fb1b-6b85-40ca-b4e1-7a5ea6d4b9d0"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "887d1ae6-eebc-41bc-b1f3-ab06bbd08759",
+          "id": 6583,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-intune"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Reset Passcode Device",
+          "aliasName": null,
+          "tag": "#Microsoft Intune",
+          "description": "Reset passcode for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/fb34d593-5fdd-464d-a931-5d907dffac79",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Reset Passcode Device",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "reset_passcode_of_device",
+                "operationTitle": "Reset Passcode Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "26934267-9610-44bf-9cf1-47fbeedc70ca"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "857fb481-696a-4f68-828e-e9803511c8e0",
+                "title": "Microsoft Intune: Reset Passcode Device",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "fb34d593-5fdd-464d-a931-5d907dffac79"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Reset Passcode Device",
+              "targetStep": "/api/3/workflow_steps/26934267-9610-44bf-9cf1-47fbeedc70ca",
+              "sourceStep": "/api/3/workflow_steps/fb34d593-5fdd-464d-a931-5d907dffac79",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "d4edc4a7-4822-40ec-8b1c-0f3c8a8f8066"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "8c065b4a-8036-4c3c-a19c-4365c6da9e82",
+          "id": 6586,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-intune"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Shutdown Device",
+          "aliasName": null,
+          "tag": "#Microsoft Intune",
+          "description": "Shutdown a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/35977ca6-17f5-486c-8027-189731f34ac9",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "ca485d8e-2816-46a5-99f5-fa2863ba5137",
+                "title": "Microsoft Intune: Shutdown Device",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "35977ca6-17f5-486c-8027-189731f34ac9"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Shutdown Device",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "shutdown_device",
+                "operationTitle": "Shutdown Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "9c72e3d4-a3b1-402e-8a80-580eb70b9a02"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Shutdown Device",
+              "targetStep": "/api/3/workflow_steps/9c72e3d4-a3b1-402e-8a80-580eb70b9a02",
+              "sourceStep": "/api/3/workflow_steps/35977ca6-17f5-486c-8027-189731f34ac9",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "e844e341-21e9-4b00-8075-3de0e8fa8229"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "9f215a2a-fc16-4056-bbde-b886f19ada61",
+          "id": 6593,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-intune"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Request Remote Assistance for Device",
+          "aliasName": null,
+          "tag": "#Microsoft Intune",
+          "description": "Request a remote assistance for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/eec07f72-a5d8-43c9-97e9-6a182c6526c9",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "e47b549c-5769-4360-9036-a41d17b1433c",
+                "title": "Microsoft Intune: Request Remote Assistance for Device",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "eec07f72-a5d8-43c9-97e9-6a182c6526c9"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Request Remote Assistance for Device",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "request_remote_assistance_of_device",
+                "operationTitle": "Request Remote Assistance for Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "fe6525a1-9116-4416-875b-dc6e5f4850f2"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Request Remote Assistance for Device",
+              "targetStep": "/api/3/workflow_steps/fe6525a1-9116-4416-875b-dc6e5f4850f2",
+              "sourceStep": "/api/3/workflow_steps/eec07f72-a5d8-43c9-97e9-6a182c6526c9",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "9ef52904-64e7-420e-9e73-5cd4c425d815"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "c52741a8-1d82-404b-8c5d-b8d8f699fe83",
+          "id": 6588,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-intune"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Reboot Device",
+          "aliasName": null,
+          "tag": "#Microsoft Intune",
+          "description": "Reboot a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d33518b5-4e4b-4a7a-b645-e749d9de7e73",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "9cd27159-fbb8-4251-985b-2377d4d481f1",
+                "title": "Microsoft Intune: Reboot Device",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "d33518b5-4e4b-4a7a-b645-e749d9de7e73"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Reboot Device",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "reboot_device",
+                "operationTitle": "Reboot Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "ddd0aa67-2277-4593-a269-43bc96a4e207"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Reboot Device",
+              "targetStep": "/api/3/workflow_steps/ddd0aa67-2277-4593-a269-43bc96a4e207",
+              "sourceStep": "/api/3/workflow_steps/d33518b5-4e4b-4a7a-b645-e749d9de7e73",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "61081837-0c41-4c38-a7d6-eb39c87560bb"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "c7ad6c1c-fb4c-4a9f-ac0b-7cc85cb1a55d",
+          "id": 6592,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-intune"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Managed Devices List",
+          "aliasName": null,
+          "tag": "#Microsoft Intune",
+          "description": "Retrieves the list of managed devices from Microsoft Intune.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1679643927,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/46ae6bfc-4da6-4c76-a044-a37f32086ad5",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0b7a23e6-f29f-4f7e-92fe-9c310da811c0",
+                "title": "Microsoft Intune: Get Managed Devices List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "46ae6bfc-4da6-4c76-a044-a37f32086ad5"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Managed Devices List",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "list_managed_devices",
+                "operationTitle": "Get Managed Devices List",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "4ba83b04-a6c4-4e83-8d4b-30697aaedb94"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Managed Devices List",
+              "targetStep": "/api/3/workflow_steps/4ba83b04-a6c4-4e83-8d4b-30697aaedb94",
+              "sourceStep": "/api/3/workflow_steps/46ae6bfc-4da6-4c76-a044-a37f32086ad5",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "d3365efe-31d9-49ea-b45e-af271d65616d"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "da62fe8e-d9aa-4352-b988-9f08d3953f51",
+          "id": 6582,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "microsoft-intune"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Remote Lock Device",
+          "aliasName": null,
+          "tag": "#Microsoft Intune",
+          "description": "Remote Lock for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": null,
+          "collection": "/api/3/workflow_collections/677006c0-b0ef-43a2-ab3b-9cdac7456808",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d758fc50-c436-4cb9-b9a3-6bbff052ff74",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Remote Lock Device",
+              "description": null,
+              "arguments": {
+                "name": "Microsoft Intune",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "microsoft-intune",
+                "operation": "remote_lock_of_device",
+                "operationTitle": "Remote Lock Device",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "90479361-4320-4c65-8c51-04d8b37e6ecc"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "656665cd-4cdb-43e5-b982-a5c0e7afcf7e",
+                "title": "Microsoft Intune: Remote Lock Device",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "d758fc50-c436-4cb9-b9a3-6bbff052ff74"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Remote Lock Device",
+              "targetStep": "/api/3/workflow_steps/90479361-4320-4c65-8c51-04d8b37e6ecc",
+              "sourceStep": "/api/3/workflow_steps/d758fc50-c436-4cb9-b9a3-6bbff052ff74",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "4bf4b3cd-bb60-46d5-90e4-befaa2bbba0e"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "db467167-67d3-44b0-a6b8-4360b7f5a4d9",
+          "id": 6587,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
             "microsoft-intune"
           ]
         }
@@ -3160,6 +1880,7 @@
     }
   ],
   "exported_tags": [
+    "Microsoft",
     "microsoft-intune"
   ]
 }
