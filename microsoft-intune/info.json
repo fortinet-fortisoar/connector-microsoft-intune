@@ -9,7 +9,7 @@
   "cs_compatible": true,
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/microsoft-intune/551/microsoft-intune-v1-0-0",
   "configuration": {
     "fields": [
       {
@@ -62,7 +62,7 @@
               "visible": true,
               "type": "password",
               "name": "client_secret",
-              "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
+              "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat- protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
             }
           ],
           "On behalf of User - Delegate Permission": [
@@ -101,7 +101,7 @@
               "visible": true,
               "type": "password",
               "name": "client_secret",
-              "description": "Unique API Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
+              "description": "Unique API Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat- protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
             },
             {
               "title": "Authorization Code",
@@ -111,7 +111,7 @@
               "type": "password",
               "name": "code",
               "tooltip": "Authorization code that you acquired in the authorization step.",
-              "description": "(Only Applicable to On behalf of User – Delegate Permission) The authorization code that you acquired during the authorization step. For more information, see the Getting Access Tokens using the Delegate Permissions method section."
+              "description": "(Only Applicable to On behalf of User – Delegate Permission) The authorization code that you acquired during the authorization step. For more information, see the Getting Access Tokens using the Delegate Permissions method topic."
             },
             {
               "title": "Redirect URL",
@@ -122,7 +122,7 @@
               "type": "text",
               "name": "redirect_url",
               "placeholder": "E.g. https://localhost/myapp",
-              "tooltip": "(Only Applicable to On behalf of User – Delegate Permission) The redirect_uri of your app, where authentication responses can be sent and received by your app. The redirect URL that you specify here must exactly match one of the redirect_uri's you have registered in your app registration portal."
+              "tooltip": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal."
             }
           ]
         }
@@ -135,7 +135,7 @@
         "type": "checkbox",
         "name": "verify_ssl",
         "value": true,
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not."
       }
     ]
   },
@@ -143,7 +143,7 @@
     {
       "title": "Get Managed Devices List",
       "operation": "list_managed_devices",
-      "description": "Retrieves the list of managed devices from Microsoft Intune.",
+      "description": "Retrieves a list of all managed devices from Microsoft Intune.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "list_managed_devices",
@@ -263,14 +263,14 @@
     {
       "title": "Get Managed Device Details",
       "operation": "get_managed_device_details",
-      "description": "Retrieves a specific managed device from Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Retrieves details for a specific managed device from Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "get_managed_device_details",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to retrieve its details from Microsoft Intune.",
+          "description": "Specify the ID of the managed device for which you want to retrieve details from Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -391,14 +391,14 @@
     {
       "title": "Retire Device",
       "operation": "retire_device",
-      "description": "Retire a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Retires a specific device from Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "retire_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to retire in Microsoft Intune.",
+          "description": "Specify the ID of the managed device whose managed app data (where applicable), settings, and email profiles (assigned using Intune) you want to remove (retire) from Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -413,14 +413,14 @@
     {
       "title": "Wipe Device",
       "operation": "wipe_device",
-      "description": "Wipe a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Wipes a specific device in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "wipe_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to wipe in Microsoft Intune.",
+          "description": "Specify the ID of the managed device that you want to restore to its factory default settings (wipe) in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -435,14 +435,14 @@
     {
       "title": "Reset Passcode Device",
       "operation": "reset_passcode_of_device",
-      "description": "Reset passcode for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Resets the passcode for a specific device in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "reset_passcode_of_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to reset passcode in Microsoft Intune",
+          "description": "Specify the ID of the managed device whose passcode you want to reset in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -457,14 +457,14 @@
     {
       "title": "Remote Lock Device",
       "operation": "remote_lock_of_device",
-      "description": "Remote Lock for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Remotely Locks a specific device in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "remote_lock_of_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to remote lock in Microsoft Intune.",
+          "description": "Specify the ID of the managed device that you want to remotely lock in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -479,14 +479,14 @@
     {
       "title": "Request Remote Assistance for Device",
       "operation": "request_remote_assistance_of_device",
-      "description": "Request a remote assistance for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Requests remote assistance for a specific device in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "request_remote_assistance_of_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to request a remote assistance in Microsoft Intune.",
+          "description": "Specify the ID of the managed device for which you want to request ID remote assistance in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -501,14 +501,14 @@
     {
       "title": "Disable Lost Mode for Device",
       "operation": "disable_lost_mode_of_device",
-      "description": "Disable a lost mode for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Disables the 'lost mode' for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "disable_lost_mode_of_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to disable a lost mode in Microsoft Intune.",
+          "description": "Specify the ID of the managed device whose 'lost mode' you want to disable in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -523,14 +523,14 @@
     {
       "title": "Locate a Device",
       "operation": "locate_device",
-      "description": "Locate a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Locates a specific device in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "locate_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to locate in Microsoft Intune.",
+          "description": "Specify the ID of the managed device that you want to locate in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -545,14 +545,14 @@
     {
       "title": "Bypass Activation Lock for Device",
       "operation": "bypass_activation_lock_of_device",
-      "description": "Bypass activation lock for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Bypasses the activation lock of a specific device in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "bypass_activation_lock_of_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to bypass activation lock in Microsoft Intune.",
+          "description": "Specify the ID of the managed device whose activation lock you want to bypass in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -567,14 +567,14 @@
     {
       "title": "Reboot Device",
       "operation": "reboot_device",
-      "description": "Reboot a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Reboots a specific device in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "reboot_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to reboot in Microsoft Intune.",
+          "description": "Specify the ID of the managed device that you want to reboot in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -589,14 +589,14 @@
     {
       "title": "Shutdown Device",
       "operation": "shutdown_device",
-      "description": "Shutdown a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Shuts down a specific device in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "shutdown_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to shutdown in Microsoft Intune.",
+          "description": "Specify the ID of the managed device that you want to shut down in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -611,14 +611,14 @@
     {
       "title": "Recover Passcode for Device",
       "operation": "recover_passcode_of_device",
-      "description": "Recover passcode for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Recovers the passcode for a specific device from Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "recover_passcode_of_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to recover passcode in Microsoft Intune.",
+          "description": "Specify the ID of the managed device whose passcode you want to recover from Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -633,14 +633,14 @@
     {
       "title": "Clean Windows Device",
       "operation": "clean_windows_device",
-      "description": "Clean windows of a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Cleans, i.e., removes any apps that are installed on a device that runs on Windows in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "clean_windows_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to clean windows in Microsoft Intune.",
+          "description": "Specify the ID of the managed device based on which you want to remove any apps (clean) that are installed on a device that runs on Windows.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -655,14 +655,14 @@
     {
       "title": "Logout Apple Device for Active User",
       "operation": "logout_shared_apple_device_active_user",
-      "description": "Logout shared apple device for a active user in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Logs out a shared Apple device for an active user in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "logout_shared_apple_device_active_user",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device to logout apple device for a active user in Microsoft Intune.",
+          "description": "Specify the ID of the managed device from which you want to logout a shared Apple device for an active user in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -677,14 +677,14 @@
     {
       "title": "Delete User from Apple Device",
       "operation": "delete_user_from_shared_apple_device",
-      "description": "Deletes an user from shared apple device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Deletes a user from a shared Apple device in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "delete_user_from_shared_apple_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device which you delete user from apple device in Microsoft Intune.",
+          "description": "Specify the ID of the managed device based on which you want to delete a user from a shared Apple device in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -699,14 +699,14 @@
     {
       "title": "Sync Device",
       "operation": "sync_device",
-      "description": "Sync for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Syncs a specific device using Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "sync_device",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device which you want to sync in Microsoft Intune.",
+          "description": "Specify the ID of the managed device based on which you want to sync your device, i.e., force your device to connect with Intune to get the latest updates, requirements, and communications from your organization.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -721,14 +721,14 @@
     {
       "title": "Windows Defender Scan",
       "operation": "windows_defender_scan",
-      "description": "Scan a windows defender device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Scans a device using Windows Defender in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "windows_defender_scan",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device which you want to scan in Microsoft Intune.",
+          "description": "Specify the ID of the managed device in Microsoft Intune based on which you want to scan a device using Windows Defender.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -743,14 +743,14 @@
     {
       "title": "Update Signature for Windows Defender",
       "operation": "windows_defender_update_signature",
-      "description": "Updates a signature for windows defender in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Updates the signature for Windows Defender in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "windows_defender_update_signature",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device which you want to update a signature for windows defender in Microsoft Intune.",
+          "description": "Specify the ID of the managed device based on which you want to update the Windows Defender signature in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -765,14 +765,14 @@
     {
       "title": "Update Account for Windows Device",
       "operation": "update_windows_device_account",
-      "description": "Updates a account for windows device in Microsoft Intune based on the managed device ID that you have specified.",
+      "description": "Updates an account for a Windows device in Microsoft Intune based on the managed device ID you have specified.",
       "category": "investigation ",
       "enabled": true,
       "annotation": "update_windows_device_account",
       "parameters": [
         {
           "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device which you want to update a account for windows device in Microsoft Intune.",
+          "description": "Specify the ID of the managed device based on which you want to update an account for a Windows device in Microsoft Intune.",
           "required": true,
           "editable": true,
           "visible": true,
