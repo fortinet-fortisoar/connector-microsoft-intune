@@ -1,788 +1,817 @@
 {
-  "description": "Microsoft Intune is a cloud-based endpoint management solution. This connector facilitates automated operation related to managed device.",
-  "category": "Communication",
-  "name": "microsoft-intune",
-  "label": "Microsoft Intune",
-  "version": "1.0.0",
-  "publisher": "Fortinet",
-  "cs_approved": false,
-  "cs_compatible": true,
-  "icon_small_name": "small.png",
-  "icon_large_name": "large.png",
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/microsoft-intune/551/microsoft-intune-v1-0-0",
-  "configuration": {
-    "fields": [
-      {
-        "title": "Get Access Token",
-        "required": true,
-        "editable": true,
-        "visible": true,
-        "type": "select",
-        "options": [
-          "On behalf of User - Delegate Permission",
-          "Without a User - Application Permission"
-        ],
-        "name": "auth_type",
-        "value": "Without a User - Application Permission",
-        "description": "Select the method using which you will get authentication tokens used to access the security graph APIs. You can choose between On behalf of User – Delegate Permission or Without a User - Application Permission.",
-        "onchange": {
-          "Without a User - Application Permission": [
+    "name": "microsoft-intune_dev",
+    "version": "1.0.1",
+    "label": "Microsoft Intune",
+    "description": "Microsoft Intune is a cloud-based endpoint management solution. This connector facilitates automated operation related to managed device.",
+    "publisher": "",
+    "icon_small_name": "small.png",
+    "icon_large_name": "large.png",
+    "id": 135,
+    "configuration": {
+        "fields": [
             {
-              "title": "Server URL",
-              "required": true,
-              "editable": true,
-              "visible": true,
-              "type": "text",
-              "name": "resource",
-              "value": "https://graph.microsoft.com",
-              "description": "The service-based URI to which you will connect and perform the automated operations."
+                "title": "Get Access Token",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "select",
+                "options": [
+                    "On behalf of User - Delegate Permission",
+                    "Without a User - Application Permission"
+                ],
+                "name": "auth_type",
+                "value": "Without a User - Application Permission",
+                "description": "Select the method using which you will get authentication tokens used to access the security graph APIs. You can choose between On behalf of User \u2013 Delegate Permission or Without a User - Application Permission.",
+                "onchange": {
+                    "Without a User - Application Permission": [
+                        {
+                            "title": "Server URL",
+                            "required": true,
+                            "editable": true,
+                            "visible": true,
+                            "type": "text",
+                            "name": "resource",
+                            "value": "https://graph.microsoft.com",
+                            "description": "The service-based URI to which you will connect and perform the automated operations."
+                        },
+                        {
+                            "title": "Tenant ID",
+                            "required": true,
+                            "editable": true,
+                            "visible": true,
+                            "type": "text",
+                            "name": "tenant_id",
+                            "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
+                        },
+                        {
+                            "title": "Client ID",
+                            "required": true,
+                            "editable": true,
+                            "visible": true,
+                            "type": "text",
+                            "name": "client_id",
+                            "description": "Unique Application ID of the Azure Active Directory application that is used to create an authentication token required to access the API."
+                        },
+                        {
+                            "title": "Client Secret",
+                            "required": true,
+                            "editable": true,
+                            "visible": true,
+                            "type": "password",
+                            "name": "client_secret",
+                            "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat- protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
+                        }
+                    ],
+                    "On behalf of User - Delegate Permission": [
+                        {
+                            "title": "Server URL",
+                            "required": true,
+                            "editable": true,
+                            "visible": true,
+                            "type": "text",
+                            "name": "resource",
+                            "value": "https://graph.microsoft.com",
+                            "description": "The service-based URI to which you will connect and perform the automated operations."
+                        },
+                        {
+                            "title": "Tenant ID",
+                            "required": true,
+                            "editable": true,
+                            "visible": true,
+                            "type": "text",
+                            "name": "tenant_id",
+                            "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
+                        },
+                        {
+                            "title": "Client ID",
+                            "required": true,
+                            "editable": true,
+                            "visible": true,
+                            "type": "text",
+                            "name": "client_id",
+                            "description": "Unique API ID of the Azure Active Directory application that is used to create an authentication token required to access the API."
+                        },
+                        {
+                            "title": "Client Secret",
+                            "required": true,
+                            "editable": true,
+                            "visible": true,
+                            "type": "password",
+                            "name": "client_secret",
+                            "description": "Unique API Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat- protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
+                        },
+                        {
+                            "title": "Authorization Code",
+                            "required": true,
+                            "editable": true,
+                            "visible": true,
+                            "type": "password",
+                            "name": "code",
+                            "tooltip": "Authorization code that you acquired in the authorization step.",
+                            "description": "(Only Applicable to On behalf of User \u2013 Delegate Permission) The authorization code that you acquired during the authorization step. For more information, see the Getting Access Tokens using the Delegate Permissions method topic."
+                        },
+                        {
+                            "title": "Redirect URL",
+                            "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal.",
+                            "required": false,
+                            "editable": true,
+                            "visible": true,
+                            "type": "text",
+                            "name": "redirect_url",
+                            "placeholder": "E.g. https://localhost/myapp",
+                            "tooltip": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal."
+                        }
+                    ]
+                }
             },
             {
-              "title": "Tenant ID",
-              "required": true,
-              "editable": true,
-              "visible": true,
-              "type": "text",
-              "name": "tenant_id",
-              "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
-            },
-            {
-              "title": "Client ID",
-              "required": true,
-              "editable": true,
-              "visible": true,
-              "type": "text",
-              "name": "client_id",
-              "description": "Unique Application ID of the Azure Active Directory application that is used to create an authentication token required to access the API."
-            },
-            {
-              "title": "Client Secret",
-              "required": true,
-              "editable": true,
-              "visible": true,
-              "type": "password",
-              "name": "client_secret",
-              "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat- protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
+                "title": "Verify SSL",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "checkbox",
+                "name": "verify_ssl",
+                "value": true,
+                "description": "Specifies whether the SSL certificate for the server is to be verified or not."
             }
-          ],
-          "On behalf of User - Delegate Permission": [
-            {
-              "title": "Server URL",
-              "required": true,
-              "editable": true,
-              "visible": true,
-              "type": "text",
-              "name": "resource",
-              "value": "https://graph.microsoft.com",
-              "description": "The service-based URI to which you will connect and perform the automated operations."
-            },
-            {
-              "title": "Tenant ID",
-              "required": true,
-              "editable": true,
-              "visible": true,
-              "type": "text",
-              "name": "tenant_id",
-              "description": "ID of the tenant that you have been provided for your Azure Active Directory instance."
-            },
-            {
-              "title": "Client ID",
-              "required": true,
-              "editable": true,
-              "visible": true,
-              "type": "text",
-              "name": "client_id",
-              "description": "Unique API ID of the Azure Active Directory application that is used to create an authentication token required to access the API."
-            },
-            {
-              "title": "Client Secret",
-              "required": true,
-              "editable": true,
-              "visible": true,
-              "type": "password",
-              "name": "client_secret",
-              "description": "Unique API Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see 'https://docs.microsoft.com/en-us/windows/security/threat- protection/microsoft-defender-atp/exposed-apis-create-app-webapp'."
-            },
-            {
-              "title": "Authorization Code",
-              "required": true,
-              "editable": true,
-              "visible": true,
-              "type": "password",
-              "name": "code",
-              "tooltip": "Authorization code that you acquired in the authorization step.",
-              "description": "(Only Applicable to On behalf of User – Delegate Permission) The authorization code that you acquired during the authorization step. For more information, see the Getting Access Tokens using the Delegate Permissions method topic."
-            },
-            {
-              "title": "Redirect URL",
-              "description": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal.",
-              "required": false,
-              "editable": true,
-              "visible": true,
-              "type": "text",
-              "name": "redirect_url",
-              "placeholder": "E.g. https://localhost/myapp",
-              "tooltip": "The redirect_uri of your app, where authentication responses can be sent and received by your app. It must exactly match one of the redirect_uri's you registered in the app registration portal."
-            }
-          ]
-        }
-      },
-      {
-        "title": "Verify SSL",
-        "required": false,
-        "editable": true,
-        "visible": true,
-        "type": "checkbox",
-        "name": "verify_ssl",
-        "value": true,
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not."
-      }
-    ]
-  },
-  "operations": [
-    {
-      "title": "Get Managed Devices List",
-      "operation": "list_managed_devices",
-      "description": "Retrieves a list of all managed devices from Microsoft Intune.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "list_managed_devices",
-      "parameters": [],
-      "output_schema": {
-        "value": [
-          {
-            "@odata.type": "",
-            "id": "",
-            "userId": "",
-            "deviceName": "",
-            "managedDeviceOwnerType": "",
-            "deviceActionResults": [
-              {
-                "@odata.type": "",
-                "actionName": "",
-                "actionState": "",
-                "startDateTime": "",
-                "lastUpdatedDateTime": ""
-              }
-            ],
-            "enrolledDateTime": "",
-            "lastSyncDateTime": "",
-            "operatingSystem": "",
-            "complianceState": "",
-            "jailBroken": "",
-            "managementAgent": "",
-            "osVersion": "",
-            "easActivated": "",
-            "easDeviceId": "",
-            "easActivationDateTime": "",
-            "azureADRegistered": "",
-            "deviceEnrollmentType": "",
-            "activationLockBypassCode": "",
-            "emailAddress": "",
-            "azureADDeviceId": "",
-            "deviceRegistrationState": "",
-            "deviceCategoryDisplayName": "",
-            "isSupervised": "",
-            "exchangeLastSuccessfulSyncDateTime": "",
-            "exchangeAccessState": "",
-            "exchangeAccessStateReason": "",
-            "remoteAssistanceSessionUrl": "",
-            "remoteAssistanceSessionErrorDetails": "",
-            "isEncrypted": "",
-            "userPrincipalName": "",
-            "model": "",
-            "manufacturer": "",
-            "imei": "",
-            "complianceGracePeriodExpirationDateTime": "",
-            "serialNumber": "",
-            "phoneNumber": "",
-            "androidSecurityPatchLevel": "",
-            "userDisplayName": "",
-            "configurationManagerClientEnabledFeatures": {
-              "@odata.type": "",
-              "inventory": "",
-              "modernApps": "",
-              "resourceAccess": "",
-              "deviceConfiguration": "",
-              "compliancePolicy": "",
-              "windowsUpdateForBusiness": ""
-            },
-            "wiFiMacAddress": "",
-            "deviceHealthAttestationState": {
-              "@odata.type": "",
-              "lastUpdateDateTime": "",
-              "contentNamespaceUrl": "",
-              "deviceHealthAttestationStatus": "",
-              "contentVersion": "",
-              "issuedDateTime": "",
-              "attestationIdentityKey": "",
-              "resetCount": "",
-              "restartCount": "",
-              "dataExcutionPolicy": "",
-              "bitLockerStatus": "",
-              "bootManagerVersion": "",
-              "codeIntegrityCheckVersion": "",
-              "secureBoot": "",
-              "bootDebugging": "",
-              "operatingSystemKernelDebugging": "",
-              "codeIntegrity": "",
-              "testSigning": "",
-              "safeMode": "",
-              "windowsPE": "",
-              "earlyLaunchAntiMalwareDriverProtection": "",
-              "virtualSecureMode": "",
-              "pcrHashAlgorithm": "",
-              "bootAppSecurityVersion": "",
-              "bootManagerSecurityVersion": "",
-              "tpmVersion": "",
-              "pcr0": "",
-              "secureBootConfigurationPolicyFingerPrint": "",
-              "codeIntegrityPolicy": "",
-              "bootRevisionListInfo": "",
-              "operatingSystemRevListInfo": "",
-              "healthStatusMismatchInfo": "",
-              "healthAttestationSupportedStatus": ""
-            },
-            "subscriberCarrier": "",
-            "meid": "",
-            "totalStorageSpaceInBytes": "",
-            "freeStorageSpaceInBytes": "",
-            "managedDeviceName": "",
-            "partnerReportedThreatState": "",
-            "requireUserEnrollmentApproval": "",
-            "managementCertificateExpirationDate": "",
-            "iccid": "",
-            "udid": "",
-            "notes": "",
-            "ethernetMacAddress": "",
-            "physicalMemoryInBytes": ""
-          }
         ]
-      }
     },
-    {
-      "title": "Get Managed Device Details",
-      "operation": "get_managed_device_details",
-      "description": "Retrieves details for a specific managed device from Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "get_managed_device_details",
-      "parameters": [
+    "operations": [
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device for which you want to retrieve details from Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "value": {
-          "@odata.type": "",
-          "id": "",
-          "userId": "",
-          "deviceName": "",
-          "managedDeviceOwnerType": "",
-          "deviceActionResults": [
-            {
-              "@odata.type": "",
-              "actionName": "",
-              "actionState": "",
-              "startDateTime": "",
-              "lastUpdatedDateTime": ""
+            "title": "Get Managed Devices List",
+            "operation": "list_managed_devices",
+            "description": "Retrieves a list of all managed devices from Microsoft Intune.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "list_managed_devices",
+            "parameters": [],
+            "output_schema": {
+                "value": [
+                    {
+                        "@odata.type": "",
+                        "id": "",
+                        "userId": "",
+                        "deviceName": "",
+                        "managedDeviceOwnerType": "",
+                        "deviceActionResults": [
+                            {
+                                "@odata.type": "",
+                                "actionName": "",
+                                "actionState": "",
+                                "startDateTime": "",
+                                "lastUpdatedDateTime": ""
+                            }
+                        ],
+                        "enrolledDateTime": "",
+                        "lastSyncDateTime": "",
+                        "operatingSystem": "",
+                        "complianceState": "",
+                        "jailBroken": "",
+                        "managementAgent": "",
+                        "osVersion": "",
+                        "easActivated": "",
+                        "easDeviceId": "",
+                        "easActivationDateTime": "",
+                        "azureADRegistered": "",
+                        "deviceEnrollmentType": "",
+                        "activationLockBypassCode": "",
+                        "emailAddress": "",
+                        "azureADDeviceId": "",
+                        "deviceRegistrationState": "",
+                        "deviceCategoryDisplayName": "",
+                        "isSupervised": "",
+                        "exchangeLastSuccessfulSyncDateTime": "",
+                        "exchangeAccessState": "",
+                        "exchangeAccessStateReason": "",
+                        "remoteAssistanceSessionUrl": "",
+                        "remoteAssistanceSessionErrorDetails": "",
+                        "isEncrypted": "",
+                        "userPrincipalName": "",
+                        "model": "",
+                        "manufacturer": "",
+                        "imei": "",
+                        "complianceGracePeriodExpirationDateTime": "",
+                        "serialNumber": "",
+                        "phoneNumber": "",
+                        "androidSecurityPatchLevel": "",
+                        "userDisplayName": "",
+                        "configurationManagerClientEnabledFeatures": {
+                            "@odata.type": "",
+                            "inventory": "",
+                            "modernApps": "",
+                            "resourceAccess": "",
+                            "deviceConfiguration": "",
+                            "compliancePolicy": "",
+                            "windowsUpdateForBusiness": ""
+                        },
+                        "wiFiMacAddress": "",
+                        "deviceHealthAttestationState": {
+                            "@odata.type": "",
+                            "lastUpdateDateTime": "",
+                            "contentNamespaceUrl": "",
+                            "deviceHealthAttestationStatus": "",
+                            "contentVersion": "",
+                            "issuedDateTime": "",
+                            "attestationIdentityKey": "",
+                            "resetCount": "",
+                            "restartCount": "",
+                            "dataExcutionPolicy": "",
+                            "bitLockerStatus": "",
+                            "bootManagerVersion": "",
+                            "codeIntegrityCheckVersion": "",
+                            "secureBoot": "",
+                            "bootDebugging": "",
+                            "operatingSystemKernelDebugging": "",
+                            "codeIntegrity": "",
+                            "testSigning": "",
+                            "safeMode": "",
+                            "windowsPE": "",
+                            "earlyLaunchAntiMalwareDriverProtection": "",
+                            "virtualSecureMode": "",
+                            "pcrHashAlgorithm": "",
+                            "bootAppSecurityVersion": "",
+                            "bootManagerSecurityVersion": "",
+                            "tpmVersion": "",
+                            "pcr0": "",
+                            "secureBootConfigurationPolicyFingerPrint": "",
+                            "codeIntegrityPolicy": "",
+                            "bootRevisionListInfo": "",
+                            "operatingSystemRevListInfo": "",
+                            "healthStatusMismatchInfo": "",
+                            "healthAttestationSupportedStatus": ""
+                        },
+                        "subscriberCarrier": "",
+                        "meid": "",
+                        "totalStorageSpaceInBytes": "",
+                        "freeStorageSpaceInBytes": "",
+                        "managedDeviceName": "",
+                        "partnerReportedThreatState": "",
+                        "requireUserEnrollmentApproval": "",
+                        "managementCertificateExpirationDate": "",
+                        "iccid": "",
+                        "udid": "",
+                        "notes": "",
+                        "ethernetMacAddress": "",
+                        "physicalMemoryInBytes": ""
+                    }
+                ]
             }
-          ],
-          "enrolledDateTime": "",
-          "lastSyncDateTime": "",
-          "operatingSystem": "",
-          "complianceState": "",
-          "jailBroken": "",
-          "managementAgent": "",
-          "osVersion": "",
-          "easActivated": "",
-          "easDeviceId": "",
-          "easActivationDateTime": "",
-          "azureADRegistered": "",
-          "deviceEnrollmentType": "",
-          "activationLockBypassCode": "",
-          "emailAddress": "",
-          "azureADDeviceId": "",
-          "deviceRegistrationState": "",
-          "deviceCategoryDisplayName": "",
-          "isSupervised": "",
-          "exchangeLastSuccessfulSyncDateTime": "",
-          "exchangeAccessState": "",
-          "exchangeAccessStateReason": "",
-          "remoteAssistanceSessionUrl": "",
-          "remoteAssistanceSessionErrorDetails": "",
-          "isEncrypted": "",
-          "userPrincipalName": "",
-          "model": "",
-          "manufacturer": "",
-          "imei": "",
-          "complianceGracePeriodExpirationDateTime": "",
-          "serialNumber": "",
-          "phoneNumber": "",
-          "androidSecurityPatchLevel": "",
-          "userDisplayName": "",
-          "configurationManagerClientEnabledFeatures": {
-            "@odata.type": "",
-            "inventory": "",
-            "modernApps": "",
-            "resourceAccess": "",
-            "deviceConfiguration": "",
-            "compliancePolicy": "",
-            "windowsUpdateForBusiness": ""
-          },
-          "wiFiMacAddress": "",
-          "deviceHealthAttestationState": {
-            "@odata.type": "",
-            "lastUpdateDateTime": "",
-            "contentNamespaceUrl": "",
-            "deviceHealthAttestationStatus": "",
-            "contentVersion": "",
-            "issuedDateTime": "",
-            "attestationIdentityKey": "",
-            "resetCount": "",
-            "restartCount": "",
-            "dataExcutionPolicy": "",
-            "bitLockerStatus": "",
-            "bootManagerVersion": "",
-            "codeIntegrityCheckVersion": "",
-            "secureBoot": "",
-            "bootDebugging": "",
-            "operatingSystemKernelDebugging": "",
-            "codeIntegrity": "",
-            "testSigning": "",
-            "safeMode": "",
-            "windowsPE": "",
-            "earlyLaunchAntiMalwareDriverProtection": "",
-            "virtualSecureMode": "",
-            "pcrHashAlgorithm": "",
-            "bootAppSecurityVersion": "",
-            "bootManagerSecurityVersion": "",
-            "tpmVersion": "",
-            "pcr0": "",
-            "secureBootConfigurationPolicyFingerPrint": "",
-            "codeIntegrityPolicy": "",
-            "bootRevisionListInfo": "",
-            "operatingSystemRevListInfo": "",
-            "healthStatusMismatchInfo": "",
-            "healthAttestationSupportedStatus": ""
-          },
-          "subscriberCarrier": "",
-          "meid": "",
-          "totalStorageSpaceInBytes": "",
-          "freeStorageSpaceInBytes": "",
-          "managedDeviceName": "",
-          "partnerReportedThreatState": "",
-          "requireUserEnrollmentApproval": "",
-          "managementCertificateExpirationDate": "",
-          "iccid": "",
-          "udid": "",
-          "notes": "",
-          "ethernetMacAddress": "",
-          "physicalMemoryInBytes": ""
-        }
-      }
-    },
-    {
-      "title": "Retire Device",
-      "operation": "retire_device",
-      "description": "Retires a specific device from Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "retire_device",
-      "parameters": [
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device whose managed app data (where applicable), settings, and email profiles (assigned using Intune) you want to remove (retire) from Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Wipe Device",
-      "operation": "wipe_device",
-      "description": "Wipes a specific device in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "wipe_device",
-      "parameters": [
+            "title": "Get Managed Device Details",
+            "operation": "get_managed_device_details",
+            "description": "Retrieves details for a specific managed device from Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "get_managed_device_details",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device for which you want to retrieve details from Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "value": {
+                    "@odata.type": "",
+                    "id": "",
+                    "userId": "",
+                    "deviceName": "",
+                    "managedDeviceOwnerType": "",
+                    "deviceActionResults": [
+                        {
+                            "@odata.type": "",
+                            "actionName": "",
+                            "actionState": "",
+                            "startDateTime": "",
+                            "lastUpdatedDateTime": ""
+                        }
+                    ],
+                    "enrolledDateTime": "",
+                    "lastSyncDateTime": "",
+                    "operatingSystem": "",
+                    "complianceState": "",
+                    "jailBroken": "",
+                    "managementAgent": "",
+                    "osVersion": "",
+                    "easActivated": "",
+                    "easDeviceId": "",
+                    "easActivationDateTime": "",
+                    "azureADRegistered": "",
+                    "deviceEnrollmentType": "",
+                    "activationLockBypassCode": "",
+                    "emailAddress": "",
+                    "azureADDeviceId": "",
+                    "deviceRegistrationState": "",
+                    "deviceCategoryDisplayName": "",
+                    "isSupervised": "",
+                    "exchangeLastSuccessfulSyncDateTime": "",
+                    "exchangeAccessState": "",
+                    "exchangeAccessStateReason": "",
+                    "remoteAssistanceSessionUrl": "",
+                    "remoteAssistanceSessionErrorDetails": "",
+                    "isEncrypted": "",
+                    "userPrincipalName": "",
+                    "model": "",
+                    "manufacturer": "",
+                    "imei": "",
+                    "complianceGracePeriodExpirationDateTime": "",
+                    "serialNumber": "",
+                    "phoneNumber": "",
+                    "androidSecurityPatchLevel": "",
+                    "userDisplayName": "",
+                    "configurationManagerClientEnabledFeatures": {
+                        "@odata.type": "",
+                        "inventory": "",
+                        "modernApps": "",
+                        "resourceAccess": "",
+                        "deviceConfiguration": "",
+                        "compliancePolicy": "",
+                        "windowsUpdateForBusiness": ""
+                    },
+                    "wiFiMacAddress": "",
+                    "deviceHealthAttestationState": {
+                        "@odata.type": "",
+                        "lastUpdateDateTime": "",
+                        "contentNamespaceUrl": "",
+                        "deviceHealthAttestationStatus": "",
+                        "contentVersion": "",
+                        "issuedDateTime": "",
+                        "attestationIdentityKey": "",
+                        "resetCount": "",
+                        "restartCount": "",
+                        "dataExcutionPolicy": "",
+                        "bitLockerStatus": "",
+                        "bootManagerVersion": "",
+                        "codeIntegrityCheckVersion": "",
+                        "secureBoot": "",
+                        "bootDebugging": "",
+                        "operatingSystemKernelDebugging": "",
+                        "codeIntegrity": "",
+                        "testSigning": "",
+                        "safeMode": "",
+                        "windowsPE": "",
+                        "earlyLaunchAntiMalwareDriverProtection": "",
+                        "virtualSecureMode": "",
+                        "pcrHashAlgorithm": "",
+                        "bootAppSecurityVersion": "",
+                        "bootManagerSecurityVersion": "",
+                        "tpmVersion": "",
+                        "pcr0": "",
+                        "secureBootConfigurationPolicyFingerPrint": "",
+                        "codeIntegrityPolicy": "",
+                        "bootRevisionListInfo": "",
+                        "operatingSystemRevListInfo": "",
+                        "healthStatusMismatchInfo": "",
+                        "healthAttestationSupportedStatus": ""
+                    },
+                    "subscriberCarrier": "",
+                    "meid": "",
+                    "totalStorageSpaceInBytes": "",
+                    "freeStorageSpaceInBytes": "",
+                    "managedDeviceName": "",
+                    "partnerReportedThreatState": "",
+                    "requireUserEnrollmentApproval": "",
+                    "managementCertificateExpirationDate": "",
+                    "iccid": "",
+                    "udid": "",
+                    "notes": "",
+                    "ethernetMacAddress": "",
+                    "physicalMemoryInBytes": ""
+                }
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device that you want to restore to its factory default settings (wipe) in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Reset Passcode Device",
-      "operation": "reset_passcode_of_device",
-      "description": "Resets the passcode for a specific device in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "reset_passcode_of_device",
-      "parameters": [
+            "title": "Retire Device",
+            "operation": "retire_device",
+            "description": "Retires a specific device from Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "retire_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device whose managed app data (where applicable), settings, and email profiles (assigned using Intune) you want to remove (retire) from Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device whose passcode you want to reset in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Remote Lock Device",
-      "operation": "remote_lock_of_device",
-      "description": "Remotely Locks a specific device in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "remote_lock_of_device",
-      "parameters": [
+            "title": "Wipe Device",
+            "operation": "wipe_device",
+            "description": "Wipes a specific device in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "wipe_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device that you want to restore to its factory default settings (wipe) in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device that you want to remotely lock in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Request Remote Assistance for Device",
-      "operation": "request_remote_assistance_of_device",
-      "description": "Requests remote assistance for a specific device in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "request_remote_assistance_of_device",
-      "parameters": [
+            "title": "Reset Passcode Device",
+            "operation": "reset_passcode_of_device",
+            "description": "Resets the passcode for a specific device in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "reset_passcode_of_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device whose passcode you want to reset in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device for which you want to request ID remote assistance in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Disable Lost Mode for Device",
-      "operation": "disable_lost_mode_of_device",
-      "description": "Disables the 'lost mode' for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "disable_lost_mode_of_device",
-      "parameters": [
+            "title": "Remote Lock Device",
+            "operation": "remote_lock_of_device",
+            "description": "Remotely Locks a specific device in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "remote_lock_of_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device that you want to remotely lock in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device whose 'lost mode' you want to disable in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Locate a Device",
-      "operation": "locate_device",
-      "description": "Locates a specific device in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "locate_device",
-      "parameters": [
+            "title": "Request Remote Assistance for Device",
+            "operation": "request_remote_assistance_of_device",
+            "description": "Requests remote assistance for a specific device in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "request_remote_assistance_of_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device for which you want to request ID remote assistance in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device that you want to locate in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Bypass Activation Lock for Device",
-      "operation": "bypass_activation_lock_of_device",
-      "description": "Bypasses the activation lock of a specific device in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "bypass_activation_lock_of_device",
-      "parameters": [
+            "title": "Disable Lost Mode for Device",
+            "operation": "disable_lost_mode_of_device",
+            "description": "Disables the 'lost mode' for a specific device in Microsoft Intune based on the managed device ID that you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "disable_lost_mode_of_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device whose 'lost mode' you want to disable in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device whose activation lock you want to bypass in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Reboot Device",
-      "operation": "reboot_device",
-      "description": "Reboots a specific device in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "reboot_device",
-      "parameters": [
+            "title": "Locate a Device",
+            "operation": "locate_device",
+            "description": "Locates a specific device in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "locate_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device that you want to locate in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device that you want to reboot in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Shutdown Device",
-      "operation": "shutdown_device",
-      "description": "Shuts down a specific device in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "shutdown_device",
-      "parameters": [
+            "title": "Bypass Activation Lock for Device",
+            "operation": "bypass_activation_lock_of_device",
+            "description": "Bypasses the activation lock of a specific device in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "bypass_activation_lock_of_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device whose activation lock you want to bypass in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device that you want to shut down in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Recover Passcode for Device",
-      "operation": "recover_passcode_of_device",
-      "description": "Recovers the passcode for a specific device from Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "recover_passcode_of_device",
-      "parameters": [
+            "title": "Reboot Device",
+            "operation": "reboot_device",
+            "description": "Reboots a specific device in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "reboot_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device that you want to reboot in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device whose passcode you want to recover from Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Clean Windows Device",
-      "operation": "clean_windows_device",
-      "description": "Cleans, i.e., removes any apps that are installed on a device that runs on Windows in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "clean_windows_device",
-      "parameters": [
+            "title": "Shutdown Device",
+            "operation": "shutdown_device",
+            "description": "Shuts down a specific device in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "shutdown_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device that you want to shut down in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device based on which you want to remove any apps (clean) that are installed on a device that runs on Windows.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Logout Apple Device for Active User",
-      "operation": "logout_shared_apple_device_active_user",
-      "description": "Logs out a shared Apple device for an active user in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "logout_shared_apple_device_active_user",
-      "parameters": [
+            "title": "Recover Passcode for Device",
+            "operation": "recover_passcode_of_device",
+            "description": "Recovers the passcode for a specific device from Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "recover_passcode_of_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device whose passcode you want to recover from Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device from which you want to logout a shared Apple device for an active user in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Delete User from Apple Device",
-      "operation": "delete_user_from_shared_apple_device",
-      "description": "Deletes a user from a shared Apple device in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "delete_user_from_shared_apple_device",
-      "parameters": [
+            "title": "Clean Windows Device",
+            "operation": "clean_windows_device",
+            "description": "Cleans, i.e., removes any apps that are installed on a device that runs on Windows in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "clean_windows_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device based on which you want to remove any apps (clean) that are installed on a device that runs on Windows.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device based on which you want to delete a user from a shared Apple device in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Sync Device",
-      "operation": "sync_device",
-      "description": "Syncs a specific device using Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "sync_device",
-      "parameters": [
+            "title": "Logout Apple Device for Active User",
+            "operation": "logout_shared_apple_device_active_user",
+            "description": "Logs out a shared Apple device for an active user in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "logout_shared_apple_device_active_user",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device from which you want to logout a shared Apple device for an active user in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device based on which you want to sync your device, i.e., force your device to connect with Intune to get the latest updates, requirements, and communications from your organization.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Windows Defender Scan",
-      "operation": "windows_defender_scan",
-      "description": "Scans a device using Windows Defender in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "windows_defender_scan",
-      "parameters": [
+            "title": "Delete User from Apple Device",
+            "operation": "delete_user_from_shared_apple_device",
+            "description": "Deletes a user from a shared Apple device in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "delete_user_from_shared_apple_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device based on which you want to delete a user from a shared Apple device in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device in Microsoft Intune based on which you want to scan a device using Windows Defender.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Update Signature for Windows Defender",
-      "operation": "windows_defender_update_signature",
-      "description": "Updates the signature for Windows Defender in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "windows_defender_update_signature",
-      "parameters": [
+            "title": "Sync Device",
+            "operation": "sync_device",
+            "description": "Syncs a specific device using Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "sync_device",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device based on which you want to sync your device, i.e., force your device to connect with Intune to get the latest updates, requirements, and communications from your organization.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device based on which you want to update the Windows Defender signature in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
-        }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    },
-    {
-      "title": "Update Account for Windows Device",
-      "operation": "update_windows_device_account",
-      "description": "Updates an account for a Windows device in Microsoft Intune based on the managed device ID you have specified.",
-      "category": "investigation ",
-      "enabled": true,
-      "annotation": "update_windows_device_account",
-      "parameters": [
+            "title": "Windows Defender Scan",
+            "operation": "windows_defender_scan",
+            "description": "Scans a device using Windows Defender in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "windows_defender_scan",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device in Microsoft Intune based on which you want to scan a device using Windows Defender.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
         {
-          "title": "Managed Device ID",
-          "description": "Specify the ID of the managed device based on which you want to update an account for a Windows device in Microsoft Intune.",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "name": "managedDeviceId"
+            "title": "Update Signature for Windows Defender",
+            "operation": "windows_defender_update_signature",
+            "description": "Updates the signature for Windows Defender in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "windows_defender_update_signature",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device based on which you want to update the Windows Defender signature in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
+        {
+            "title": "List owned devices",
+            "operation": "owned_Devices",
+            "description": "Get the list of devices that are owned by the user.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "owned_Devices",
+            "parameters": [
+                {
+                    "title": "user Principal Name",
+                    "description": "Specify the userPrincipalName of the user on which you want to get the list his devices.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "userPrincipalName"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
+        },
+        {
+            "title": "Update Account for Windows Device",
+            "operation": "update_windows_device_account",
+            "description": "Updates an account for a Windows device in Microsoft Intune based on the managed device ID you have specified.",
+            "category": "investigation ",
+            "enabled": true,
+            "annotation": "update_windows_device_account",
+            "parameters": [
+                {
+                    "title": "Managed Device ID",
+                    "description": "Specify the ID of the managed device based on which you want to update an account for a Windows device in Microsoft Intune.",
+                    "required": true,
+                    "editable": true,
+                    "visible": true,
+                    "type": "text",
+                    "name": "managedDeviceId"
+                }
+            ],
+            "output_schema": {
+                "message": ""
+            }
         }
-      ],
-      "output_schema": {
-        "message": ""
-      }
-    }
-  ]
+    ],
+    "category": "Communication",
+    "contributor": null,
+    "active": true,
+    "cs_compatible": true,
+    "system": false,
+    "playbook_collections": [],
+    "icon_small": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAvhJREFUWEftlstOU1EUhv9zaU97aA/SYi2ICEjEkBBCmBAiEecOfQUTHZCYmPgEDnRgmGh8Ap/AJ5CIxEgMEIR4QUG0N1ro/d6D/97goOKFAQ2Ts5uTk7b77PWv719r5Sj7XDjFpTgCHAIOAYeAQ+BvBBr2Pup1G5VaAx63BrdLa8nAbhrFhVINH79nkC1Ukc5XENstYi9Xwc3pS+g754cQZVCMENVo2NA0FcYxhYlkssUq2ryupmeaBKxt7uLh83cyUI0PxClABJuduYruQBu2ollMjnZj6UNCUunt8kOnCG6H6/Bu2zZcuirPABToqoJKvYFUuoQkLyF66GIAXuOAaJOAt+tx3H0yD9PQJfK9XFlump2ZgsGDVjeSmBjpwuJaHJ1nPOgNW9iKZdHV6UNir8hDddiNfbgpbme3hOGBALbjOZ6lYjsm7hr3lXBjagDhoHlUwCIzu/9s4VCAShuq3LSPR7cnYVB5LJVHrlCTdDosQ2Z2IWShjyReLUXQE/bBdLsQSRaQyZdhtRnI0MLRobNYWI7wHsKXHxlMj/fwP/dRAW+Y2Z3HL2F6SYAYhf+Mj6f3riFkeWRt5Omj8F0gFvs+f0tLEja/Wz4Dm9EMfKZL4k+QgltX5O+Vah3D/UGsbKQwfiX0ZwICz4vXX5HMVLBDvwTeDIM+uDWBscFOWaD9YT9U2tGg12kK9JtuKIrCQPRUAUrlmkRerrB7PBprQ0O52pD2qCpQrdmsG9YGiR6pgV99JrKrErPIVtgg/PIw6/nVGDr8BqKpAgK04JMUZGGU4pZZHxqFCWIaA+TZUUHLixHWwb/Wsd+I6iyuuZUI2umdsCLY7pFdUq7UMUaP51ZiuHzegkoa79lNvWxb0RHXx3pOSoCN9a00+1iXGH3s5+1EnnNBlS0Yo32D3QcCoqkiPGyzcMCU14kQEIeImcDziVmRdVCg32IeFMp12fsGvVf4ERaWSMb06P8dVMe2oCVz+PdB1KogJ2ZBKwQ6FjgEHAKnTuAnuTHCsAHRJUMAAAAASUVORK5CYII=",
+    "icon_large": "data:image/jpeg;base64,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",
+    "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/microsoft-intune/551/microsoft-intune-v1-0-0",
+    "vendor_version": null
 }
