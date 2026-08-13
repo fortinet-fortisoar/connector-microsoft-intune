@@ -268,10 +268,7 @@ def owned_Devices(config, params, connector_info):
     endpoint = "/users/{0}/ownedDevices/".format(userPrincipalName)
     payload = check_payload(params)
     response = api_request("GET", endpoint, connector_info, config, data=json.dumps(payload))
-    if response.get('message'):
-        return response
-    else:
-        return {"message": "Successfully get the list of devices that are owned by {0}".format(userPrincipalName)}
+    return response
 
 def login(config, params, connector_info):
     endpoint = "/deviceManagement/managedDevices"
