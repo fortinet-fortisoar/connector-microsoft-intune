@@ -1,5 +1,5 @@
 """ Copyright start
-  Copyright (C) 2008 - 2023 Fortinet Inc.
+  Copyright (C) 2008 - 2026 Fortinet Inc.
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
@@ -75,6 +75,19 @@ def check_payload(payload):
 def list_managed_devices(config, params, connector_info):
     endpoint = "/deviceManagement/managedDevices"
     response = api_request("GET", endpoint, connector_info, config)
+    all_devices = response.get("value", [])
+
+    while response.get("@odata.nextLink"):
+        response = api_request(
+            "GET",
+            response["@odata.nextLink"],
+            connector_info,
+            config
+        )
+        all_devices.extend(response.get("value", []))
+
+    response["value"] = all_devices
+    response.pop("@odata.nextLink", None)
     return response
 
 
