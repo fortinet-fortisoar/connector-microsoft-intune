@@ -10,7 +10,7 @@
   "cs_compatible": true,
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/microsoft-intune/551/microsoft-intune-v1-0-0",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.1/microsoft-intune/101/microsoft-intune-v1-0-1",
   "configuration": {
     "fields": [
       {
